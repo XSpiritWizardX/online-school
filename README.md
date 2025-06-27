@@ -1,6 +1,8 @@
 # Flask React Project
 
 This is the starter for the Flask React project.
+ 
+![alt tag](OnlineSchool.png) 
 
 ## Getting started
 
