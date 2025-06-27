@@ -1,3 +1,5 @@
-# API routes can be added here later
-# from flask import Blueprint
-# bp = Blueprint('api', __name__)
+from flask import Blueprint
+
+bp = Blueprint("api", __name__)
+
+from app.api import routes

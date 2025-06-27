@@ -1,28 +1,20 @@
 from flask import Flask
-from flask_login import LoginManager
+from flask_cors import CORS
 
 
 def create_app():
     app = Flask(__name__)
-    app.config["SECRET_KEY"] = "secret-key-change-this"
+    app.config["SECRET_KEY"] = "change-this-secret-key"
 
-    # Initialize Flask-Login
-    login_manager = LoginManager()
-    login_manager.init_app(app)
-    login_manager.login_view = "auth.login"
+    # Enable CORS for React frontend
+    CORS(
+        app,
+        origins=["http://localhost:3000", "http://localhost:5173"],
+    )
 
-    # Import models to register user_loader
-    from app.models import load_user
+    # Register API blueprint only
+    from app.api import bp as api_bp
 
-    login_manager.user_loader(load_user)
-
-    # Register blueprints
-    from app.auth import bp as auth_bp
-
-    app.register_blueprint(auth_bp, url_prefix="/auth")
-
-    from app.main import bp as main_bp
-
-    app.register_blueprint(main_bp)
+    app.register_blueprint(api_bp, url_prefix="/api")
 
     return app
