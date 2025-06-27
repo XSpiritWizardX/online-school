@@ -9,3 +9,19 @@ dependencies = [
     "flask-jwt-extended>=4.5.0",
     "bcrypt>=4.0.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.1",
+]
+
+[tool.ruff]
+line-length = 70
+
+[tool.ruff.format]
+line-ending = "lf"
+
+[project.scripts]
+format = "ruff format ."
+lint = "ruff check ."
+lint-fix = "ruff check --fix ."
