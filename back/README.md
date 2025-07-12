@@ -11,6 +11,6 @@ uv sync
 # settings in this file take precedence over other .env files
 cp example.env.local .env.local
 
-# run flask with those packages
-uv run -- flask run
+# run app with those packages
+uv run -- python run.py
 ```
