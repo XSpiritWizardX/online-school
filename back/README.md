@@ -1,6 +1,7 @@
 # setup
 
 ```bash
-uv sync
-uv run -- flask run
+cd back/            # cd into online-school/back directory
+uv sync             # install/update python and packages
+uv run -- flask run # run flask with those packages
 ```
