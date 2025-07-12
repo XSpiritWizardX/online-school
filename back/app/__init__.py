@@ -1,9 +1,17 @@
 from flask import Flask
 from flask_cors import CORS
+from config import DevelopmentConfig, ProductionConfig
+import os
 
 
 def create_app():
     app = Flask(__name__)
+
+    if os.environ.get("FLASK_ENV") == "production":
+        app.config.from_object(ProductionConfig)
+    else:
+        app.config.from_object(DevelopmentConfig)
+
     app.config["SECRET_KEY"] = "change-this-secret-key"
 
     # Enable CORS for React frontend

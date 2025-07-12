@@ -7,4 +7,4 @@ __pycache__/
 *.db
 instance/*.db
 instance/dev.db
-/note.org
+**/note.org
