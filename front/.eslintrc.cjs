@@ -25,5 +25,14 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "react/prop-types": "off",
+    "max-len": [
+      "error",
+      {
+        code: 70,
+        ignoreUrls: true,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+      },
+    ],
   },
 };
