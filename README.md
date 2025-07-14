@@ -1,4 +1,4 @@
-# Flask React Project
+# online school
 
 ![alt tag](OnlineSchool.png)
 
