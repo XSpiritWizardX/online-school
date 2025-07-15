@@ -9,16 +9,17 @@
 }
 
 .profile-dropdown {
-  border: 2px dotted #ffffff;
+  border: 2px solid #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 10%;
+  width: auto;
   top: 100%;
   margin-top: 2%;
   right: 0;
   z-index: 1000;
+  padding: 1%;
   gap: 10px;
 }
 .profile-dropdown-items {
@@ -29,14 +30,29 @@
   z-index: 1000;
   width: 100%;
   padding: 5%;
+  gap: 10px;
+  background-color: black;
 }
-.login-signup-button {
-  display: flex;
-  flex-direction: column;
-  border-radius: 25px;
-  color: black;
-  font-weight: bold;
+
+
+.profile-dropdown-buttons:hover {
+  background-color: #333333; /* Darker on hover */
+  border-color: #ffffff;
+}
+
+/* Style for the logout button when user is logged in */
+.profile-dropdown button {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 2cap;
   cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
   width: 100%;
-  
+}
+
+.profile-dropdown button:hover {
+  background-color: #333333;
 }
