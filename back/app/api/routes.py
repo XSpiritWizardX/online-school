@@ -42,6 +42,57 @@ def jwt_required(f):
     return decorated
 
 
+@bp.route("/auth/login", methods=["POST"])
+def auth_login():
+    """login endpoint for frontend testing"""
+    data = request.get_json()
+
+    if not data or not data.get("email") or not data.get("password"):
+        return (
+            jsonify({"message": "email and password required"}),
+            400,
+        )
+
+    user = authenticate_user(data["email"], data["password"])
+    if user:
+        token = generate_jwt_token(user.id)
+        return (
+            jsonify(
+                {
+                    "id": user.id,
+                    "username": user.id,
+                    "email": data["email"],
+                }
+            ),
+            200,
+        )
+    else:
+        return jsonify({"message": "invalid credentials"}), 401
+
+
+@bp.route("/auth/", methods=["GET"])
+@jwt_required
+def auth_check(current_user):
+    """check current authentication status"""
+    return (
+        jsonify(
+            {
+                "id": current_user.id,
+                "username": current_user.id,
+                "email": current_user.id,
+            }
+        ),
+        200,
+    )
+
+
+@bp.route("/auth/logout", methods=["POST"])
+@jwt_required
+def auth_logout(current_user):
+    """logout endpoint"""
+    return jsonify({"message": "logged out successfully"}), 200
+
+
 @bp.route("/login", methods=["POST"])
 def login():
     """Login endpoint - returns JWT token"""
