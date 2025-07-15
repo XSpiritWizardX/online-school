@@ -12,12 +12,13 @@ function Navigation() {
       <div
         className="home-links-container"
       >
+        <FiAlignJustify className="menu-icon" />
+        
         <NavLink
         className={"home-link"}
         to="/">Online School Name</NavLink>
 
 
-        <FiAlignJustify className="menu-icon" />
       </div>
 
 

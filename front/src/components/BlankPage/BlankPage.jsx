@@ -7,7 +7,7 @@ function BlankPage() {
 
   return (
 
-    <div className='delete-confirm'>
+    <div className='coming-soon-container'>
       <h1>Feature Coming Soon</h1>
         <NavLink
         to="/"

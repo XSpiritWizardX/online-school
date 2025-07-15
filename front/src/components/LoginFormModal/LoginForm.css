@@ -1,0 +1,121 @@
+/* === Animation === */
+@keyframes spin-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Modal Wrapper with Spinning Border === */
+.login-form-container-outer {
+  position: relative;
+  padding: 1rem;
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 0;
+
+}
+.login-form-container-outer::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: conic-gradient(
+    from 0deg,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #000000,
+    #000000
+  );
+  animation: spin-border 3s linear infinite;
+  z-index: -1;
+}
+
+
+/* Inner Form Container */
+
+.login-form-container-inner {
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  padding: 2rem;
+  z-index: 1;
+}
+
+.login-header{
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4%;
+}
+
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.login-input {
+  border-radius: 8px;
+  border: none;
+  background-color: #333333;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.login-input:focus {
+  outline: none;
+  border: 2px solid #ffffff;
+}
+
+.login-button {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.error-message {
+    color: #ff0000;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+.error{
+    color: #ff0000;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}

@@ -6,17 +6,17 @@ import "./LoginForm.css";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
-  const [username, setUsername] = useState("");
+  const { closeModal } = useModal();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
-  const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const serverResponse = await dispatch(
       thunkLogin({
-        username,
+        email,
         password,
       }),
     );
@@ -29,32 +29,55 @@ function LoginFormModal() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        {errors.username && <p>{errors.username}</p>}
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        {errors.password && <p>{errors.password}</p>}
-        <button type="submit">Log In</button>
-      </form>
-    </>
+    <div className="login-form-container-outer">
+      <div className="login-form-container-inner">
+        <div className="login-header">
+          <h1>Welcome Back</h1>
+          <p>Sign in to your account</p>
+        </div>
+
+        {errors.server && (
+          <div className="error-message">{errors.server}</div>
+        )}
+
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              className="login-input"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              placeholder="Enter your email address"
+            />
+            {errors.email && (
+              <span className="error">{errors.email}</span>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              className="login-input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Enter your password"
+            />
+
+            {errors.password && (
+              <span className="error">{errors.password}</span>
+            )}
+          </div>
+
+          <button type="submit" className="login-button">
+            Sign In
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
 

@@ -1,0 +1,27 @@
+.privacy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  margin-top: 10%;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.privacy-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.privacy-container h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #ffffff;
+}
+
+.privacy-container p {
+  margin-bottom: 1rem;
+}

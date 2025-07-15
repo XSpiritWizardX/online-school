@@ -1,0 +1,213 @@
+/* === Animation === */
+@keyframes spin-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Modal Wrapper with Spinning Border === */
+.signup-border-outer {
+  position: relative;
+  padding: 1rem;
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 0;
+
+}
+.signup-border-outer::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: conic-gradient(
+    from 0deg,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #000000,
+    #000000
+  );
+  animation: spin-border 3s linear infinite;
+  z-index: -1;
+}
+
+
+/* Inner Form Container */
+
+.signup-inner {
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  padding: 2rem;
+  z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* === Title === */
+.signup-inner h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+
+
+
+
+
+
+/* === Form Grid Layout === */
+.signup-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+/* Full width for large fields */
+.signup-form textarea,
+.signup-form .full-width {
+  grid-column: 1 / -1;
+}
+
+/* Labels and Inputs */
+.signup-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.signup-form input,
+.signup-form textarea {
+  margin-top: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+  outline: none;
+  border-color: #888;
+  background-color: #333;
+}
+.bio-input{
+    overflow-x: scroll;
+    overflow-y: scroll;
+
+}
+/* === Checkbox Section === */
+.agreement-section {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #ccc;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 10px;
+}
+.privacy-checkbox {
+  display: flex;
+  flex-direction: row;
+  ;
+}
+.checkbox-label input[type="checkbox"] {
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  accent-color: #4a9eff;
+}
+
+.checkbox-label a {
+  color: #4a9eff;
+  text-decoration: none;
+}
+
+.checkbox-label a:hover {
+  color: #66b3ff;
+  text-decoration: underline;
+}
+
+/* === Error Messages === */
+.error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  grid-column: 1 / -1;
+  margin-top: -10px;
+}
+
+
+
+
+.signup-button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signup-button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+
+/* === Responsive Layout === */
+@media (max-width: 768px) {
+  .signup-form {
+    grid-template-columns: 1fr;
+  }
+
+  .signup-inner {
+    padding: 25px;
+  }
+
+  .signup-inner h1 {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,26 @@
+.cookies-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  margin-top: 10%;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  line-height: 1.7;
+}
+
+.cookies-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cookies-container h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.cookies-container p,
+.cookies-container li {
+  margin-bottom: 1rem;
+}

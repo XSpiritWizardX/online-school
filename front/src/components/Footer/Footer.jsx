@@ -1,5 +1,5 @@
 import "./Footer.css";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 function FooterCard() {
@@ -42,33 +42,36 @@ function FooterCard() {
         to='/coming-soon'
         className='foot-links'
         >
-          <a
-          to='/coming-soon'
-          className='foot-links'
-          >Terms of Service
-          </a>
+               <NavLink
+        to='/terms-of-service'
+        className='foot-links'
+        >
+          Terms of Service
+        </NavLink>
         </div>
 
         <div
         to='/coming-soon'
         className='foot-links'
         >
-          <a
-          to='/coming-soon'
-          className='foot-links'
-          >Privacy Policy
-          </a>
+            <NavLink
+        to='/privacy-policy'
+        className='foot-links'
+        >
+          Privacy Policy
+        </NavLink>
           </div>
 
           <div
         to='/coming-soon'
         className='foot-links'
         >
-          <a
-          to='/coming-soon'
-          className='foot-links'
-          >Third-Party Cookies
-          </a>
+          <NavLink
+        to='/cookies-policy'
+        className='foot-links'
+        >
+          Cookie Policy
+        </NavLink>
           </div>
 
         </div>

@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 15px;
 }
 
 #modal-background {
@@ -16,9 +17,14 @@
   left: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
+  background-image: url("https://res.cloudinary.com/dl6ls3rgu/image/upload/v1752611025/a73190c5-1724-4fc7-988e-d141445646d5_spiaggiapreview_qejdpz.gif") ;
+  background-size: cover;
+
 }
 
 #modal-content {
   position: absolute;
   background-color:white;
+    border-radius: 15px;
+
 }
