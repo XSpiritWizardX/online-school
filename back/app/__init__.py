@@ -14,12 +14,11 @@ def create_app():
 
     config = app.config
     front_port = config["FRONT_PORT"]
-    print(f"{front_port = }")
 
     # Enable CORS for React frontend
     CORS(
         app,
-        origins=["http://localhost:{front_port}"],
+        origins=[f"http://localhost:{front_port}"],
     )
 
     # Register API blueprint only
