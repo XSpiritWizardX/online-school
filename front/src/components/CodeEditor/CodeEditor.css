@@ -1,0 +1,79 @@
+
+
+
+.ide-container {
+ position: absolute;
+
+      border-radius: 15px;
+
+}
+
+
+
+
+
+/* === Animation === */
+@keyframes spin-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* === Spinning Border === */
+.rotating-border-wrapper {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid white;
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 0;
+
+}
+.rotating-border-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: conic-gradient(
+    from 0deg,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #000000,
+    #000000
+  );
+  animation: spin-border 3s linear infinite;
+  z-index: -1;
+}
+
+
+
+
+
+
+
+.rotating-border{
+  position: relative;
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  padding: 2rem;
+  z-index: 1;
+}
+
+

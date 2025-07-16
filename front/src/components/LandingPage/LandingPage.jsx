@@ -1,7 +1,7 @@
 import "./LandingPage.css";
+import { NavLink } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import SignupFormModal from "../../components/SignupFormModal/SignupFormModal";
-
 export default function LandingPage() {
   return (
     <div className="landing-page">
@@ -98,6 +98,17 @@ export default function LandingPage() {
           buttonText="Join Online School Now"
           modalComponent={<SignupFormModal />}
         />
+      </div>
+         <div
+         to='/test-ide'
+         className='test-ides'
+          >
+         <NavLink
+          to='/test-ide'
+          className='test-ide'
+         >
+            Test The IDE
+        </NavLink>
       </div>
     </div>
   );

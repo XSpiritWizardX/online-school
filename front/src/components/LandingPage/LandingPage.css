@@ -60,3 +60,20 @@ color: #C0C0C0;
     color: #ffffff;
     font-size: x-large;
 }
+.test-ides{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.test-ide{
+    border: 2px solid white;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    align-self: center;
+    justify-self: center;
+}

@@ -1,4 +1,3 @@
-import Layout from "./Layout";
 import { createBrowserRouter } from "react-router-dom";
 import LoginFormPage from "../components/LoginFormPage";
 import SignupFormPage from "../components/SignupFormPage";
@@ -7,6 +6,7 @@ import BlankPage from "../components/BlankPage/BlankPage";
 import TermsOfService from "../components/TermsOfService/TermsOfService";
 import PrivacyPolicy from "../components/PrivacyPolicy/PrivacyPolicy";
 import CookiesPolicy from "../components/CookiePolicy/CookiePolicy";
+import TestIde from "../components/TestingPageForIDE/TestIde";
 
 import Layout from "./Layout";
 
@@ -25,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignupFormPage />,
+      },
+      {
+        path: "test-ide",
+        element: <TestIde />,
       },
       {
         path: "/cookies-policy",

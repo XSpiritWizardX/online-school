@@ -3,6 +3,7 @@
 }
 
 .navigation {
+  z-index: 1000;
   display: flex;
   position: fixed;
   top: 0;
