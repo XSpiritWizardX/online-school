@@ -19,7 +19,7 @@ function ProfileButton() {
   };
 
   useEffect(() => {
-    if (!showMenu) return;
+    if (!showMenu) return undefined;
 
     const closeMenu = (e) => {
       if (ulRef.current && !ulRef.current.contains(e.target)) {

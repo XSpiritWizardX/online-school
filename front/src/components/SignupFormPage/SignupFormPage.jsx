@@ -30,7 +30,7 @@ function SignupFormPage() {
         email,
         username,
         password,
-      })
+      }),
     );
 
     if (serverResponse) {
