@@ -1,6 +1,12 @@
 from app import create_app
 
+app = create_app()
+
 if __name__ == "__main__":
-    app = create_app()
     port = app.config.get("PORT", 5000)
-    app.run(debug=True, port=port)
+    debug = app.config.get("FLASK_DEBUG", True)
+    if debug.lower() in ["0", "false", ""]:
+        debug = False
+    else:
+        debug = True
+    app.run(debug=debug, port=port)

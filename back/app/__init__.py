@@ -12,12 +12,14 @@ def create_app():
     else:
         app.config.from_object(DevelopmentConfig)
 
-    app.config["SECRET_KEY"] = "change-this-secret-key"
+    config = app.config
+    front_port = config["FRONT_PORT"]
+    print(f"{front_port = }")
 
     # Enable CORS for React frontend
     CORS(
         app,
-        origins=["http://localhost:3000", "http://localhost:5173"],
+        origins=["http://localhost:{front_port}"],
     )
 
     # Register API blueprint only

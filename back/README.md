@@ -8,9 +8,10 @@ cd back/
 uv sync
 
 # OPTIONAL: override port for local development
-# settings in this file take precedence over other .env files
-cp example.env.local .env.local
+# settings in .env take precedence over .flaskenv settings
+# cp example.env .env
+# edit .env to update credentials, ports, etc.
 
 # run app with those packages
-uv run -- python run.py
+uv run -- flask run
 ```
