@@ -47,6 +47,7 @@ front_port = get_front_port(mode)
 
 class Config:
     PORT = int(os.environ.get("FLASK_RUN_PORT", 5002))
+    SECRET_KEY = os.environ.get("SECRET_KEY")
     FRONT_PORT = front_port
 
 
