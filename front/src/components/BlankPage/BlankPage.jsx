@@ -1,29 +1,14 @@
-
-import './BlankPage.css'
-import { NavLink } from 'react-router-dom';
+import "./BlankPage.css";
+import { NavLink } from "react-router-dom";
 function BlankPage() {
-
-
-
   return (
-
-    <div className='coming-soon-container'>
+    <div className="coming-soon-container">
       <h1>Feature Coming Soon</h1>
-        <NavLink
-        to="/"
-        >
-            <button>Back To Home</button>
-        </NavLink>
-
+      <NavLink to="/">
+        <button>Back To Home</button>
+      </NavLink>
     </div>
-
-
   );
 }
-
-
-
-
-
 
 export default BlankPage;

@@ -16,9 +16,13 @@ const CookieBanner = () => {
   return (
     <div className="cookie-banner">
       <p>
-        We use cookies to improve your experience on Online School. By using our
-        site, you agree to our{" "}
-        <a href="/cookies-policy" target="_blank" rel="noopener noreferrer">
+        We use cookies to improve your experience on Online School. By
+        using our site, you agree to our{" "}
+        <a
+          href="/cookies-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Cookies Policy
         </a>
         .

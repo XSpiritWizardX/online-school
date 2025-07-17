@@ -15,7 +15,6 @@
   border-radius: 15px;
   overflow: hidden;
   z-index: 0;
-
 }
 .login-form-container-outer::before {
   content: "";
@@ -47,7 +46,6 @@
   z-index: -1;
 }
 
-
 /* Inner Form Container */
 
 .login-form-container-inner {
@@ -58,14 +56,13 @@
   z-index: 1;
 }
 
-.login-header{
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 4%;
+.login-header {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4%;
 }
-
 
 /* Form */
 .login-form {
@@ -77,9 +74,9 @@
 }
 
 .form-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
 }
 
 .login-input {
@@ -110,12 +107,12 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .error-message {
-    color: #ff0000;
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
+  color: #ff0000;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
 }
-.error{
-    color: #ff0000;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
+.error {
+  color: #ff0000;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
 }

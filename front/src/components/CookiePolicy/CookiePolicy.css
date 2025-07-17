@@ -1,10 +1,10 @@
 .cookies-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 10%;
   padding: 2rem;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   background-color: #000000;
   color: #ffffff;
   line-height: 1.7;

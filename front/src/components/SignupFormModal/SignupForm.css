@@ -15,7 +15,6 @@
   border-radius: 15px;
   overflow: hidden;
   z-index: 0;
-
 }
 .signup-border-outer::before {
   content: "";
@@ -47,7 +46,6 @@
   z-index: -1;
 }
 
-
 /* Inner Form Container */
 
 .signup-inner {
@@ -58,16 +56,6 @@
   z-index: 1;
 }
 
-
-
-
-
-
-
-
-
-
-
 /* === Title === */
 .signup-inner h1 {
   font-size: 2rem;
@@ -76,12 +64,6 @@
   color: #fff;
   text-align: center;
 }
-
-
-
-
-
-
 
 /* === Form Grid Layout === */
 .signup-form {
@@ -122,18 +104,17 @@
   border-color: #888;
   background-color: #333;
 }
-.bio-input{
-    overflow-x: scroll;
-    overflow-y: scroll;
-
+.bio-input {
+  overflow-x: scroll;
+  overflow-y: scroll;
 }
 /* === Checkbox Section === */
 .agreement-section {
-    grid-column: 1 / -1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .checkbox-label {
@@ -149,7 +130,6 @@
 .privacy-checkbox {
   display: flex;
   flex-direction: row;
-  ;
 }
 .checkbox-label input[type="checkbox"] {
   margin-top: 3px;
@@ -176,26 +156,24 @@
   margin-top: -10px;
 }
 
-
-
-
 .signup-button {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 .signup-button:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.05);
+  background-color: #e0e0e0;
+  transform: scale(1.05);
 }
-
 
 /* === Responsive Layout === */
 @media (max-width: 768px) {

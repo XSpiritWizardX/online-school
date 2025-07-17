@@ -20,7 +20,7 @@ export default function Layout() {
       <ModalProvider>
         <Navigation />
         {isLoaded && <Outlet />}
-         <FooterCard/>
+        <FooterCard />
         <Modal />
       </ModalProvider>
     </>

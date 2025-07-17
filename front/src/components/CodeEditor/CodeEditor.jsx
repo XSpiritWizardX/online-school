@@ -3,26 +3,73 @@ import MonacoEditor from "@monaco-editor/react";
 import "./CodeEditor.css";
 
 export default function CodeEditor() {
-  const [code, setCode] = useState("// Start coding here\nconsole.log('Hello, World!');");
+  const [code, setCode] = useState(
+    "// Start coding here\nconsole.log('Hello, World!');",
+  );
   const [output, setOutput] = useState("");
-  const [currentLanguage, setCurrentLanguage] = useState("javascript");
+  const [currentLanguage, setCurrentLanguage] =
+    useState("javascript");
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const iframeRef = useRef(null);
 
   const languages = [
-    { id: "javascript", name: "JavaScript", defaultCode: "// Start coding here\nconsole.log('Hello, World!');" },
-    { id: "python", name: "Python", defaultCode: "# Start coding here\nprint('Hello, World!')" },
-    { id: "java", name: "Java", defaultCode: "// Start coding here\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}" },
-    { id: "cpp", name: "C++", defaultCode: "// Start coding here\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << \"Hello, World!\" << endl;\n    return 0;\n}" },
-    { id: "c", name: "C", defaultCode: "// Start coding here\n#include <stdio.h>\n\nint main() {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}" },
-    { id: "csharp", name: "C#", defaultCode: "// Start coding here\nusing System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine(\"Hello, World!\");\n    }\n}" },
-    { id: "sql", name: "SQL", defaultCode: "-- Start coding here\nSELECT 'Hello, World!' AS message;" },
-    { id: "html", name: "HTML", defaultCode: "<!-- Start coding here -->\n<!DOCTYPE html>\n<html>\n<head>\n    <title>Hello World</title>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n</body>\n</html>" },
-    { id: "css", name: "CSS", defaultCode: "/* Start coding here */\nbody {\n    font-family: Arial, sans-serif;\n    background-color: #f0f0f0;\n}\n\nh1 {\n    color: #333;\n    text-align: center;\n}" }
+    {
+      id: "javascript",
+      name: "JavaScript",
+      defaultCode:
+        "// Start coding here\nconsole.log('Hello, World!');",
+    },
+    {
+      id: "python",
+      name: "Python",
+      defaultCode: "# Start coding here\nprint('Hello, World!')",
+    },
+    {
+      id: "java",
+      name: "Java",
+      defaultCode:
+        '// Start coding here\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}',
+    },
+    {
+      id: "cpp",
+      name: "C++",
+      defaultCode:
+        '// Start coding here\n#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, World!" << endl;\n    return 0;\n}',
+    },
+    {
+      id: "c",
+      name: "C",
+      defaultCode:
+        '// Start coding here\n#include <stdio.h>\n\nint main() {\n    printf("Hello, World!\\n");\n    return 0;\n}',
+    },
+    {
+      id: "csharp",
+      name: "C#",
+      defaultCode:
+        '// Start coding here\nusing System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("Hello, World!");\n    }\n}',
+    },
+    {
+      id: "sql",
+      name: "SQL",
+      defaultCode:
+        "-- Start coding here\nSELECT 'Hello, World!' AS message;",
+    },
+    {
+      id: "html",
+      name: "HTML",
+      defaultCode:
+        "<!-- Start coding here -->\n<!DOCTYPE html>\n<html>\n<head>\n    <title>Hello World</title>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n</body>\n</html>",
+    },
+    {
+      id: "css",
+      name: "CSS",
+      defaultCode:
+        "/* Start coding here */\nbody {\n    font-family: Arial, sans-serif;\n    background-color: #f0f0f0;\n}\n\nh1 {\n    color: #333;\n    text-align: center;\n}",
+    },
   ];
 
   const switchLanguage = (languageId) => {
-    const language = languages.find(lang => lang.id === languageId);
+    const language = languages.find((lang) => lang.id === languageId);
     if (language) {
       setCurrentLanguage(languageId);
       setCode(language.defaultCode);
@@ -54,10 +101,11 @@ export default function CodeEditor() {
     const iframe = iframeRef.current;
 
     try {
-      iframe.src = 'about:blank';
+      iframe.src = "about:blank";
 
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
 
         if (!iframeDoc) {
           setOutput("Error: Cannot access iframe document");
@@ -161,9 +209,7 @@ export default function CodeEditor() {
         iframeDoc.open();
         iframeDoc.write(htmlContent);
         iframeDoc.close();
-
       }, 10);
-
     } catch (error) {
       setOutput(`Error executing code: ${error.message}`);
     }
@@ -173,10 +219,11 @@ export default function CodeEditor() {
     const iframe = iframeRef.current;
 
     try {
-      iframe.src = 'about:blank';
+      iframe.src = "about:blank";
 
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
 
         if (!iframeDoc) {
           setOutput("Error: Cannot access iframe document");
@@ -186,9 +233,7 @@ export default function CodeEditor() {
         iframeDoc.open();
         iframeDoc.write(code);
         iframeDoc.close();
-
       }, 10);
-
     } catch (error) {
       setOutput(`Error executing HTML: ${error.message}`);
     }
@@ -198,10 +243,11 @@ export default function CodeEditor() {
     const iframe = iframeRef.current;
 
     try {
-      iframe.src = 'about:blank';
+      iframe.src = "about:blank";
 
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
 
         if (!iframeDoc) {
           setOutput("Error: Cannot access iframe document");
@@ -238,9 +284,7 @@ export default function CodeEditor() {
         iframeDoc.open();
         iframeDoc.write(htmlContent);
         iframeDoc.close();
-
       }, 10);
-
     } catch (error) {
       setOutput(`Error executing CSS: ${error.message}`);
     }
@@ -250,10 +294,11 @@ export default function CodeEditor() {
     const iframe = iframeRef.current;
 
     try {
-      iframe.src = 'about:blank';
+      iframe.src = "about:blank";
 
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
 
         if (!iframeDoc) {
           setOutput("Error: Cannot access iframe document");
@@ -286,7 +331,7 @@ export default function CodeEditor() {
             </head>
             <body>
               <div class="sql-info">📊 SQL Query Preview:</div>
-              <div class="sql-output">${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+              <div class="sql-output">${code.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
 
 💡 Note: SQL execution requires a database server.
 This is a syntax preview only.</div>
@@ -297,9 +342,7 @@ This is a syntax preview only.</div>
         iframeDoc.open();
         iframeDoc.write(htmlContent);
         iframeDoc.close();
-
       }, 10);
-
     } catch (error) {
       setOutput(`Error displaying SQL: ${error.message}`);
     }
@@ -307,13 +350,16 @@ This is a syntax preview only.</div>
 
   const runCompiledLanguage = () => {
     const iframe = iframeRef.current;
-    const languageName = languages.find(l => l.id === currentLanguage)?.name || currentLanguage;
+    const languageName =
+      languages.find((l) => l.id === currentLanguage)?.name ||
+      currentLanguage;
 
     try {
-      iframe.src = 'about:blank';
+      iframe.src = "about:blank";
 
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
 
         if (!iframeDoc) {
           setOutput("Error: Cannot access iframe document");
@@ -354,7 +400,7 @@ This is a syntax preview only.</div>
             </head>
             <body>
               <div class="info">🔧 ${languageName} Code Preview:</div>
-              <div class="code-preview">${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>
+              <div class="code-preview">${code.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
               <div class="note">💡 Note: ${languageName} execution requires a compiler/interpreter server.
 This is a code preview with syntax highlighting.</div>
             </body>
@@ -364,9 +410,7 @@ This is a code preview with syntax highlighting.</div>
         iframeDoc.open();
         iframeDoc.write(htmlContent);
         iframeDoc.close();
-
       }, 10);
-
     } catch (error) {
       setOutput(`Error displaying ${languageName}: ${error.message}`);
     }
@@ -375,9 +419,10 @@ This is a code preview with syntax highlighting.</div>
   const clearOutput = () => {
     const iframe = iframeRef.current;
     if (iframe) {
-      iframe.src = 'about:blank';
+      iframe.src = "about:blank";
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           iframeDoc.open();
           iframeDoc.write(`
@@ -410,7 +455,7 @@ This is a code preview with syntax highlighting.</div>
         <div className="rotating-border" />
 
         <div className="editor-box">
-            {/* Uncomment this if you want to show the current language */}
+          {/* Uncomment this if you want to show the current language */}
           {/* <div className="language-indicator">
             Current Language: <span style={{color: '#667eea', fontWeight: 'bold'}}>{languages.find(l => l.id === currentLanguage)?.name}</span>
           </div> */}
@@ -418,9 +463,15 @@ This is a code preview with syntax highlighting.</div>
             height="69cap"
             width="69cap"
             defaultLanguage={
-            currentLanguage === "csharp" ? "csharp" : currentLanguage
+              currentLanguage === "csharp"
+                ? "csharp"
+                : currentLanguage
             }
-            language={currentLanguage === "csharp" ? "csharp" : currentLanguage}
+            language={
+              currentLanguage === "csharp"
+                ? "csharp"
+                : currentLanguage
+            }
             theme="vs-dark"
             value={code}
             onChange={(value) => setCode(value)}
@@ -436,17 +487,27 @@ This is a code preview with syntax highlighting.</div>
 
       <div className="output-box">
         <div className="run-buttons">
-          <button className="run-button" onClick={runCode}>Run</button>
-          <button className="run-button" onClick={clearOutput}>Clear</button>
-          <button className="run-button" onClick={runCode}>Save</button>
+          <button className="run-button" onClick={runCode}>
+            Run
+          </button>
+          <button className="run-button" onClick={clearOutput}>
+            Clear
+          </button>
+          <button className="run-button" onClick={runCode}>
+            Save
+          </button>
           <button
             className="run-button"
             onClick={() => setShowLanguageMenu(!showLanguageMenu)}
           >
             Languages
           </button>
-          <button className="run-button" onClick={runCode}>Help</button>
-          <button className="run-button" onClick={runCode}>Submit</button>
+          <button className="run-button" onClick={runCode}>
+            Help
+          </button>
+          <button className="run-button" onClick={runCode}>
+            Submit
+          </button>
         </div>
 
         {showLanguageMenu && (
@@ -456,7 +517,7 @@ This is a code preview with syntax highlighting.</div>
               {languages.map((language) => (
                 <button
                   key={language.id}
-                  className={`language-option ${currentLanguage === language.id ? 'active' : ''}`}
+                  className={`language-option ${currentLanguage === language.id ? "active" : ""}`}
                   onClick={() => switchLanguage(language.id)}
                 >
                   {language.name}
@@ -481,7 +542,13 @@ This is a code preview with syntax highlighting.</div>
             className="output-iframe"
           ></iframe>
           {output && (
-            <div style={{ color: '#f48771', padding: '10px', fontFamily: 'monospace' }}>
+            <div
+              style={{
+                color: "#f48771",
+                padding: "10px",
+                fontFamily: "monospace",
+              }}
+            >
               {output}
             </div>
           )}

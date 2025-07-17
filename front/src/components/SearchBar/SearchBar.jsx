@@ -1,36 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import './SearchBar.css'
+import "./SearchBar.css";
 function SearchBar() {
-
   const navigate = useNavigate();
-  const [searchText, setSearchText] = useState("")
-
-
-
+  const [searchText, setSearchText] = useState("");
 
   const handleSubmit = async () => {
-
-
-
-
-      navigate(`/stocks/${searchText}`);
-
+    navigate(`/stocks/${searchText}`);
   };
 
   return (
-    <div
-    className="search-bar-container"
-    >
+    <div className="search-bar-container">
       {/* <h1>Search</h1> */}
 
-      <form
-      onSubmit={handleSubmit}
-        className="search-form"
-      >
+      <form onSubmit={handleSubmit} className="search-form">
         <label>
-
           <input
             type="text"
             value={searchText}
@@ -40,15 +25,10 @@ function SearchBar() {
           />
         </label>
 
-
-
-        <button type="submit"
-        className="search-button"
-        >
-            Search
+        <button type="submit" className="search-button">
+          Search
         </button>
-
-        </form>
+      </form>
     </div>
   );
 }

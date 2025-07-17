@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: flex-end;
   padding: 10px 50px;
-  border-bottom: .5px solid #ffffff;
+  border-bottom: 0.5px solid #ffffff;
   background-color: #000000;
 }
 .home-links-container {
@@ -21,7 +21,6 @@
   align-items: end;
   justify-content: center;
   gap: 10px;
-
 }
 
 .home-link {
@@ -29,7 +28,6 @@
   color: #ffffff;
   font-weight: bold;
   font-size: xx-large;
-
 }
 
 .menu-icon {
@@ -38,12 +36,6 @@
   cursor: pointer;
   color: #ffffff;
 }
-
-
-
-
-
-
 
 .nav-links-container {
   display: flex;
@@ -56,7 +48,6 @@
   display: flex;
   gap: 30px;
 }
-
 
 .dashboard-link {
   text-decoration: none;
@@ -72,20 +63,7 @@
   font-size: x-large;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.testide-wrapper{
+.testide-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,7 +73,7 @@
   margin-top: 10%;
 }
 
-.testide-header{
+.testide-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,14 +81,12 @@
   width: 100%;
   height: 10%;
   background-color: #000000;
-  border-bottom: .5px solid #ffffff;
+  border-bottom: 0.5px solid #ffffff;
   padding-bottom: 2%;
   color: #ffffff;
-
 }
 
-
-.testide-title{
+.testide-title {
   color: #ffffff;
   font-size: 2rem;
   font-weight: bold;

@@ -6,51 +6,30 @@ import "./Navigation.css";
 
 function Navigation() {
   return (
-    <div
-      className="navigation"
-    >
-      <div
-        className="home-links-container"
-      >
+    <div className="navigation">
+      <div className="home-links-container">
         <FiAlignJustify className="menu-icon" />
-        
-        <NavLink
-        className={"home-link"}
-        to="/">Online School Name</NavLink>
 
-
+        <NavLink className={"home-link"} to="/">
+          Online School Name
+        </NavLink>
       </div>
 
+      <SearchBar />
 
-        <SearchBar/>
+      <div className="nav-links-container">
+        <div className="nav-links">
+          <NavLink className={"dashboard-link"} to="coming-soon">
+            My Courses
+          </NavLink>
 
-
-
-        <div
-        className="nav-links-container"
-        >
-
-      <div className="nav-links">
-
-        <NavLink
-        className={"dashboard-link"}
-        to="coming-soon">
-        My Courses
-        </NavLink>
-
-        <NavLink
-        className={"ai-assistant-link"}
-        to="/coming-soon">
-        AI Assistant
-        </NavLink>
-
-      </div>
-
+          <NavLink className={"ai-assistant-link"} to="/coming-soon">
+            AI Assistant
+          </NavLink>
+        </div>
 
         <ProfileButton />
       </div>
-
-
     </div>
   );
 }
