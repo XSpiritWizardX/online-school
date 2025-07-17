@@ -455,10 +455,7 @@ This is a code preview with syntax highlighting.</div>
         <div className="rotating-border" />
 
         <div className="editor-box">
-          {/* Uncomment this if you want to show the current language */}
-          {/* <div className="language-indicator">
-            Current Language: <span style={{color: '#667eea', fontWeight: 'bold'}}>{languages.find(l => l.id === currentLanguage)?.name}</span>
-          </div> */}
+       
           <MonacoEditor
             height="69cap"
             width="69cap"

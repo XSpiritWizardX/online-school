@@ -23,7 +23,7 @@ function Navigation() {
             My Courses
           </NavLink>
 
-          <NavLink className={"ai-assistant-link"} to="/coming-soon">
+          <NavLink className={"ai-assistant-link"} to="/chat">
             AI Assistant
           </NavLink>
         </div>
