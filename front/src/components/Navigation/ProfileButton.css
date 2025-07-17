@@ -1,0 +1,42 @@
+.profile-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 5cap;
+}
+
+.profile-dropdown {
+  border: 2px dotted #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  top: 100%;
+  margin-top: 2%;
+  right: 0;
+  z-index: 1000;
+  gap: 10px;
+}
+.profile-dropdown-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  width: 100%;
+  padding: 5%;
+}
+.login-signup-button {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  
+}

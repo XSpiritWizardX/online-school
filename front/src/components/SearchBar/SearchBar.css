@@ -1,0 +1,32 @@
+.search-bar-container{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 20%;
+
+}
+
+
+.search-form{
+    display: flex;
+    align-items: flex-end;
+    width: 440px;
+    height: 100%;
+}
+
+.search-button{
+display: flex;
+align-items: center;
+cursor: pointer;
+width: 60px;
+height: 4.5cap;
+border-radius: 25px
+
+}
+
+.search-input {
+width: 300px;
+height: 4cap;
+border-radius: 25px
+}

@@ -1,0 +1,62 @@
+
+.landing-page-italic{
+    font-style: italic;
+    margin-bottom: 0%;
+}
+
+.landing-page-container{
+    height: auto;
+    display: flex;
+    margin-top: 10%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.landing-page-title{
+    color: #ffffff;
+    display: flex;
+    justify-self: center;
+    font-style: italic;
+    font-size: xx-large
+}
+
+
+.landing-page-text{
+color: #C0C0C0;
+}
+
+
+.landing-page-signup-button{
+    display: flex;
+}
+
+
+.lantern-gif-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+ul{
+    color: #C0C0C0;
+    margin-top: 0%;
+}
+
+.arc-para{
+    margin-bottom: 1%;
+   font-size: large;
+   color: #ffffff;
+}
+
+li{
+color: #C0C0C0;
+}
+
+.land-head{
+    color: #ffffff;
+    font-size: x-large;
+}
