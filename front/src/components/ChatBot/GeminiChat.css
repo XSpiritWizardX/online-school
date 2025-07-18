@@ -46,7 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 64px;
   transition: all 0.2s ease;
 }
 
@@ -264,6 +264,88 @@
 .reply-box::-webkit-scrollbar-thumb:hover {
   background: #6c757d;
 }
+/* Add these new styles to your existing CSS */
+
+.response-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .2rem;
+  gap: 2rem;
+}
+
+.response-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.copy-button,
+.expand-button,
+.clear-button {
+  background: #28a745;
+  color: white;
+  height: 20px;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.expand-button {
+  background: #17a2b8;
+}
+
+.expand-button:hover {
+  background: #138496;
+  transform: translateY(-1px);
+}
+
+.clear-button {
+  background: #dc3545;
+}
+
+.clear-button:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.copy-button:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.reply-box.expanded {
+  height: 400px;
+  max-height: 60vh;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .response-header-section {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .response-buttons {
+    align-self: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .copy-button,
+  .expand-button,
+  .clear-button {
+    font-size: 11px;
+    padding: 6px;
+  }
+}
 
 /* Responsive design */
 @media (max-width: 768px) {
@@ -291,7 +373,7 @@
     right: 20px;
     width: 35px;
     height: 35px;
-    font-size: 16px;
+    font-size: 36px;
   }
 
   .input-area {
@@ -311,5 +393,253 @@
 
   .reply-box {
     height: 120px;
+  }
+}
+/* Add these styles to your existing CSS file */
+
+/* Fullscreen overlay styles */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fullscreen-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  color: #e9ecef;
+}
+
+.fullscreen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: #2d2d2d;
+  border-bottom: 2px solid #495057;
+  flex-shrink: 0;
+}
+
+.fullscreen-title {
+  color: #e9ecef;
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.fullscreen-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.fullscreen-content {
+  flex: 1;
+  padding: 30px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.fullscreen-response {
+  flex: 1;
+  background: #2d2d2d;
+  border: 1px solid #495057;
+  border-radius: 12px;
+  padding: 30px;
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e9ecef;
+}
+
+.fullscreen-response p {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.minimize-button {
+  background: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.minimize-button:hover {
+  background: #138496;
+  transform: translateY(-1px);
+}
+
+/* Update existing button styles for fullscreen */
+.fullscreen-buttons .copy-button,
+.fullscreen-buttons .clear-button,
+.fullscreen-buttons .close-button {
+  padding: 10px 16px;
+  font-size: 14px;
+  gap: 6px;
+}
+
+.fullscreen-buttons .close-button {
+  border-radius: 15px;
+  height: 20px;
+  background: #ffffff;
+  color: black;
+}
+
+.fullscreen-buttons .close-button:hover {
+  background: #c0392b;
+}
+
+/* Custom scrollbar for fullscreen */
+.fullscreen-response::-webkit-scrollbar {
+  width: 8px;
+}
+
+.fullscreen-response::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.fullscreen-response::-webkit-scrollbar-thumb {
+  background: #495057;
+  border-radius: 4px;
+}
+
+.fullscreen-response::-webkit-scrollbar-thumb:hover {
+  background: #6c757d;
+}
+
+/* Responsive fullscreen */
+@media (max-width: 768px) {
+  .fullscreen-header {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .fullscreen-buttons {
+    align-self: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .fullscreen-content {
+    padding: 20px;
+  }
+
+  .fullscreen-response {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .fullscreen-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Existing styles remain the same */
+.response-header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.response-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.copy-button,
+.expand-button,
+.clear-button {
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.expand-button {
+  background: #17a2b8;
+}
+
+.expand-button:hover {
+  background: #138496;
+  transform: translateY(-1px);
+}
+
+.clear-button {
+  background: #dc3545;
+}
+
+.clear-button:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.copy-button:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .response-header-section {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .response-buttons {
+    align-self: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .copy-button,
+  .expand-button,
+  .clear-button {
+    font-size: 11px;
+    padding: 6px 10px;
   }
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { FiX, FiCopy, FiCheck } from 'react-icons/fi';
+import { FiX, FiCopy, FiCheck, FiTrash2, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
 import './GeminiChat.css';
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
@@ -13,6 +13,7 @@ export default function ChatBot({ onClose }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,12 +57,77 @@ export default function ChatBot({ onClose }) {
     }
   };
 
+  const handleClear = () => {
+    setResponse('');
+    setError(null);
+    setCopied(false);
+    setExpanded(false);
+  };
+
+  const handleExpand = () => {
+    setExpanded(!expanded);
+  };
+
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
     }
   };
+
+  // Fullscreen overlay when expanded
+  if (expanded && response) {
+    return (
+      <div className="fullscreen-overlay">
+        <div className="fullscreen-container">
+          <div className="fullscreen-header">
+            <h2 className="fullscreen-title">Online School Assistant - Response</h2>
+            <div className="fullscreen-buttons">
+              <button
+                onClick={handleCopy}
+                className="copy-button"
+                title={copied ? "Copied!" : "Copy response"}
+              >
+                {copied ? <FiCheck /> : <FiCopy />}
+                {copied ? 'Copied!' : 'Copy'}
+              </button>
+
+              <button
+                onClick={handleExpand}
+                className="minimize-button"
+                title="Minimize"
+              >
+                <FiMinimize2 />
+                Minimize
+              </button>
+
+              <button
+                onClick={handleClear}
+                className="clear-button"
+                title="Clear response"
+              >
+                <FiTrash2 />
+                Clear
+              </button>
+
+              {onClose && (
+                <button onClick={onClose} className="close-button" title="Close">
+                  <FiX />
+
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="fullscreen-content">
+            <div className="fullscreen-response">
+              <p>{response}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container">
@@ -79,27 +145,41 @@ export default function ChatBot({ onClose }) {
       </p>
 
       <div className="response-section">
-        <div
-        className='responsei'
-        >
+        <div className='responsei'>
           {response && (
-        <div
-            className='responsei'
-        >
-        <h3 className="reply-title">Response Area:</h3>
-              <button
-                onClick={handleCopy}
-                className="copy-button"
-                title={copied ? "Copied!" : "Copy response"}
-              >
-                {copied ? <FiCheck /> : <FiCopy />}
-                {copied ? 'Copied!' : 'Copy'}
-              </button>
-        </div>
+            <div className='response-header-section'>
+              <h3 className="reply-title">Response Area:</h3>
+              <div className="response-buttons">
+                <button
+                  onClick={handleCopy}
+                  className="copy-button"
+                  title={copied ? "Copied!" : "Copy response"}
+                >
+                  {copied ? <FiCheck /> : <FiCopy />}
+                  {copied ? 'Copied!' : 'Copy'}
+                </button>
+
+                <button
+                  onClick={handleExpand}
+                  className="expand-button"
+                  title="Expand to fullscreen"
+                >
+                  <FiMaximize2 />
+                  Expand
+                </button>
+
+                <button
+                  onClick={handleClear}
+                  className="clear-button"
+                  title="Clear response"
+                >
+                  <FiTrash2 />
+                  Clear
+                </button>
+              </div>
+            </div>
           )}
-          </div>
-
-
+        </div>
 
         {error && <p className="error">❌ {error}</p>}
 
@@ -107,14 +187,14 @@ export default function ChatBot({ onClose }) {
           <div className="reply-box loading">
             <div className="typing-indicator">
               <span></span>
+              <span></span>
+              <span></span>
             </div>
           </div>
         )}
 
         {response && (
           <div className="reply-container">
-            <div className="reply-header">
-            </div>
             <div className="reply-box">
               <p>{response}</p>
             </div>
