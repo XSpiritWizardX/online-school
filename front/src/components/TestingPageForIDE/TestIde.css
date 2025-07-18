@@ -68,3 +68,33 @@
 .testide-instructions::-webkit-scrollbar-thumb:active {
   background: linear-gradient(45deg, #5a67d8 0%, #6b46c1 100%);
 }
+.testide-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+}
+
+.testide-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  background-color: #000000;
+  border-bottom: 0.5px solid #ffffff;
+  padding-bottom: 2%;
+  color: #ffffff;
+}
+
+.testide-title {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}

@@ -1,73 +1,315 @@
 .container {
-  max-width: 600px;
-  margin-top: 10%;
-  padding: 24px;
-  font-family: sans-serif;
-  color: #333;
+  position: fixed;
+  z-index: 1000;
+  margin-top: 6%;
+  top: 0%;
+  right: 1%;
+  max-width: 400px;
+  max-height: 60%;
+  padding: 1%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: #1a1a1a;
+  color: #e9ecef;
   height: auto;
-  justify-self: center;
-  align-self: center;
+  border: 10px double  white;
+  border-radius: 16px;
+  box-shadow: 20px 0px 20px rgba(255, 255, 255, 0.3);
 }
 
-.title {
-  font-size: 36px;
-  font-weight: bold;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2%;
+  background-color: #1a1a1a;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #495057;
+}
+
+.title-ai-chat {
+  font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 12px;
-  color: #ffffff;
+  color: #e9ecef;
+  margin: 0;
+}
+
+.close-button {
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+.close-button:active {
+  transform: scale(0.95);
 }
 
 .warning {
-  font-size: 24px;
-  color: #aa0000;
-  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: #cccf03b2;
+  font-style: italic;
+  padding: 12px;
+  background: #2d2d2d;
+  border-radius: 8px;
+  border-left: 4px solid #ffffff;
+  border-right: 4px solid white;
 }
 
 .input-area {
   width: 100%;
-  padding: 12px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 12px;
-  resize: vertical;
+  border: 2px solid #495057;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: inherit;
+  line-height: 1.5;
+  box-sizing: border-box;
+  background: #2d2d2d;
+  color: #e9ecef;
+}
+
+.input-area:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.input-area:disabled {
+  background: #1a1a1a;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .ask-button {
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: white;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #ffffff 0%, #5a5a5a 100%);
+  color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;
   font-size: 16px;
-  border-radius: 4px;
+  font-weight: 600;
+  border-radius: 12px;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.ask-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 .ask-button:disabled {
-  background-color: #aaa;
+  opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
 .error {
-  color: red;
+  color: #f1aeb5;
+  background: #2d1b1f;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #842029;
+  margin-bottom: 16px;
   font-weight: bold;
-  margin-top: 10px;
 }
-
-.reply-box {
-  margin-top: 20px;
-  padding: 16px;
-  background: #f1f1f1;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  white-space: pre-wrap;
-  resize: vertical;
-  overflow-y: scroll;
-  height: 200px;
-  font-family: monospace;
-  font-size: 16px;
+.responsei{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  width: 100%;
+}
+.response-section {
+  border-top: 1px solid #495057;
+  padding-top: 20px;
+  max-height: auto;
 }
 
 .reply-title {
-  font-weight: bold;
+  color: #e9ecef;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.reply-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.reply-header {
+  display: flex;
+  justify-content: flex-end;
   margin-bottom: 8px;
+}
+
+.copy-button {
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  height: 20px;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background: #757575;
+  transform: translateY(-1px);
+}
+
+.reply-box {
+  margin-top: 16px;
+  padding: 5%;
+  background: #2d2d2d;
+  border-radius: 12px;
+  border: 1px solid #495057;
+  white-space: pre-wrap;
+  overflow-y: scroll;
+  max-height: 100px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e9ecef;
+}
+
+.reply-box.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  height: auto;
+}
+
+.reply-box p {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.typing-indicator span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #667eea;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar for dark mode */
+.reply-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reply-box::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 3px;
+}
+
+.reply-box::-webkit-scrollbar-thumb {
+  background: #495057;
+  border-radius: 3px;
+}
+
+.reply-box::-webkit-scrollbar-thumb:hover {
+  background: #6c757d;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+    margin: 10px;
+    right: 1%;
+    max-width: 350px;
+  }
+
+  .title-ai-chat {
+    font-size: 1.1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .close-button {
+    align-self: flex-end;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .input-area {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .reply-box {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    right: 1%;
+    max-width: 300px;
+  }
+
+  .reply-box {
+    height: 120px;
+  }
 }

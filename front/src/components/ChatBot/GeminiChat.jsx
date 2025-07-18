@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { FiX, FiCopy, FiCheck } from 'react-icons/fi';
 import './GeminiChat.css';
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
 const model = genAI ? genAI.getGenerativeModel({ model: "gemini-2.0-flash" }) : null;
 
-export default function ChatBot() {
+export default function ChatBot({ onClose }) {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,32 +44,100 @@ export default function ChatBot() {
     }
   };
 
+  const handleCopy = async () => {
+    if (response) {
+      try {
+        await navigator.clipboard.writeText(response);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+      }
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className="container">
-      <h1 className="title">🌟 Online School Assistant</h1>
+      <div className="header">
+        {onClose && (
+          <button onClick={onClose} className="close-button" title="Close">
+            <FiX />
+          </button>
+        )}
+        <h1 className="title-ai-chat"> Online School Assistant</h1>
+      </div>
+
       <p className="warning">
-       Use only for development.
+        Use only for development.
       </p>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          className="input-area"
-          rows="6"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Ask Me Anything..."
-          disabled={loading}
-        />
-        <button type="submit" className="ask-button" disabled={loading || !prompt.trim()}>
-          {loading ? 'Thinking...' : 'Ask'}
-        </button>
-      </form>
-      <h3 className="reply-title">Online School&apos;s Response:</h3>
-      {error && <p className="error">❌ {error}</p>}
-      {response && (
-        <div className="reply-box">
-          <p>{response}</p>
+
+      <div className="response-section">
+        <div
+        className='responsei'
+        >
+          {response && (
+        <div
+            className='responsei'
+        >
+        <h3 className="reply-title">Response Area:</h3>
+              <button
+                onClick={handleCopy}
+                className="copy-button"
+                title={copied ? "Copied!" : "Copy response"}
+              >
+                {copied ? <FiCheck /> : <FiCopy />}
+                {copied ? 'Copied!' : 'Copy'}
+              </button>
         </div>
-      )}
+          )}
+          </div>
+
+
+
+        {error && <p className="error">❌ {error}</p>}
+
+        {loading && (
+          <div className="reply-box loading">
+            <div className="typing-indicator">
+              <span></span>
+            </div>
+          </div>
+        )}
+
+        {response && (
+          <div className="reply-container">
+            <div className="reply-header">
+            </div>
+            <div className="reply-box">
+              <p>{response}</p>
+            </div>
+          </div>
+        )}
+
+        <br/>
+
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className="input-area"
+            rows="4"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Ask Me Anything..."
+            disabled={loading}
+          />
+          <button type="submit" className="ask-button" disabled={loading || !prompt.trim()}>
+            {loading ? 'Thinking...' : 'Ask'}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
