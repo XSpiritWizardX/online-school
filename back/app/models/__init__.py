@@ -4,7 +4,7 @@ class User:
 
 
 # Simple user store (use database in production)
-users = {"admin": "password"}
+users = {"admin@aa.io": "password"}
 
 
 def get_user(user_id):
