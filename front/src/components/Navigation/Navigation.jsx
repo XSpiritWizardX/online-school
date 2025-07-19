@@ -33,7 +33,7 @@ function Navigation() {
 
         <div className="nav-links-container">
           <div className="nav-links">
-            <NavLink className={"dashboard-link"} to="coming-soon">
+            <NavLink className={"dashboard-link"} to="/course-editor">
               My Courses
             </NavLink>
 

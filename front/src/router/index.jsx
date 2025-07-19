@@ -9,6 +9,7 @@ import CookiesPolicy from "../components/CookiePolicy/CookiePolicy";
 import TestIde from "../components/TestingPageForIDE/TestIde";
 import ChatBot from "../components/ChatBot/GeminiChat";
 import Layout from "./Layout";
+import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor"
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/test-ide",
         element: <TestIde />,
+      },
+      {
+        path: "/course-editor",
+        element: <TestCourseEditor />,
       },
       {
         path: "/chat",
