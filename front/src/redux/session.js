@@ -34,7 +34,6 @@ export const thunkLogin = (credentials) => async (dispatch) => {
     username: credentials.email,
     password: credentials.password,
   };
-  console.log("Login credentials:", loginData);
   const response = await fetch("/api/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
