@@ -6,6 +6,8 @@ export default function CodeEditor() {
   const [code, setCode] = useState(
     "// Start coding here\nconsole.log('Hello, World!');",
   );
+  const [pyodide, setPyodide] = useState(null);
+  const [pyodideLoading, setPyodideLoading] = useState(false);
   const [output, setOutput] = useState("");
   const [currentLanguage, setCurrentLanguage] =
     useState("javascript");
@@ -78,11 +80,8 @@ export default function CodeEditor() {
     }
   };
 
-  const runCode = () => {
-    // Clear previous output
+  const runCode = async () => {
     setOutput("");
-
-    // Handle different languages
     if (currentLanguage === "javascript") {
       runJavaScript();
     } else if (currentLanguage === "html") {
@@ -91,8 +90,9 @@ export default function CodeEditor() {
       runCSS();
     } else if (currentLanguage === "sql") {
       runSQL();
+    } else if (currentLanguage === "python") {
+      await runPython();
     } else {
-      // For compiled languages (Python, Java, C++, C, C#)
       runCompiledLanguage();
     }
   };
@@ -447,6 +447,160 @@ This is a code preview with syntax highlighting.</div>
       }, 10);
     }
     setOutput("");
+  };
+
+  // --- PYTHON EXECUTION SUPPORT ---
+  const runPython = async () => {
+    const iframe = iframeRef.current;
+    setOutput(""); // Clear previous output
+
+    // Show loading message in iframe
+    if (iframe) {
+      iframe.src = "about:blank";
+      setTimeout(() => {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc) {
+          iframeDoc.open();
+          iframeDoc.write(`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <style>
+                  body {
+                    font-family: 'Courier New', monospace;
+                    background: #1e1e1e;
+                    color: #d4d4d4;
+                    margin: 10px;
+                    padding: 0;
+                    font-size: 14px;
+                  }
+                  .loading { color: #61dafb; }
+                </style>
+              </head>
+              <body>
+                <div class="loading">Loading Python runtime...</div>
+              </body>
+            </html>
+          `);
+          iframeDoc.close();
+        }
+      }, 10);
+    }
+
+    if (!pyodide) {
+      setPyodideLoading(true);
+      try {
+        const pyodideScript = document.createElement("script");
+        pyodideScript.src = "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js";
+        pyodideScript.async = true;
+
+        await new Promise((resolve, reject) => {
+          pyodideScript.onload = resolve;
+          pyodideScript.onerror = reject;
+          document.body.appendChild(pyodideScript);
+        });
+
+        const pyodideInstance = await window.loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/" });
+        setPyodide(pyodideInstance);
+        setPyodideLoading(false);
+        await executePython(pyodideInstance);
+      } catch (err) {
+        setPyodideLoading(false);
+        setOutput("Failed to load Python runtime: " + err.message);
+        showPythonErrorInIframe("Failed to load Python runtime: " + err.message);
+      }
+    } else {
+      await executePython(pyodide);
+    }
+  };
+
+  // Helper to show error in iframe for Python
+  const showPythonErrorInIframe = (msg) => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      setTimeout(() => {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc) {
+          iframeDoc.open();
+          iframeDoc.write(`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <style>
+                  body {
+                    font-family: 'Courier New', monospace;
+                    background: #1e1e1e;
+                    color: #f48771;
+                    margin: 10px;
+                    padding: 0;
+                    font-size: 14px;
+                  }
+                </style>
+              </head>
+              <body>
+                <div>${msg}</div>
+              </body>
+            </html>
+          `);
+          iframeDoc.close();
+        }
+      }, 10);
+    }
+  };
+
+  // Actually execute Python code using Pyodide
+  const executePython = async (pyodideInstance) => {
+    const iframe = iframeRef.current;
+    let outputStr = "";
+    let errorStr = "";
+
+    // Capture stdout/stderr
+    pyodideInstance.setStdout({
+      batched: (s) => { outputStr += s; }
+    });
+    pyodideInstance.setStderr({
+      batched: (s) => { errorStr += s; }
+    });
+
+    try {
+      await pyodideInstance.runPythonAsync(code);
+    } catch (err) {
+      errorStr += err.message || String(err);
+    }
+
+    // Show output in iframe
+    if (iframe) {
+      setTimeout(() => {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        if (iframeDoc) {
+          iframeDoc.open();
+          iframeDoc.write(`
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <style>
+                  body {
+                    font-family: 'Courier New', monospace;
+                    background: #1e1e1e;
+                    color: #d4d4d4;
+                    margin: 10px;
+                    padding: 0;
+                    font-size: 14px;
+                  }
+                  .py-output { color: #98c379; white-space: pre-wrap; }
+                  .py-error { color: #f48771; white-space: pre-wrap; }
+                </style>
+              </head>
+              <body>
+                <div class="py-output">${outputStr ? outputStr.replace(/</g, "&lt;").replace(/>/g, "&gt;") : ""}</div>
+                <div class="py-error">${errorStr ? errorStr.replace(/</g, "&lt;").replace(/>/g, "&gt;") : ""}</div>
+              </body>
+            </html>
+          `);
+          iframeDoc.close();
+        }
+      }, 10);
+    }
   };
 
   return (
