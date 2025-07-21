@@ -38,17 +38,25 @@ def get_front_port(mode):
     return front_config["PORT"]
 
 
-def get_flask_env():
-    if "FLASK_ENV" in os.environ:
-        return os.environ["FLASK_ENV"]
+def get_env(var):
+    if var in os.environ:
+        return os.environ[var]
     env_files = [".env", ".flaskenv"]
     for env_file in env_files:
         env_path = Path(env_file)
         if not env_path.exists():
             continue
         env = dotenv_values(env_path)
-        if "FLASK_ENV" in env:
-            return env["FLASK_ENV"]
+        if var in env:
+            return env[var]
+
+
+def get_flask_env():
+    return get_env("FLASK_ENV")
+
+
+def get_database():
+    return get_env("SQLALCHEMY_DATABASE_URI")
 
 
 mode = get_flask_env()

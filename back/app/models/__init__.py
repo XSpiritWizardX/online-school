@@ -1,21 +1,15 @@
-class User:
-    def __init__(self, id):
-        self.id = id
-
-
-# Simple user store (use database in production)
-users = {"admin@aa.io": "password"}
+from app.db import db
+from app.models.user import User
 
 
 def get_user(user_id):
     """Get user by ID"""
-    if user_id in users:
-        return User(user_id)
-    return None
+    return User.query.get(user_id)
 
 
-def authenticate_user(username, password):
+def authenticate_user(email, password):
     """Authenticate user credentials"""
-    if username in users and users[username] == password:
-        return User(username)
+    user = User.query.filter_by(email=email).first()
+    if user and user.check_password(password):
+        return user
     return None
