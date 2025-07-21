@@ -1,11 +1,57 @@
-.sheet-music-display {
-  width: 80%;
-  height: 100%;
+.sheet-editor-wrapper {
+  background-color: #111;
+  color: #eee;
+  padding: 3rem;
+  border-radius: 10px;
+  font-family: 'Fira Code', monospace;
+  max-width: 900px;
+  margin: auto;
+}
+
+.sheet-editor-display svg {
+  width: 100%;
+  background-color: #222;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.sheet-editor-controls {
   margin-top: 1rem;
-  background-color: #000000;
-  border: 12px double #ccc;
-  padding: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  min-height: 200px;
+}
+
+.sheet-editor-options {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sheet-editor-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.sheet-editor-snippets {
+  margin-top: 1rem;
+}
+
+.sheet-editor-snippets button,
+.sheet-editor-buttons button,
+.sheet-editor-options select,
+textarea {
+  background: #333;
   color: white;
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
 }

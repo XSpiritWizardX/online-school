@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import './CourseEditor.css';
 // Import your existing code editor component
 // import CodeEditor from './CodeEditor';
@@ -568,4 +568,3 @@ const CourseEditor = ({
 };
 
 export default CourseEditor;
-
