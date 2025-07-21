@@ -1,6 +1,7 @@
 from dotenv import dotenv_values
 from pathlib import Path
 import os
+import sys
 
 
 def load_front_config(mode):
@@ -37,11 +38,25 @@ def get_front_port(mode):
     return front_config["PORT"]
 
 
-if "FLASK_ENV" not in os.environ:
-    print("unable to determine environment mode")
-    exit(1)
+def get_flask_env():
+    if "FLASK_ENV" in os.environ:
+        return os.environ["FLASK_ENV"]
+    env_files = [".env", ".flaskenv"]
+    for env_file in env_files:
+        env_path = Path(env_file)
+        if not env_path.exists():
+            continue
+        env = dotenv_values(env_path)
+        if "FLASK_ENV" in env:
+            return env["FLASK_ENV"]
 
-mode = os.environ.get("FLASK_ENV")
+
+mode = get_flask_env()
+if not mode:
+    print(__file__, file=sys.stderr)
+    print("unable to determine mode", file=sys.stderr)
+    print('set FLASK_ENV="development" in .env', file=sys.stderr)
+    exit(1)
 front_port = get_front_port(mode)
 
 
