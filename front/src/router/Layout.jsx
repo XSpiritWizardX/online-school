@@ -5,7 +5,7 @@ import { ModalProvider, Modal } from "../context/Modal";
 import { thunkAuthenticate } from "../redux/session";
 import Navigation from "../components/Navigation/Navigation";
 import FooterCard from "../components/Footer/Footer";
-import CookieBanner from "../components/CookieBanner/CookieBanner";
+import CookieBanner from "../components//Compliance/CookieBanner/CookieBanner";
 
 export default function Layout() {
   const dispatch = useDispatch();

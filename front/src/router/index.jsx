@@ -3,13 +3,13 @@ import LoginFormPage from "../components/LoginFormPage";
 import SignupFormPage from "../components/SignupFormPage";
 import LandingPage from "../components/LandingPage/LandingPage";
 import BlankPage from "../components/BlankPage/BlankPage";
-import TermsOfService from "../components/TermsOfService/TermsOfService";
-import PrivacyPolicy from "../components/PrivacyPolicy/PrivacyPolicy";
-import CookiesPolicy from "../components/CookiePolicy/CookiePolicy";
+import TermsOfService from "../components/Compliance/TermsOfService/TermsOfService";
+import PrivacyPolicy from "../components//Compliance/PrivacyPolicy/PrivacyPolicy";
+import CookiesPolicy from "../components//Compliance/CookiePolicy/CookiePolicy";
 import TestIde from "../components/TestingPageForIDE/TestIde";
+import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor"
 import ChatBot from "../components/ChatBot/GeminiChat";
 import Layout from "./Layout";
-import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor"
 
 export const router = createBrowserRouter([
   {

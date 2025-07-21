@@ -1,4 +1,3 @@
-import React from 'react';
 import CourseEditor from '../CourseEditor/CourseEditor';
 
 const TestCourseEditor = () => {

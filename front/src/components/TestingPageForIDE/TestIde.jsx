@@ -1,6 +1,8 @@
 import "./TestIde.css";
-import CodeEditor from "../CodeEditor/CodeEditor";
-
+import CodeEditor from "../LearningTools/CodeEditor/CodeEditor"
+import PianoKeyboard from "../LearningTools/MusicTools/PianoKeyboard/PianoKeyboard";
+import SheetMusicDisplay from "../LearningTools/MusicTools/SheetMusic/SheetMusicDisplay";
+import AdvancedPaint from "../LearningTools/ArtTools/AdvancedPaint/AdvancedPaint";
 export default function TestIde() {
   return (
     <div className="testide-wrapper">
@@ -81,6 +83,9 @@ export default function TestIde() {
           <CodeEditor />
         </div>
       </div>
+          <SheetMusicDisplay notes={["C", "D", "E", "F", "G", "A", "B"]} />
+          <PianoKeyboard/>
+      <AdvancedPaint/>
     </div>
   );
 }

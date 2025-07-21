@@ -605,11 +605,15 @@ This is a code preview with syntax highlighting.</div>
 
   return (
     <div className="ide-container">
+      <div
+        className="top-part"
+      >
+
       <div className="rotating-border-wrapper">
         <div className="rotating-border" />
 
         <div className="editor-box">
-       
+
           <MonacoEditor
             height="69cap"
             width="69cap"
@@ -635,6 +639,7 @@ This is a code preview with syntax highlighting.</div>
           />
         </div>
       </div>
+        </div>
 
       <div className="output-box">
         <div className="run-buttons">
@@ -674,17 +679,20 @@ This is a code preview with syntax highlighting.</div>
                   {language.name}
                 </button>
               ))}
-            </div>
             <button
               className="close-menu"
               onClick={() => setShowLanguageMenu(false)}
             >
               Close
             </button>
+            </div>
           </div>
         )}
 
-        <div>
+        <div
+          className="outputty"
+
+        >
           <h2 className="output-title">Output</h2>
           <iframe
             ref={iframeRef}

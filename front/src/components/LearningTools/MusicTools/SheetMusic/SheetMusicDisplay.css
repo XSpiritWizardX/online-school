@@ -1,0 +1,11 @@
+.sheet-music-display {
+  width: 80%;
+  height: 100%;
+  margin-top: 1rem;
+  background-color: #000000;
+  border: 12px double #ccc;
+  padding: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  min-height: 200px;
+  color: white;
+}
