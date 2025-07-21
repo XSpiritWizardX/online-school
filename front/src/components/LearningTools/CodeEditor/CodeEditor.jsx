@@ -458,7 +458,8 @@ This is a code preview with syntax highlighting.</div>
     if (iframe) {
       iframe.src = "about:blank";
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           iframeDoc.open();
           iframeDoc.write(`
@@ -491,7 +492,8 @@ This is a code preview with syntax highlighting.</div>
       setPyodideLoading(true);
       try {
         const pyodideScript = document.createElement("script");
-        pyodideScript.src = "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js";
+        pyodideScript.src =
+          "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js";
         pyodideScript.async = true;
 
         await new Promise((resolve, reject) => {
@@ -500,14 +502,18 @@ This is a code preview with syntax highlighting.</div>
           document.body.appendChild(pyodideScript);
         });
 
-        const pyodideInstance = await window.loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/" });
+        const pyodideInstance = await window.loadPyodide({
+          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/",
+        });
         setPyodide(pyodideInstance);
         setPyodideLoading(false);
         await executePython(pyodideInstance);
       } catch (err) {
         setPyodideLoading(false);
         setOutput("Failed to load Python runtime: " + err.message);
-        showPythonErrorInIframe("Failed to load Python runtime: " + err.message);
+        showPythonErrorInIframe(
+          "Failed to load Python runtime: " + err.message,
+        );
       }
     } else {
       await executePython(pyodide);
@@ -519,7 +525,8 @@ This is a code preview with syntax highlighting.</div>
     const iframe = iframeRef.current;
     if (iframe) {
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           iframeDoc.open();
           iframeDoc.write(`
@@ -556,10 +563,14 @@ This is a code preview with syntax highlighting.</div>
 
     // Capture stdout/stderr
     pyodideInstance.setStdout({
-      batched: (s) => { outputStr += s; }
+      batched: (s) => {
+        outputStr += s;
+      },
     });
     pyodideInstance.setStderr({
-      batched: (s) => { errorStr += s; }
+      batched: (s) => {
+        errorStr += s;
+      },
     });
 
     try {
@@ -571,7 +582,8 @@ This is a code preview with syntax highlighting.</div>
     // Show output in iframe
     if (iframe) {
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           iframeDoc.open();
           iframeDoc.write(`
@@ -605,41 +617,37 @@ This is a code preview with syntax highlighting.</div>
 
   return (
     <div className="ide-container">
-      <div
-        className="top-part"
-      >
+      <div className="top-part">
+        <div className="rotating-border-wrapper">
+          <div className="rotating-border" />
 
-      <div className="rotating-border-wrapper">
-        <div className="rotating-border" />
-
-        <div className="editor-box">
-
-          <MonacoEditor
-            height="69cap"
-            width="69cap"
-            defaultLanguage={
-              currentLanguage === "csharp"
-                ? "csharp"
-                : currentLanguage
-            }
-            language={
-              currentLanguage === "csharp"
-                ? "csharp"
-                : currentLanguage
-            }
-            theme="vs-dark"
-            value={code}
-            onChange={(value) => setCode(value)}
-            options={{
-              fontSize: 14,
-              minimap: { enabled: true },
-              scrollBeyondLastLine: false,
-              wordWrap: "on",
-            }}
-          />
+          <div className="editor-box">
+            <MonacoEditor
+              height="69cap"
+              width="69cap"
+              defaultLanguage={
+                currentLanguage === "csharp"
+                  ? "csharp"
+                  : currentLanguage
+              }
+              language={
+                currentLanguage === "csharp"
+                  ? "csharp"
+                  : currentLanguage
+              }
+              theme="vs-dark"
+              value={code}
+              onChange={(value) => setCode(value)}
+              options={{
+                fontSize: 14,
+                minimap: { enabled: true },
+                scrollBeyondLastLine: false,
+                wordWrap: "on",
+              }}
+            />
+          </div>
         </div>
       </div>
-        </div>
 
       <div className="output-box">
         <div className="run-buttons">
@@ -679,20 +687,17 @@ This is a code preview with syntax highlighting.</div>
                   {language.name}
                 </button>
               ))}
-            <button
-              className="close-menu"
-              onClick={() => setShowLanguageMenu(false)}
-            >
-              Close
-            </button>
+              <button
+                className="close-menu"
+                onClick={() => setShowLanguageMenu(false)}
+              >
+                Close
+              </button>
             </div>
           </div>
         )}
 
-        <div
-          className="outputty"
-
-        >
+        <div className="outputty">
           <h2 className="output-title">Output</h2>
           <iframe
             ref={iframeRef}

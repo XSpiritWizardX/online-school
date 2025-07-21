@@ -45,7 +45,9 @@
   position: relative;
   border: 1px solid #333;
   cursor: pointer;
-  transition: background-color 0.1s, box-shadow 0.1s;
+  transition:
+    background-color 0.1s,
+    box-shadow 0.1s;
 }
 
 .piano-key.white {

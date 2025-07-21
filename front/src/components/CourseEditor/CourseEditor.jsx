@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import './CourseEditor.css';
+import { useState, useCallback } from "react";
+import "./CourseEditor.css";
 // Import your existing code editor component
 // import CodeEditor from './CodeEditor';
 
@@ -8,151 +8,189 @@ const CourseEditor = ({
   initialCourse = null,
   onSave,
   onCancel,
-  onSaveDraft
+  onSaveDraft,
 }) => {
   const [saving, setSaving] = useState(false);
 
   const defaultCourse = {
-    title: '',
-    description: '',
-    category: '',
-    difficulty: 'beginner',
-    sections: []
+    title: "",
+    description: "",
+    category: "",
+    difficulty: "beginner",
+    sections: [],
   };
 
-  const [course, setCourse] = useState(initialCourse || defaultCourse);
+  const [course, setCourse] = useState(
+    initialCourse || defaultCourse,
+  );
   const isEditing = !!courseId;
 
   // Utility functions
-  const generateId = () => Date.now().toString(36) + Math.random().toString(36).substr(2);
+  const generateId = () =>
+    Date.now().toString(36) + Math.random().toString(36).substr(2);
 
   // Update course data
   const updateCourse = useCallback((updates) => {
-    setCourse(prev => ({ ...prev, ...updates }));
+    setCourse((prev) => ({ ...prev, ...updates }));
   }, []);
 
   const updateSection = useCallback((sectionIndex, updates) => {
-    setCourse(prev => ({
+    setCourse((prev) => ({
       ...prev,
       sections: prev.sections.map((section, index) =>
-        index === sectionIndex ? { ...section, ...updates } : section
-      )
+        index === sectionIndex ? { ...section, ...updates } : section,
+      ),
     }));
   }, []);
 
-  const updateLesson = useCallback((sectionIndex, lessonIndex, updates) => {
-    setCourse(prev => ({
-      ...prev,
-      sections: prev.sections.map((section, sIndex) =>
-        sIndex === sectionIndex
-          ? {
-              ...section,
-              lessons: section.lessons.map((lesson, lIndex) =>
-                lIndex === lessonIndex ? { ...lesson, ...updates } : lesson
-              )
-            }
-          : section
-      )
-    }));
-  }, []);
+  const updateLesson = useCallback(
+    (sectionIndex, lessonIndex, updates) => {
+      setCourse((prev) => ({
+        ...prev,
+        sections: prev.sections.map((section, sIndex) =>
+          sIndex === sectionIndex
+            ? {
+                ...section,
+                lessons: section.lessons.map((lesson, lIndex) =>
+                  lIndex === lessonIndex
+                    ? { ...lesson, ...updates }
+                    : lesson,
+                ),
+              }
+            : section,
+        ),
+      }));
+    },
+    [],
+  );
 
   // Section management
   const addSection = useCallback(() => {
-    setCourse(prev => ({
+    setCourse((prev) => ({
       ...prev,
-      sections: [...prev.sections, {
-        id: generateId(),
-        title: '',
-        lessons: []
-      }]
+      sections: [
+        ...prev.sections,
+        {
+          id: generateId(),
+          title: "",
+          lessons: [],
+        },
+      ],
     }));
   }, []);
 
   const removeSection = useCallback((index) => {
-    setCourse(prev => ({
+    setCourse((prev) => ({
       ...prev,
-      sections: prev.sections.filter((_, i) => i !== index)
+      sections: prev.sections.filter((_, i) => i !== index),
     }));
   }, []);
 
   // Lesson management
   const addLesson = useCallback((sectionIndex) => {
-    setCourse(prev => ({
+    setCourse((prev) => ({
       ...prev,
       sections: prev.sections.map((section, index) =>
         index === sectionIndex
           ? {
               ...section,
-              lessons: [...section.lessons, {
-                id: generateId(),
-                title: '',
-                type: 'text',
-                content: '',
-                language: 'javascript',
-                instructions: '',
-                starterCode: '',
-                solution: '',
-                videoUrl: '',
-                questions: []
-              }]
+              lessons: [
+                ...section.lessons,
+                {
+                  id: generateId(),
+                  title: "",
+                  type: "text",
+                  content: "",
+                  language: "javascript",
+                  instructions: "",
+                  starterCode: "",
+                  solution: "",
+                  videoUrl: "",
+                  questions: [],
+                },
+              ],
             }
-          : section
-      )
+          : section,
+      ),
     }));
   }, []);
 
   const removeLesson = useCallback((sectionIndex, lessonIndex) => {
-    setCourse(prev => ({
+    setCourse((prev) => ({
       ...prev,
       sections: prev.sections.map((section, sIndex) =>
         sIndex === sectionIndex
           ? {
               ...section,
-              lessons: section.lessons.filter((_, lIndex) => lIndex !== lessonIndex)
+              lessons: section.lessons.filter(
+                (_, lIndex) => lIndex !== lessonIndex,
+              ),
             }
-          : section
-      )
+          : section,
+      ),
     }));
   }, []);
 
   // Quiz management
-  const addQuestion = useCallback((sectionIndex, lessonIndex) => {
-    updateLesson(sectionIndex, lessonIndex, {
-      questions: [
-        ...course.sections[sectionIndex].lessons[lessonIndex].questions,
-        {
-          id: generateId(),
-          question: '',
-          type: 'multiple-choice',
-          options: [{ text: '' }, { text: '' }],
-          correctAnswer: 0
-        }
-      ]
-    });
-  }, [course.sections, updateLesson]);
+  const addQuestion = useCallback(
+    (sectionIndex, lessonIndex) => {
+      updateLesson(sectionIndex, lessonIndex, {
+        questions: [
+          ...course.sections[sectionIndex].lessons[lessonIndex]
+            .questions,
+          {
+            id: generateId(),
+            question: "",
+            type: "multiple-choice",
+            options: [{ text: "" }, { text: "" }],
+            correctAnswer: 0,
+          },
+        ],
+      });
+    },
+    [course.sections, updateLesson],
+  );
 
-  const removeQuestion = useCallback((sectionIndex, lessonIndex, questionIndex) => {
-    const currentQuestions = course.sections[sectionIndex].lessons[lessonIndex].questions;
-    updateLesson(sectionIndex, lessonIndex, {
-      questions: currentQuestions.filter((_, qIndex) => qIndex !== questionIndex)
-    });
-  }, [course.sections, updateLesson]);
+  const removeQuestion = useCallback(
+    (sectionIndex, lessonIndex, questionIndex) => {
+      const currentQuestions =
+        course.sections[sectionIndex].lessons[lessonIndex].questions;
+      updateLesson(sectionIndex, lessonIndex, {
+        questions: currentQuestions.filter(
+          (_, qIndex) => qIndex !== questionIndex,
+        ),
+      });
+    },
+    [course.sections, updateLesson],
+  );
 
-  const updateQuestion = useCallback((sectionIndex, lessonIndex, questionIndex, updates) => {
-    const currentQuestions = course.sections[sectionIndex].lessons[lessonIndex].questions;
-    updateLesson(sectionIndex, lessonIndex, {
-      questions: currentQuestions.map((question, qIndex) =>
-        qIndex === questionIndex ? { ...question, ...updates } : question
-      )
-    });
-  }, [course.sections, updateLesson]);
+  const updateQuestion = useCallback(
+    (sectionIndex, lessonIndex, questionIndex, updates) => {
+      const currentQuestions =
+        course.sections[sectionIndex].lessons[lessonIndex].questions;
+      updateLesson(sectionIndex, lessonIndex, {
+        questions: currentQuestions.map((question, qIndex) =>
+          qIndex === questionIndex
+            ? { ...question, ...updates }
+            : question,
+        ),
+      });
+    },
+    [course.sections, updateLesson],
+  );
 
-  const addOption = useCallback((sectionIndex, lessonIndex, questionIndex) => {
-    const question = course.sections[sectionIndex].lessons[lessonIndex].questions[questionIndex];
-    updateQuestion(sectionIndex, lessonIndex, questionIndex, {
-      options: [...question.options, { text: '' }]
-    });
-  }, [course.sections, updateQuestion]);
+  const addOption = useCallback(
+    (sectionIndex, lessonIndex, questionIndex) => {
+      const question =
+        course.sections[sectionIndex].lessons[lessonIndex].questions[
+          questionIndex
+        ];
+      updateQuestion(sectionIndex, lessonIndex, questionIndex, {
+        options: [...question.options, { text: "" }],
+      });
+    },
+    [course.sections, updateQuestion],
+  );
 
   // Form handlers
   const handleSubmit = async (e) => {
@@ -194,7 +232,9 @@ const CourseEditor = ({
               placeholder="Enter course title"
               className="form-input"
               value={course.title}
-              onChange={(e) => updateCourse({ title: e.target.value })}
+              onChange={(e) =>
+                updateCourse({ title: e.target.value })
+              }
             />
           </div>
 
@@ -206,7 +246,9 @@ const CourseEditor = ({
               rows="4"
               className="form-textarea"
               value={course.description}
-              onChange={(e) => updateCourse({ description: e.target.value })}
+              onChange={(e) =>
+                updateCourse({ description: e.target.value })
+              }
             />
           </div>
 
@@ -217,13 +259,19 @@ const CourseEditor = ({
                 id="category"
                 className="form-select"
                 value={course.category}
-                onChange={(e) => updateCourse({ category: e.target.value })}
+                onChange={(e) =>
+                  updateCourse({ category: e.target.value })
+                }
               >
                 <option value="">Select category</option>
                 <option value="programming">Programming</option>
-                <option value="web-development">Web Development</option>
+                <option value="web-development">
+                  Web Development
+                </option>
                 <option value="data-science">Data Science</option>
-                <option value="mobile-development">Mobile Development</option>
+                <option value="mobile-development">
+                  Mobile Development
+                </option>
                 <option value="other">Other</option>
               </select>
             </div>
@@ -234,7 +282,9 @@ const CourseEditor = ({
                 id="difficulty"
                 className="form-select"
                 value={course.difficulty}
-                onChange={(e) => updateCourse({ difficulty: e.target.value })}
+                onChange={(e) =>
+                  updateCourse({ difficulty: e.target.value })
+                }
               >
                 <option value="beginner">Beginner</option>
                 <option value="intermediate">Intermediate</option>
@@ -264,7 +314,11 @@ const CourseEditor = ({
                   placeholder="Section title"
                   className="section-title-input"
                   value={section.title}
-                  onChange={(e) => updateSection(sectionIndex, { title: e.target.value })}
+                  onChange={(e) =>
+                    updateSection(sectionIndex, {
+                      title: e.target.value,
+                    })
+                  }
                 />
                 <button
                   type="button"
@@ -284,12 +338,20 @@ const CourseEditor = ({
                         placeholder="Lesson title"
                         className="lesson-title-input"
                         value={lesson.title}
-                        onChange={(e) => updateLesson(sectionIndex, lessonIndex, { title: e.target.value })}
+                        onChange={(e) =>
+                          updateLesson(sectionIndex, lessonIndex, {
+                            title: e.target.value,
+                          })
+                        }
                       />
                       <select
                         className="lesson-type-select"
                         value={lesson.type}
-                        onChange={(e) => updateLesson(sectionIndex, lessonIndex, { type: e.target.value })}
+                        onChange={(e) =>
+                          updateLesson(sectionIndex, lessonIndex, {
+                            type: e.target.value,
+                          })
+                        }
                       >
                         <option value="text">Text</option>
                         <option value="video">Video</option>
@@ -298,7 +360,9 @@ const CourseEditor = ({
                       </select>
                       <button
                         type="button"
-                        onClick={() => removeLesson(sectionIndex, lessonIndex)}
+                        onClick={() =>
+                          removeLesson(sectionIndex, lessonIndex)
+                        }
                         className="btn btn-danger btn-sm"
                       >
                         Remove
@@ -308,49 +372,76 @@ const CourseEditor = ({
                     {/* Lesson Content based on type */}
                     <div className="lesson-content">
                       {/* Text Content */}
-                      {lesson.type === 'text' && (
+                      {lesson.type === "text" && (
                         <div className="text-editor">
                           <textarea
                             placeholder="Lesson content (supports Markdown)"
                             rows="6"
                             className="form-textarea"
                             value={lesson.content}
-                            onChange={(e) => updateLesson(sectionIndex, lessonIndex, { content: e.target.value })}
+                            onChange={(e) =>
+                              updateLesson(
+                                sectionIndex,
+                                lessonIndex,
+                                { content: e.target.value },
+                              )
+                            }
                           />
                         </div>
                       )}
 
                       {/* Video Content */}
-                      {lesson.type === 'video' && (
+                      {lesson.type === "video" && (
                         <div className="video-editor">
                           <input
                             type="url"
                             placeholder="Video URL"
                             className="form-input"
                             value={lesson.videoUrl}
-                            onChange={(e) => updateLesson(sectionIndex, lessonIndex, { videoUrl: e.target.value })}
+                            onChange={(e) =>
+                              updateLesson(
+                                sectionIndex,
+                                lessonIndex,
+                                { videoUrl: e.target.value },
+                              )
+                            }
                           />
                           <textarea
                             placeholder="Video description"
                             rows="3"
                             className="form-textarea"
                             value={lesson.content}
-                            onChange={(e) => updateLesson(sectionIndex, lessonIndex, { content: e.target.value })}
+                            onChange={(e) =>
+                              updateLesson(
+                                sectionIndex,
+                                lessonIndex,
+                                { content: e.target.value },
+                              )
+                            }
                           />
                         </div>
                       )}
 
-                      {/* Code Exercise - Using your existing code editor */}
-                      {lesson.type === 'code' && (
+                      {/* Code Exercise -
+                         Using your existing code editor */}
+                      {lesson.type === "code" && (
                         <div className="code-exercise">
                           <div className="form-group">
                             <label>Programming Language</label>
                             <select
                               className="form-select"
                               value={lesson.language}
-                              onChange={(e) => updateLesson(sectionIndex, lessonIndex, { language: e.target.value })}
+                              onChange={(e) =>
+                                updateLesson(
+                                  sectionIndex,
+                                  lessonIndex,
+                                  { language: e.target.value },
+                                )
+                              }
                             >
-                              <option value="javascript">JavaScript</option>
+                              <option value="javascript">
+                                JavaScript
+                              </option>
                               <option value="python">Python</option>
                               <option value="java">Java</option>
                               <option value="cpp">C++</option>
@@ -367,26 +458,44 @@ const CourseEditor = ({
                               rows="3"
                               className="form-textarea"
                               value={lesson.instructions}
-                              onChange={(e) => updateLesson(sectionIndex, lessonIndex, { instructions: e.target.value })}
+                              onChange={(e) =>
+                                updateLesson(
+                                  sectionIndex,
+                                  lessonIndex,
+                                  { instructions: e.target.value },
+                                )
+                              }
                             />
                           </div>
 
                           <div className="form-group">
                             <label>Starter Code</label>
-                            {/* Replace 'CodeEditor' with your actual code editor component */}
+                            {/* Replace 'CodeEditor' with your
+                               actual code editor component */}
                             {/* <CodeEditor
                               value={lesson.starterCode}
                               language={lesson.language}
-                              placeholder={`Enter starter ${lesson.language} code`}
+                              placeholder={"Enter starter "
+                                           + lesson.language
+                                           + " code"`}
                               className="code-editor-instance"
-                              onChange={(value) => updateLesson(sectionIndex, lessonIndex, { starterCode: value })}
+                              onChange={(value) =>
+                              updateLesson(sectionIndex,
+                                           lessonIndex,
+                                           { starterCode: value })}
                             /> */}
                             <textarea
                               placeholder={`Enter starter ${lesson.language} code`}
                               rows="8"
                               className="form-textarea code-textarea"
                               value={lesson.starterCode}
-                              onChange={(e) => updateLesson(sectionIndex, lessonIndex, { starterCode: e.target.value })}
+                              onChange={(e) =>
+                                updateLesson(
+                                  sectionIndex,
+                                  lessonIndex,
+                                  { starterCode: e.target.value },
+                                )
+                              }
                             />
                           </div>
 
@@ -395,126 +504,238 @@ const CourseEditor = ({
                             {/* <CodeEditor
                               value={lesson.solution}
                               language={lesson.language}
-                              placeholder={`Solution ${lesson.language} code`}
+                              placeholder={"Solution "
+                                           + lesson.language
+                                           + " code"}
                               className="code-editor-instance"
-                              onChange={(value) => updateLesson(sectionIndex, lessonIndex, { solution: value })}
+                              onChange={(value) =>
+                                updateLesson(sectionIndex,
+                                lessonIndex,
+                                { solution: value })}
                             /> */}
                             <textarea
                               placeholder={`Solution ${lesson.language} code`}
                               rows="6"
                               className="form-textarea code-textarea"
                               value={lesson.solution}
-                              onChange={(e) => updateLesson(sectionIndex, lessonIndex, { solution: e.target.value })}
+                              onChange={(e) =>
+                                updateLesson(
+                                  sectionIndex,
+                                  lessonIndex,
+                                  { solution: e.target.value },
+                                )
+                              }
                             />
                           </div>
                         </div>
                       )}
 
                       {/* Quiz Content */}
-                      {lesson.type === 'quiz' && (
+                      {lesson.type === "quiz" && (
                         <div className="quiz-editor">
-                          {lesson.questions.map((question, qIndex) => (
-                            <div key={question.id} className="question-item">
-                              <div className="question-header">
-                                <input
-                                  placeholder="Question text"
-                                  className="question-input"
-                                  value={question.question}
-                                  onChange={(e) => updateQuestion(sectionIndex, lessonIndex, qIndex, { question: e.target.value })}
-                                />
-                                <select
-                                  className="question-type-select"
-                                  value={question.type}
-                                  onChange={(e) => updateQuestion(sectionIndex, lessonIndex, qIndex, { type: e.target.value })}
-                                >
-                                  <option value="multiple-choice">Multiple Choice</option>
-                                  <option value="true-false">True/False</option>
-                                  <option value="short-answer">Short Answer</option>
-                                </select>
-                                <button
-                                  type="button"
-                                  onClick={() => removeQuestion(sectionIndex, lessonIndex, qIndex)}
-                                  className="btn btn-danger btn-sm"
-                                >
-                                  Remove
-                                </button>
-                              </div>
-
-                                                          {/* Question options based on type */}
-                              {question.type === 'multiple-choice' && (
-                                <div className="question-options">
-                                  {question.options.map((option, oIndex) => (
-                                    <div key={oIndex} className="option-item">
-                                      <input
-                                        placeholder="Option text"
-                                        className="option-input"
-                                        value={option.text}
-                                        onChange={(e) => {
-                                          const newOptions = [...question.options];
-                                          newOptions[oIndex] = { text: e.target.value };
-                                          updateQuestion(sectionIndex, lessonIndex, qIndex, { options: newOptions });
-                                        }}
-                                      />
-                                      <label className="correct-option">
-                                        <input
-                                          type="radio"
-                                          name={`question-${sectionIndex}-${lessonIndex}-${qIndex}`}
-                                          checked={question.correctAnswer === oIndex}
-                                          onChange={() => updateQuestion(sectionIndex, lessonIndex, qIndex, { correctAnswer: oIndex })}
-                                        />
-                                        Correct
-                                      </label>
-                                    </div>
-                                  ))}
+                          {lesson.questions.map(
+                            (question, qIndex) => (
+                              <div
+                                key={question.id}
+                                className="question-item"
+                              >
+                                <div className="question-header">
+                                  <input
+                                    placeholder="Question text"
+                                    className="question-input"
+                                    value={question.question}
+                                    onChange={(e) =>
+                                      updateQuestion(
+                                        sectionIndex,
+                                        lessonIndex,
+                                        qIndex,
+                                        { question: e.target.value },
+                                      )
+                                    }
+                                  />
+                                  <select
+                                    className="question-type-select"
+                                    value={question.type}
+                                    onChange={(e) =>
+                                      updateQuestion(
+                                        sectionIndex,
+                                        lessonIndex,
+                                        qIndex,
+                                        { type: e.target.value },
+                                      )
+                                    }
+                                  >
+                                    <option value="multiple-choice">
+                                      Multiple Choice
+                                    </option>
+                                    <option value="true-false">
+                                      True/False
+                                    </option>
+                                    <option value="short-answer">
+                                      Short Answer
+                                    </option>
+                                  </select>
                                   <button
                                     type="button"
-                                    onClick={() => addOption(sectionIndex, lessonIndex, qIndex)}
-                                    className="btn btn-secondary btn-sm"
+                                    onClick={() =>
+                                      removeQuestion(
+                                        sectionIndex,
+                                        lessonIndex,
+                                        qIndex,
+                                      )
+                                    }
+                                    className="btn btn-danger btn-sm"
                                   >
-                                    Add Option
+                                    Remove
                                   </button>
                                 </div>
-                              )}
 
-                              {question.type === 'true-false' && (
-                                <div className="true-false-options">
-                                  <label>
-                                    <input
-                                      type="radio"
-                                      name={`question-${sectionIndex}-${lessonIndex}-${qIndex}`}
-                                      checked={question.correctAnswer === 'true'}
-                                      onChange={() => updateQuestion(sectionIndex, lessonIndex, qIndex, { correctAnswer: 'true' })}
-                                    />
-                                    True
-                                  </label>
-                                  <label>
-                                    <input
-                                      type="radio"
-                                      name={`question-${sectionIndex}-${lessonIndex}-${qIndex}`}
-                                      checked={question.correctAnswer === 'false'}
-                                      onChange={() => updateQuestion(sectionIndex, lessonIndex, qIndex, { correctAnswer: 'false' })}
-                                    />
-                                    False
-                                  </label>
-                                </div>
-                              )}
+                                {/* Question options based on type */}
+                                {question.type ===
+                                  "multiple-choice" && (
+                                  <div className="question-options">
+                                    {question.options.map(
+                                      (option, oIndex) => (
+                                        <div
+                                          key={oIndex}
+                                          className="option-item"
+                                        >
+                                          <input
+                                            placeholder="Option text"
+                                            className="option-input"
+                                            value={option.text}
+                                            onChange={(e) => {
+                                              const newOptions = [
+                                                ...question.options,
+                                              ];
+                                              newOptions[oIndex] = {
+                                                text: e.target.value,
+                                              };
+                                              updateQuestion(
+                                                sectionIndex,
+                                                lessonIndex,
+                                                qIndex,
+                                                {
+                                                  options: newOptions,
+                                                },
+                                              );
+                                            }}
+                                          />
+                                          <label className="correct-option">
+                                            <input
+                                              type="radio"
+                                              name={`question-${sectionIndex}-${lessonIndex}-${qIndex}`}
+                                              checked={
+                                                question.correctAnswer ===
+                                                oIndex
+                                              }
+                                              onChange={() =>
+                                                updateQuestion(
+                                                  sectionIndex,
+                                                  lessonIndex,
+                                                  qIndex,
+                                                  {
+                                                    correctAnswer:
+                                                      oIndex,
+                                                  },
+                                                )
+                                              }
+                                            />
+                                            Correct
+                                          </label>
+                                        </div>
+                                      ),
+                                    )}
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        addOption(
+                                          sectionIndex,
+                                          lessonIndex,
+                                          qIndex,
+                                        )
+                                      }
+                                      className="btn btn-secondary btn-sm"
+                                    >
+                                      Add Option
+                                    </button>
+                                  </div>
+                                )}
 
-                              {question.type === 'short-answer' && (
-                                <div className="short-answer">
-                                  <input
-                                    placeholder="Expected answer"
-                                    className="form-input"
-                                    value={question.correctAnswer}
-                                    onChange={(e) => updateQuestion(sectionIndex, lessonIndex, qIndex, { correctAnswer: e.target.value })}
-                                  />
-                                </div>
-                              )}
-                            </div>
-                          ))}
+                                {question.type === "true-false" && (
+                                  <div className="true-false-options">
+                                    <label>
+                                      <input
+                                        type="radio"
+                                        name={`question-${sectionIndex}-${lessonIndex}-${qIndex}`}
+                                        checked={
+                                          question.correctAnswer ===
+                                          "true"
+                                        }
+                                        onChange={() =>
+                                          updateQuestion(
+                                            sectionIndex,
+                                            lessonIndex,
+                                            qIndex,
+                                            { correctAnswer: "true" },
+                                          )
+                                        }
+                                      />
+                                      True
+                                    </label>
+                                    <label>
+                                      <input
+                                        type="radio"
+                                        name={`question-${sectionIndex}-${lessonIndex}-${qIndex}`}
+                                        checked={
+                                          question.correctAnswer ===
+                                          "false"
+                                        }
+                                        onChange={() =>
+                                          updateQuestion(
+                                            sectionIndex,
+                                            lessonIndex,
+                                            qIndex,
+                                            {
+                                              correctAnswer: "false",
+                                            },
+                                          )
+                                        }
+                                      />
+                                      False
+                                    </label>
+                                  </div>
+                                )}
+
+                                {question.type === "short-answer" && (
+                                  <div className="short-answer">
+                                    <input
+                                      placeholder="Expected answer"
+                                      className="form-input"
+                                      value={question.correctAnswer}
+                                      onChange={(e) =>
+                                        updateQuestion(
+                                          sectionIndex,
+                                          lessonIndex,
+                                          qIndex,
+                                          {
+                                            correctAnswer:
+                                              e.target.value,
+                                          },
+                                        )
+                                      }
+                                    />
+                                  </div>
+                                )}
+                              </div>
+                            ),
+                          )}
 
                           <button
                             type="button"
-                            onClick={() => addQuestion(sectionIndex, lessonIndex)}
+                            onClick={() =>
+                              addQuestion(sectionIndex, lessonIndex)
+                            }
                             className="btn btn-secondary"
                           >
                             Add Question
@@ -559,7 +780,7 @@ const CourseEditor = ({
             className="btn btn-primary"
             disabled={saving}
           >
-            {isEditing ? 'Update Course' : 'Create Course'}
+            {isEditing ? "Update Course" : "Create Course"}
           </button>
         </div>
       </form>
@@ -568,4 +789,3 @@ const CourseEditor = ({
 };
 
 export default CourseEditor;
-

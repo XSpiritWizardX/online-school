@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import './AdvancedPaint.css'; // import the CSS separately
+import "./AdvancedPaint.css"; // import the CSS separately
 
 export default function AdvancedPaint() {
   const canvasRef = useRef(null);
@@ -28,13 +28,19 @@ export default function AdvancedPaint() {
 
   useEffect(() => {
     if (!ctxRef.current) return;
-    ctxRef.current.strokeStyle = tool === "eraser" ? "#FFFFFF" : brushColor;
+    ctxRef.current.strokeStyle =
+      tool === "eraser" ? "#FFFFFF" : brushColor;
     ctxRef.current.lineWidth = brushSize;
   }, [brushColor, brushSize, tool]);
 
   const saveHistory = (ctx) => {
     const canvas = ctx.canvas;
-    const snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const snapshot = ctx.getImageData(
+      0,
+      0,
+      canvas.width,
+      canvas.height,
+    );
     let newHistory;
     if (historyStep < history.length - 1) {
       newHistory = history.slice(0, historyStep + 1);
@@ -115,7 +121,9 @@ export default function AdvancedPaint() {
             min="1"
             max="50"
             value={brushSize}
-            onChange={(e) => setBrushSize(parseInt(e.target.value, 10))}
+            onChange={(e) =>
+              setBrushSize(parseInt(e.target.value, 10))
+            }
           />
           <span>{brushSize}</span>
         </label>
@@ -128,7 +136,6 @@ export default function AdvancedPaint() {
             disabled={tool === "eraser"}
           />
         </label>
-
 
         <label>
           <input
@@ -154,23 +161,28 @@ export default function AdvancedPaint() {
 
         <button
           className="advanced-paint-button"
-        onClick={undo} disabled={historyStep <= 0}>
+          onClick={undo}
+          disabled={historyStep <= 0}
+        >
           Undo
         </button>
         <button
           className="advanced-paint-button"
-        onClick={redo} disabled={historyStep >= history.length - 1}>
+          onClick={redo}
+          disabled={historyStep >= history.length - 1}
+        >
           Redo
         </button>
         <button
           className="advanced-paint-button"
-        onClick={clearCanvas}>Clear</button>
-        <button
-          className="advanced-paint-button"
-        onClick={saveImage}>Save</button>
-        <button
-          className="advanced-paint-button"
-        >Submit</button>
+          onClick={clearCanvas}
+        >
+          Clear
+        </button>
+        <button className="advanced-paint-button" onClick={saveImage}>
+          Save
+        </button>
+        <button className="advanced-paint-button">Submit</button>
       </div>
 
       <canvas

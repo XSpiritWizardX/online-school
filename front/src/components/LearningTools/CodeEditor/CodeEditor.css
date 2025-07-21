@@ -149,13 +149,12 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   z-index: 100;
   width: auto;
-
 }
 
 .language-menu h3 {
   color: #fff;
   margin: 0 0 15px 0;
-  font-size:20px;
+  font-size: 20px;
 }
 .language-option {
   display: flex;

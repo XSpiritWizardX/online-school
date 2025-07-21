@@ -54,7 +54,9 @@
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 1rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   box-sizing: border-box;
 }
 
@@ -161,7 +163,8 @@
 }
 
 .code-textarea {
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+  font-family:
+    "Monaco", "Menlo", "Ubuntu Mono", "Consolas", monospace;
   font-size: 0.9rem;
   background-color: #f8f9fa;
   line-height: 1.4;
@@ -368,7 +371,7 @@
 }
 
 .btn:disabled::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 16px;
   height: 16px;
@@ -383,8 +386,12 @@
 }
 
 @keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 /* Hover effects for interactive elements */

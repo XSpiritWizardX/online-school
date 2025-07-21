@@ -7,7 +7,7 @@ import TermsOfService from "../components/Compliance/TermsOfService/TermsOfServi
 import PrivacyPolicy from "../components//Compliance/PrivacyPolicy/PrivacyPolicy";
 import CookiesPolicy from "../components//Compliance/CookiePolicy/CookiePolicy";
 import TestIde from "../components/TestingPageForIDE/TestIde";
-import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor"
+import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor";
 import ChatBot from "../components/ChatBot/GeminiChat";
 import Layout from "./Layout";
 

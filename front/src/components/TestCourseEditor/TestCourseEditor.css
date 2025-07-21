@@ -5,8 +5,8 @@
   background-color: #ffffff;
   min-height: 100vh;
 }
-.course-editor-top-layer{
-    margin-top: 12%;
+.course-editor-top-layer {
+  margin-top: 12%;
 }
 .test-course-editor-page h1 {
   color: #2c3e50;
@@ -169,7 +169,8 @@
   border-radius: 8px;
   padding: 1rem;
   margin-top: 1rem;
-  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+  font-family:
+    "Monaco", "Menlo", "Ubuntu Mono", "Consolas", monospace;
   font-size: 0.9rem;
   border: 1px solid #333;
 }
@@ -192,7 +193,7 @@
 }
 
 .loading-overlay::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
