@@ -62,6 +62,10 @@ export default defineConfig(({ mode }) => {
       // opens browser after starting server
       open: true,
 
+      watch: {
+        usePolling:true,
+      },
+
       port,
 
       proxy: {
