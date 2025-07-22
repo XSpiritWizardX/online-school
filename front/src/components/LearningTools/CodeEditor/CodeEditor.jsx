@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import "./CodeEditor.css";
 
@@ -12,7 +12,25 @@ export default function CodeEditor() {
   const [currentLanguage, setCurrentLanguage] =
     useState("javascript");
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+  const menuRef = useRef(null);
   const iframeRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowLanguageMenu(false);
+      }
+    }
+    if (showLanguageMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showLanguageMenu]);
+
 
   const languages = [
     {
@@ -662,7 +680,7 @@ This is a code preview with syntax highlighting.</div>
           </button>
           <button
             className="run-button"
-            onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+            onClick={() => setShowLanguageMenu(true)}
           >
             Languages
           </button>
@@ -675,7 +693,7 @@ This is a code preview with syntax highlighting.</div>
         </div>
 
         {showLanguageMenu && (
-          <div className="language-menu">
+          <div className="language-menu" ref={menuRef}>
             <h3>Select Language:</h3>
             <div className="language-grid">
               {languages.map((language) => (

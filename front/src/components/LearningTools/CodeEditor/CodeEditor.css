@@ -128,7 +128,8 @@
 }
 
 .outputty {
-  margin-left: 10%
+  margin-left: 20%;
+  margin-right: -20%;
 }
 .output-box pre {
   margin: 0;
@@ -167,7 +168,7 @@
 
 .language-menu {
   position: absolute;
-  top: 60px;
+  top:  48%;
   right: 10%;
   background: #000000;
   border: 1px solid #555;
@@ -188,17 +189,19 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   border-radius: 12px;
+  border: 2px solid white;
   cursor: pointer;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000;
+  color: #ffffff;
   font-size: 16px;
   transition: background-color 0.2s ease;
 }
 
 .language-option:hover {
-  background-color: #333;
+  background-color: #ffffff;
+  color: #000000;
 }
 .close-menu {
   background-color: #ff0000;
