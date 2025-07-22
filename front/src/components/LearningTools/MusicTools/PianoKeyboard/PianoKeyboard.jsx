@@ -86,11 +86,14 @@ const PianoKeyboard = () => {
   const [recording, setRecording] = useState([]);
   const [isRecording, setIsRecording] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
   const startTimeRef = useRef(null);
 
   const playNote = useCallback(
     (note) => {
-      synthRef.current.triggerAttackRelease(note, "8n");
+      if (!muted) {
+        synthRef.current.triggerAttackRelease(note, "8n");
+      }
       if (isRecording && startTimeRef.current !== null) {
         const time = Tone.now() - startTimeRef.current;
         setRecording((prev) => [...prev, { note, time }]);
@@ -103,7 +106,7 @@ const PianoKeyboard = () => {
         setTimeout(() => el.classList.remove("active"), 150);
       }
     },
-    [isRecording],
+    [isRecording, muted],
   );
 
   useEffect(() => {
@@ -170,6 +173,9 @@ const PianoKeyboard = () => {
         </button>
         <button onClick={handleClear}>Clear</button>
         <button onClick={handleSubmit}>Submit</button>
+        <button onClick={() => setMuted((m) => !m)}>
+          {muted ? "Unmute" : "Mute"}
+        </button>
       </div>
       <div className="piano-container">
         {NOTES.map((note) => (

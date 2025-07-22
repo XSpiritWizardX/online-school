@@ -709,7 +709,6 @@ This is a code preview with syntax highlighting.</div>
             <div
               style={{
                 color: "#f48771",
-                padding: "10px",
                 fontFamily: "monospace",
               }}
             >
