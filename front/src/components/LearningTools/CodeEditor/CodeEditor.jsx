@@ -467,6 +467,37 @@ This is a code preview with syntax highlighting.</div>
     setOutput("");
   };
 
+  // Function to load Pyodide instance
+  const loadPyodideInstance = async () => {
+    setPyodideLoading(true);
+    try {
+      if (!window.loadPyodide) {
+        const pyodideScript = document.createElement("script");
+        pyodideScript.src =
+          "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js";
+        pyodideScript.async = true;
+        await new Promise((resolve, reject) => {
+          pyodideScript.onload = resolve;
+          pyodideScript.onerror = reject;
+          document.body.appendChild(pyodideScript);
+        });
+      }
+      const pyodideInstance = await window.loadPyodide({
+        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/",
+      });
+      setPyodide(pyodideInstance);
+      setPyodideLoading(false);
+      return pyodideInstance;
+    } catch (err) {
+      setPyodideLoading(false);
+      setOutput("Failed to load Python runtime: " + err.message);
+      showPythonErrorInIframe(
+        "Failed to load Python runtime: " + err.message,
+      );
+      return null;
+    }
+  };
+
   // --- PYTHON EXECUTION SUPPORT ---
   const runPython = async () => {
     const iframe = iframeRef.current;
@@ -506,36 +537,12 @@ This is a code preview with syntax highlighting.</div>
       }, 10);
     }
 
-    if (!pyodide) {
-      setPyodideLoading(true);
-      try {
-        const pyodideScript = document.createElement("script");
-        pyodideScript.src =
-          "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js";
-        pyodideScript.async = true;
-
-        await new Promise((resolve, reject) => {
-          pyodideScript.onload = resolve;
-          pyodideScript.onerror = reject;
-          document.body.appendChild(pyodideScript);
-        });
-
-        const pyodideInstance = await window.loadPyodide({
-          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/",
-        });
-        setPyodide(pyodideInstance);
-        setPyodideLoading(false);
-        await executePython(pyodideInstance);
-      } catch (err) {
-        setPyodideLoading(false);
-        setOutput("Failed to load Python runtime: " + err.message);
-        showPythonErrorInIframe(
-          "Failed to load Python runtime: " + err.message,
-        );
-      }
-    } else {
-      await executePython(pyodide);
+    let pyodideInstance = pyodide;
+    if (!pyodideInstance) {
+      pyodideInstance = await loadPyodideInstance();
+      if (!pyodideInstance) return;
     }
+    await executePython(pyodideInstance);
   };
 
   // Helper to show error in iframe for Python
@@ -681,8 +688,7 @@ This is a code preview with syntax highlighting.</div>
           <button
             className="run-button"
             onClick={() => setShowLanguageMenu(true)}
-          >
-            Languages
+          >Language
           </button>
           <button className="run-button" onClick={runCode}>
             Help

@@ -93,6 +93,8 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
+
+  align-items: center
 }
 
 .run-button:hover {
@@ -192,6 +194,7 @@
   padding: 10px;
   border-radius: 12px;
   border: 2px solid white;
+  margin-top: 5%;
   cursor: pointer;
   background-color: #000000;
   color: #ffffff;
@@ -204,14 +207,20 @@
   color: #000000;
 }
 .close-menu {
-  background-color: #ff0000;
-  color: #ffffff;
+  background-color: #212529;
+  color: #fff;
   border: none;
   width: 100%;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
-  margin-top: 5%;
+  margin-top: 7%;
+  transition: all 0.3s ease;
+}
+
+.close-menu:hover {
+  background: #fff;
+  color: #212529
 }
 
