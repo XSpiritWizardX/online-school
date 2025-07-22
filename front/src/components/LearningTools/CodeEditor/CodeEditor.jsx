@@ -234,26 +234,89 @@ export default function CodeEditor() {
   };
 
   const runHTML = () => {
-    const iframe = iframeRef.current;
-
     try {
-      iframe.src = "about:blank";
-
-      setTimeout(() => {
-        const iframeDoc =
-          iframe.contentDocument || iframe.contentWindow?.document;
-
-        if (!iframeDoc) {
-          setOutput("Error: Cannot access iframe document");
-          return;
+      // Open a new window/tab
+      const newWindow = window.open('', '_blank');
+      
+      if (newWindow) {
+        // Write the HTML content to the new window
+        newWindow.document.open();
+        newWindow.document.write(code);
+        newWindow.document.close();
+        
+        // Clear the iframe and show a message
+        const iframe = iframeRef.current;
+        if (iframe) {
+          iframe.src = "about:blank";
+          setTimeout(() => {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+            if (iframeDoc) {
+              iframeDoc.open();
+              iframeDoc.write(`
+                <!DOCTYPE html>
+                <html>
+                  <head>
+                    <style>
+                      body {
+                        font-family: 'Courier New', monospace;
+                        background: #1e1e1e;
+                        color: #98c379;
+                        margin: 10px;
+                        padding: 0;
+                        font-size: 14px;
+                      }
+                      .success {
+                        color: #98c379;
+                        margin-bottom: 10px;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <div class="success">✅ HTML opened in new tab successfully!</div>
+                  </body>
+                </html>
+              `);
+              iframeDoc.close();
+            }
+          }, 10);
         }
-
-        iframeDoc.open();
-        iframeDoc.write(code);
-        iframeDoc.close();
-      }, 10);
+      } else {
+        // Handle popup blocking
+        setOutput("Error: Unable to open new tab. Please allow popups for this site.");
+        const iframe = iframeRef.current;
+        if (iframe) {
+          iframe.src = "about:blank";
+          setTimeout(() => {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+            if (iframeDoc) {
+              iframeDoc.open();
+              iframeDoc.write(`
+                <!DOCTYPE html>
+                <html>
+                  <head>
+                    <style>
+                      body {
+                        font-family: 'Courier New', monospace;
+                        background: #1e1e1e;
+                        color: #f48771;
+                        margin: 10px;
+                        padding: 0;
+                        font-size: 14px;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <div>❌ Unable to open new tab. Please allow popups for this site.</div>
+                  </body>
+                </html>
+              `);
+              iframeDoc.close();
+            }
+          }, 10);
+        }
+      }
     } catch (error) {
-      setOutput(`Error executing HTML: ${error.message}`);
+      setOutput(`Error opening HTML in new tab: ${error.message}`);
     }
   };
 
