@@ -18,7 +18,7 @@ uv run -- flask run
 
 # get started with db
 ```bash
-uv run alembic upgrade head
+uv run flask db upgrade
 uv run flask seed
 ```
 
@@ -29,7 +29,7 @@ modify `app/seeds/model_name_plural.py`
 potentially modify `run.py` to add the new model seeds
 
 ```bash
-uv run alembic revision --autogenerate -m "modify model_name"
-uv run alembic upgrade head
+uv run flask db migrate -m "modify model_name"
+uv run flask db upgrade
 uv run flask seed
 ```
