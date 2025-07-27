@@ -11,6 +11,7 @@ import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor";
 import ChatBot from "../components/ChatBot/GeminiChat";
 import Layout from "./Layout";
 import CourseInterface from "../components/CourseInterface/CourseInterface";
+import LoginFormModal from "../components/LoginFormModal/LoginFormModal";
 
 export const router = createBrowserRouter([
   {
@@ -21,11 +22,11 @@ export const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <LoginFormPage />,
       },
       {
-        path: "signup",
+        path: "/signup",
         element: <SignupFormPage />,
       },
       {

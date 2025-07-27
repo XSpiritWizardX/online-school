@@ -2,34 +2,26 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./SearchBar.css";
+
 function SearchBar() {
   const navigate = useNavigate();
-  const [searchText, setSearchText] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSubmit = async () => {
-    navigate(`/stocks/${searchText}`);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/stocks/${searchTerm}`);
   };
 
   return (
-    <div className="search-bar-container">
-      {/* <h1>Search</h1> */}
-
-      <form onSubmit={handleSubmit} className="search-form">
-        <label>
-          <input
-            type="text"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            placeholder="SEARCH FOR A COURSE"
-            className="search-input"
-          />
-        </label>
-
-        <button type="submit" className="search-button">
-          Search
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit} className="search-form" style={{ width: "100%" }}>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search courses, lessons, or topics..."
+        className="search-input"
+      />
+    </form>
   );
 }
 
