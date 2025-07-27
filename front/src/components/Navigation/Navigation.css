@@ -10,16 +10,17 @@
   top: 0;
   left: 0;
   width: 96%;
-  height: 8cap;
+  height: 5cap;
   justify-content: space-between;
-  align-items: flex-end;
-  padding: 10px 50px;
+  align-items: center;
+  padding: 6px 35px;
   border-bottom: 0.5px solid #ffffff;
   background-color: #000000;
 }
+
 .home-links-container {
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: center;
   gap: 10px;
 }
@@ -28,12 +29,12 @@
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: large;
 }
 
 .menu-icon {
-  width: 4cap;
-  height: 4cap;
+  width: 2.5cap;
+  height: 2.5cap;
   cursor: pointer;
   color: #ffffff;
 }
@@ -42,26 +43,27 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: end;
-  gap: 20px;
+  align-items: center;
+  gap: 15px;
 }
+
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 20px;
 }
 
 .dashboard-link {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
-  font-size: x-large;
+  font-size: medium;
 }
 
 .ai-assistant-link {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
-  font-size: x-large;
+  font-size: medium;
   background: transparent;
   border: none;
 }
