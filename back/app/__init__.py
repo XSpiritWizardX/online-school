@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from flask_migrate import Migrate
 from config import DevelopmentConfig, ProductionConfig
 from app.db import db
 import os
@@ -18,6 +19,8 @@ def create_app():
     )
 
     db.init_app(app)
+
+    Migrate(app, db)
 
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     config = app.config
