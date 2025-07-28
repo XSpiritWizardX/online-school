@@ -8,7 +8,7 @@ bp = Blueprint("auth", __name__)
 
 
 @bp.route("/login", methods=["POST"])
-def auth_login():
+def login():
     """login endpoint for frontend testing"""
     data = request.get_json()
 
@@ -43,7 +43,7 @@ def auth_login():
 
 @bp.route("/logout", methods=["DELETE"])
 @jwt_required
-def auth_logout(current_user):
+def logout(current_user):
     """logout endpoint"""
     return (
         jsonify({"message": "logged out successfully", "user": None}),
@@ -52,7 +52,7 @@ def auth_logout(current_user):
 
 
 @bp.route("/signup", methods=["POST"])
-def auth_signup():
+def signup():
     data = request.get_json()
 
     if not data:
