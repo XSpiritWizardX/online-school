@@ -28,7 +28,7 @@ export const thunkAuthenticate = () => async (dispatch) => {
 export const thunkLogin = (credentials) => async (dispatch) => {
   // Convert email to username for backend compatibility
   const loginData = {
-    username: credentials.email,
+    email: credentials.email,
     password: credentials.password,
   };
   const response = await fetch("/api/v0/auth/login", {
