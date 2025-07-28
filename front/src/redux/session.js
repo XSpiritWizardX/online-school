@@ -14,11 +14,8 @@ export const thunkAuthenticate = () => async (dispatch) => {
   const token = localStorage.getItem("token");
   if (!token) return;
 
-  const response = await fetch("/api/verify", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
+  const response = await fetch("/api/v0/auth/verify", {
+    headers: { Authorization: `Bearer ${token}` },
   });
   if (response.ok) {
     const data = await response.json();
@@ -34,7 +31,7 @@ export const thunkLogin = (credentials) => async (dispatch) => {
     username: credentials.email,
     password: credentials.password,
   };
-  const response = await fetch("/api/login", {
+  const response = await fetch("/api/v0/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(loginData),
@@ -55,7 +52,7 @@ export const thunkLogin = (credentials) => async (dispatch) => {
 
 export const thunkSignup = (user) => async (dispatch) => {
   console.error("thunkSignup is broken");
-  const response = await fetch("/api/auth/signup", {
+  const response = await fetch("/api/v0/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user),
@@ -73,8 +70,28 @@ export const thunkSignup = (user) => async (dispatch) => {
 };
 
 export const thunkLogout = () => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const response = await fetch("/api/v0/auth/logout", {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  /**
+     response should have status 200
+   */
+  if (!response.ok) {
+    console.error("logout failed");
+    const data = await response.json();
+    return data;
+  }
+
   localStorage.removeItem("token");
   dispatch(removeUser());
+  return null;
 };
 
 const initialState = { user: null };
