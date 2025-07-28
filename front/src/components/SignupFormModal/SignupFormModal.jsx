@@ -65,7 +65,7 @@ function SignupFormModal() {
   };
 
   return (
-    <div className="signup-border-outer">
+    <div>
       <div className="signup-inner">
         <h1>Sign Up</h1>
         {errors.server && <p>{errors.server}</p>}

@@ -1,67 +1,39 @@
-/* === Animation === */
-@keyframes spin-border {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* === Modal Wrapper with Spinning Border === */
-.signup-border-outer {
-  position: relative;
-  padding: 1rem;
-  border-radius: 15px;
+/* Prevent body scroll when modal is open */
+body.modal-open {
   overflow: hidden;
-  z-index: 0;
-}
-.signup-border-outer::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-
-  background: conic-gradient(
-    from 0deg,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #ffffff,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #000000,
-    #ffffff,
-    #000000,
-    #000000
-  );
-  animation: spin-border 3s linear infinite;
-  z-index: -1;
 }
 
 /* Inner Form Container */
-
 .signup-inner {
-  position: relative;
-  background-color: #1a1a1a;
-  border-radius: 15px;
-  padding: 2rem;
-  z-index: 1;
+  padding: 40px;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(1, 4, 9, 0.85);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000; /* increased from 1000 to be above navigation */
 }
 
 /* === Title === */
 .signup-inner h1 {
-  font-size: 2rem;
+  color: #f0f6fc;
+  font-size: 28px;
   font-weight: 600;
-  margin-bottom: 20px;
-  color: #fff;
+  margin: 0 0 20px 0;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.signup-header p {
+  color: #8b949e;
+  font-size: 16px;
+  margin: 0 0 32px 0;
   text-align: center;
 }
 
@@ -82,32 +54,48 @@
 .signup-form label {
   display: flex;
   flex-direction: column;
-  font-size: 0.95rem;
-  color: #ccc;
+  gap: 8px;
+  color: #f0f6fc;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .signup-form input,
 .signup-form textarea {
-  margin-top: 6px;
-  padding: 12px 14px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background-color: #2a2a2a;
-  color: #fff;
-  font-size: 1rem;
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #f0f6fc;
+  font-size: 16px;
+  padding: 12px 16px;
+  line-height: 20px;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   font-family: inherit;
+}
+
+.signup-form input::placeholder,
+.signup-form textarea::placeholder {
+  color: #8b949e;
 }
 
 .signup-form input:focus,
 .signup-form textarea:focus {
   outline: none;
-  border-color: #888;
-  background-color: #333;
+  border-color: #1f6feb;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.12);
 }
+
+.signup-form input:hover,
+.signup-form textarea:hover {
+  border-color: #8b949e;
+}
+
 .bio-input {
-  overflow-x: scroll;
-  overflow-y: scroll;
+  resize: vertical;
+  min-height: 80px;
+  width: 200%;
 }
+
 /* === Checkbox Section === */
 .agreement-section {
   grid-column: 1 / -1;
@@ -115,64 +103,73 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 12px;
 }
 
 .checkbox-label {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 0.9rem;
-  color: #ccc;
+  font-size: 14px;
+  color: #8b949e;
   flex-direction: row;
   width: 100%;
-  margin-top: 10px;
 }
+
 .privacy-checkbox {
   display: flex;
   flex-direction: row;
 }
+
 .checkbox-label input[type="checkbox"] {
   margin-top: 3px;
   width: 16px;
   height: 16px;
-  accent-color: #4a9eff;
+  accent-color: #1f6feb;
 }
 
 .checkbox-label a {
-  color: #4a9eff;
+  color: #1f6feb;
   text-decoration: none;
+  margin-left: -1%;
 }
 
 .checkbox-label a:hover {
-  color: #66b3ff;
+  color: #4493f8;
   text-decoration: underline;
 }
 
 /* === Error Messages === */
 .error {
-  color: #ff6b6b;
-  font-size: 0.85rem;
+  color: #f85149;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
   grid-column: 1 / -1;
-  margin-top: -10px;
 }
 
 .signup-button {
   background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  color: #000000;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
   padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  transition:
-    background-color 0.3s ease,
-    transform 0.2s ease;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  grid-column: 1 / -1;
+  margin-top: 12px;
 }
 
 .signup-button:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.05);
+  background-color: #f6f8fa;
+  border-color: #c7d2da;
+}
+
+.signup-button:active {
+  background-color: #eaeef2;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* === Responsive Layout === */
@@ -182,10 +179,19 @@
   }
 
   .signup-inner {
-    padding: 25px;
+    padding: 32px 20px;
   }
 
   .signup-inner h1 {
-    font-size: 1.6rem;
+    font-size: 24px;
+  }
+  
+  .signup-border-outer {
+    width: 50%;
+    margin-left: 0;
+    background-color: #0d1117;
+    color: green;
   }
 }
+
+

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import SearchBar from "../SearchBar/SearchBar";
@@ -17,6 +17,20 @@ function Navigation() {
   const closeChatBot = () => {
     setIsChatBotOpen(false);
   };
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isChatBotOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, [isChatBotOpen]);
 
   return (
     <>
