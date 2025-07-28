@@ -70,7 +70,7 @@ function Navigation() {
       </div>
 
       {isChatBotOpen && (
-        <div className="dialog-overlay">
+        <div className="dialog-overlay" style={{ zIndex: 9999 }}>
           <ChatBot onClose={closeChatBot} />
         </div>
       )}
