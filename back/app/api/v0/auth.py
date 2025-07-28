@@ -92,3 +92,19 @@ def signup():
     except Exception:
         db.session.rollback()
         return jsonify({"message": "error creating user"}), 500
+
+
+@bp.route("/verify", methods=["GET"])
+@jwt_required
+def verify(current_user):
+    token = generate_jwt_token(current_user.id)
+    return (
+        jsonify(
+            {
+                "message": "verification confirmed",
+                "user": current_user.to_dict(),
+                "token": token,
+            }
+        ),
+        200,
+    )
