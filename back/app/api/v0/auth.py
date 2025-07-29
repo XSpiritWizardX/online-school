@@ -93,6 +93,27 @@ def signup():
         db.session.rollback()
         return jsonify({"message": "error creating user"}), 500
 
+@bp.route("/signup", methods=["PUT"])
+@jwt_required
+def update_user(current_user):
+    """Update current user's email"""
+    data = request.get_json()
+    if not data:
+        return jsonify({"message": "Missing JSON body"}), 400
+
+    current_user.email = data.get("email", current_user.email)
+
+    try:
+        db.session.commit()
+        return jsonify({
+            "message": "User updated",
+            "user": current_user.to_dict()
+        }), 200
+    except Exception:
+        db.session.rollback()
+        return jsonify({"message": "Error updating user"}), 500
+
+
 
 @bp.route("/verify", methods=["GET"])
 @jwt_required

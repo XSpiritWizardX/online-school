@@ -7,7 +7,7 @@ export default function LandingPage() {
     <div className="landing-page">
       <div className="landing-page-container">
         <h1 className="landing-page-title">
-          WELCOME TO ONLINE SCHOOL — Learn. Teach. Create. Evolve.
+          ONLINE SCHOOL<br/> -Learn - Teach- <br/>-Create - Evolve-
         </h1>
 
         <p className="arc-para">
