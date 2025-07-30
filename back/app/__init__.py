@@ -1,13 +1,17 @@
+import os
+
 from flask import Flask
 from flask_cors import CORS
 from flask_migrate import Migrate
-from config import DevelopmentConfig, ProductionConfig
+
 from app.db import db
-import os
+from config import DevelopmentConfig, ProductionConfig
+from app.seeds import seed_commands
 
 
 def create_app():
     app = Flask(__name__)
+    app.cli.add_command(seed_commands)
 
     if os.environ.get("FLASK_ENV") == "production":
         app.config.from_object(ProductionConfig)
