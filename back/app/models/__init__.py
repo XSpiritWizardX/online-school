@@ -1,5 +1,12 @@
 from app.models.user import User
+from app.models.course import Course
 
+__all__ = [
+    'User',
+    'Course',
+    'get_user',
+    'authenticate_user',
+    ]
 
 def get_user(user_id):
     """Get user by ID"""
