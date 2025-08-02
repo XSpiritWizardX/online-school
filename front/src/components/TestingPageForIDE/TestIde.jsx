@@ -3,6 +3,7 @@ import CodeEditor from "../LearningTools/CodeEditor/CodeEditor";
 import PianoKeyboard from "../LearningTools/MusicTools/PianoKeyboard/PianoKeyboard";
 import SheetMusicDisplay from "../LearningTools/MusicTools/SheetMusic/SheetMusicDisplay";
 import AdvancedPaint from "../LearningTools/ArtTools/AdvancedPaint/AdvancedPaint";
+import VideoConference from "../VideoConference/VideoConference";
 export default function TestIde() {
   return (
     <div className="testide-wrapper">
@@ -88,6 +89,8 @@ export default function TestIde() {
       />
       <PianoKeyboard />
       <AdvancedPaint />
+
+      <VideoConference />
     </div>
   );
 }

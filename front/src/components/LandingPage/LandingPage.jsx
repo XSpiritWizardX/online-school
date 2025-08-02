@@ -179,6 +179,9 @@ export default function LandingPage() {
           <NavLink to="/test-ide" className="test-ide">
             Test Our IDE!
           </NavLink>
+             <NavLink to="/test-video" className="test-ide">
+            Test Our Videos!
+          </NavLink>
         </div>
       </div>
     </div>
