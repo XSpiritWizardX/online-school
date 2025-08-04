@@ -26,7 +26,6 @@ export const thunkAuthenticate = () => async (dispatch) => {
 };
 
 export const thunkLogin = (credentials) => async (dispatch) => {
-  // Convert email to username for backend compatibility
   const loginData = {
     email: credentials.email,
     password: credentials.password,
@@ -51,11 +50,35 @@ export const thunkLogin = (credentials) => async (dispatch) => {
 };
 
 export const thunkSignup = (user) => async (dispatch) => {
-  console.error("thunkSignup is broken");
   const response = await fetch("/api/v0/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data.user));
+  } else if (response.status < 500) {
+    const errorMessages = await response.json();
+    return errorMessages;
+  } else {
+    return { server: "Something went wrong. Please try again" };
+  }
+};
+
+
+export const thunkUpdateUser = (userData) => async (dispatch) => {
+  const token = localStorage.getItem("token");
+  if (!token) return;
+
+  const response = await fetch("/api/v0/auth/update", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(userData),
   });
 
   if (response.ok) {

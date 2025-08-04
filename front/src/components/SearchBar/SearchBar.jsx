@@ -13,7 +13,11 @@ function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="search-form" style={{ width: "100%" }}>
+    <form
+      onSubmit={handleSubmit}
+      className="search-form"
+      style={{ width: "100%" }}
+    >
       <input
         type="text"
         value={searchTerm}
