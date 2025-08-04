@@ -53,7 +53,7 @@ function SignupFormModal() {
         agreed_to_terms: agreeTerms,
         agreed_to_privacy: agreePrivacy,
         is_email_verified: false,
-        themeId: null,
+        theme_id: null,
       }),
     );
 
