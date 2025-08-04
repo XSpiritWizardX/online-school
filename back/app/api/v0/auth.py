@@ -74,18 +74,7 @@ def signup():
             409,
         )
 
-    first_name = data.get("first_name")
-    last_name = data.get("last_name")
     date_of_birth = data.get("date_of_birth")
-    phone_number = data.get("phone_number")
-    address = data.get("address")
-    city = data.get("city")
-    state = data.get("state")
-    zipcode = data.get("zipcode")
-    display_name = data.get("display_name")
-    avatar_url = data.get("avatar_url")
-    bio = data.get("bio")
-    theme_id = data.get("theme_id")
 
     if date_of_birth:
         try:
@@ -98,21 +87,9 @@ def signup():
                 400,
             )
 
-    user = User(
-        email=email,
-        first_name=first_name,
-        last_name=last_name,
-        date_of_birth=date_of_birth,
-        phone_number=phone_number,
-        address=address,
-        city=city,
-        state=state,
-        zipcode=zipcode,
-        display_name=display_name,
-        avatar_url=avatar_url,
-        bio=bio,
-        theme_id=theme_id,
-    )
+    data["date_of_birth"] = date_of_birth
+
+    user = User(**data)
     user.set_password(password)
 
     try:
