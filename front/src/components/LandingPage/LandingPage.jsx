@@ -174,11 +174,12 @@ export default function LandingPage() {
           buttonText="Join Online School Now"
           modalComponent={<SignupFormModal />}
         />
-      </div>
-      <div to="/test-ide" className="test-ides">
-        <NavLink to="/test-ide" className="test-ide">
-          Test The IDE
-        </NavLink>
+
+        <div className="test-ides">
+          <NavLink to="/test-ide" className="test-ide">
+            Test Our IDE!
+          </NavLink>
+        </div>
       </div>
     </div>
   );

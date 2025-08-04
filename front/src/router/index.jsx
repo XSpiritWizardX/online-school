@@ -10,6 +10,7 @@ import TestIde from "../components/TestingPageForIDE/TestIde";
 import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor";
 import ChatBot from "../components/ChatBot/GeminiChat";
 import Layout from "./Layout";
+import CourseInterface from "../components/CourseInterface/CourseInterface";
 
 export const router = createBrowserRouter([
   {
@@ -20,11 +21,11 @@ export const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <LoginFormPage />,
       },
       {
-        path: "signup",
+        path: "/signup",
         element: <SignupFormPage />,
       },
       {
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
       {
         path: "/coming-soon",
         element: <BlankPage />,
+      },
+      {
+        path: "/test-course",
+        element: <CourseInterface />,
       },
       {
         path: "*",
