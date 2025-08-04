@@ -92,9 +92,7 @@ export default function TestIde() {
       <AdvancedPaint />
 
       <VideoConference />
-          <SheetMusicDisplay notes={["C", "D", "E", "F", "G", "A", "B"]} />
-          <PianoKeyboard/>
-      <AdvancedPaint/>
+         
       <GraphingCalculator/>
     </div>
   );
