@@ -3,6 +3,8 @@ from app.db import db
 
 class Course(db.Model):
     __tablename__ = "courses"
+
+    # fields
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(
         db.Integer, db.ForeignKey("users.id"), nullable=False
@@ -16,6 +18,7 @@ class Course(db.Model):
         onupdate=db.func.now(),
     )
 
+    # relationships
     owner = db.relationship("User", back_populates="courses")
 
     # constraints

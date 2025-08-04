@@ -9,8 +9,8 @@ from werkzeug.security import (
 class User(db.Model):
     __tablename__ = "users"
 
+    # fields
     id = db.Column(db.Integer, primary_key=True)
-
     email = db.Column(db.String(255), nullable=False, unique=True)
     password_hash = db.Column(db.String(255), nullable=False)
     agreed_to_terms = db.Column(
@@ -45,6 +45,7 @@ class User(db.Model):
         onupdate=datetime.utcnow,
     )
 
+    # relationships
     courses = db.relationship("Course", back_populates="owner")
 
     @property
