@@ -18,6 +18,13 @@ class Course(db.Model):
 
     owner = db.relationship("User", back_populates="courses")
 
+    # constraints
+    __table_args__ = (
+        db.UniqueConstraint(
+            "owner_id", "title", name="unique_user_course_title"
+        ),
+    )
+
     def __repr__(self):
         return f"<Course {self.owner_id,self.title}>"
 
