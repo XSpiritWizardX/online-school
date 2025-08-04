@@ -51,7 +51,6 @@ export const thunkLogin = (credentials) => async (dispatch) => {
 };
 
 export const thunkSignup = (user) => async (dispatch) => {
-  console.error("thunkSignup is broken");
   const response = await fetch("/api/v0/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
