@@ -7,6 +7,7 @@ user_seeds = [
 ]
 user_emails = [user_seed["email"] for user_seed in user_seeds]
 
+
 def seed_users():
     """create test users"""
     for user_seed in user_seeds:

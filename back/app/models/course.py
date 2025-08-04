@@ -1,7 +1,8 @@
 from app.db import db
 
+
 class Course(db.Model):
-    __tablename__ = 'courses'
+    __tablename__ = "courses"
     #  Make sure that combination of owner id and title is unique
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, nullable=False)
@@ -13,4 +14,4 @@ class Course(db.Model):
     # Define relationship to User model
     
     def __repr__(self):
-        return f'<Course {self.owner_id,self.title}>'
+        return f"<Course {self.owner_id,self.title}>"
