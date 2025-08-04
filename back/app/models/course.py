@@ -7,7 +7,9 @@ class Course(db.Model):
     # fields
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(
-        db.Integer, db.ForeignKey("users.id"), nullable=False
+        db.Integer,
+        db.ForeignKey("users.id", name="fk_courses_owner_id"),
+        nullable=False,
     )
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
