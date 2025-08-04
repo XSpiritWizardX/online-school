@@ -13,6 +13,27 @@ class User(db.Model):
 
     email = db.Column(db.String(255), nullable=False, unique=True)
     password_hash = db.Column(db.String(255), nullable=False)
+    agreed_to_terms = db.Column(
+        db.Boolean, default=False, nullable=False
+    )
+    agreed_to_privacy = db.Column(
+        db.Boolean, default=False, nullable=False
+    )
+    is_email_verified = db.Column(
+        db.Boolean, default=False, nullable=False
+    )
+    first_name = db.Column(db.String)
+    last_name = db.Column(db.String)
+    date_of_birth = db.Column(db.Date)
+    phone_number = db.Column(db.String)
+    address = db.Column(db.String)
+    city = db.Column(db.String)
+    state = db.Column(db.String)
+    zipcode = db.Column(db.String)
+    display_name = db.Column(db.String)
+    avatar_url = db.Column(db.String)
+    bio = db.Column(db.String)
+    theme_id = db.Column(db.Integer)
 
     created_at = db.Column(
         db.DateTime, nullable=False, default=datetime.utcnow
@@ -30,10 +51,6 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
-
-    # Relationships
-    
     def to_dict(self):
         return {
             "id": self.id,
