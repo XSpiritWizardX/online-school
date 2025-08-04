@@ -26,7 +26,6 @@ export const thunkAuthenticate = () => async (dispatch) => {
 };
 
 export const thunkLogin = (credentials) => async (dispatch) => {
-  // Convert email to username for backend compatibility
   const loginData = {
     email: credentials.email,
     password: credentials.password,
@@ -51,7 +50,6 @@ export const thunkLogin = (credentials) => async (dispatch) => {
 };
 
 export const thunkSignup = (user) => async (dispatch) => {
-  console.error("thunkSignup is broken");
   const response = await fetch("/api/v0/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

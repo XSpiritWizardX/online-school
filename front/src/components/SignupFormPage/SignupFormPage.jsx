@@ -9,15 +9,15 @@ function SignupFormPage() {
   const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
-    document.body.classList.add('modal-open');
+    document.body.classList.add("modal-open");
     return () => {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove("modal-open");
     };
   }, []);
 
@@ -29,14 +29,14 @@ function SignupFormPage() {
     if (password !== confirmPassword) {
       return setErrors({
         confirmPassword:
-          "Confirm Password field must be the same as the Password field",
+          "Confirm Password field must match the Password field",
       });
     }
 
     const serverResponse = await dispatch(
       thunkSignup({
         email,
-        username,
+        display_name: displayName,
         password,
       }),
     );
@@ -56,7 +56,9 @@ function SignupFormPage() {
           <p>Join our platform today</p>
         </div>
 
-        {errors.server && <div className="error-message">{errors.server}</div>}
+        {errors.server && (
+          <div className="error-message">{errors.server}</div>
+        )}
 
         <form onSubmit={handleSubmit} className="signup-form">
           <div className="form-group">
@@ -69,20 +71,24 @@ function SignupFormPage() {
               required
               placeholder="Enter your email address"
             />
-            {errors.email && <span className="error">{errors.email}</span>}
+            {errors.email && (
+              <span className="error">{errors.email}</span>
+            )}
           </div>
 
           <div className="form-group">
-            <label>Username</label>
+            <label>Display Name</label>
             <input
               className="signup-input"
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
               required
-              placeholder="Enter your username"
+              placeholder="Enter your display name"
             />
-            {errors.username && <span className="error">{errors.username}</span>}
+            {errors.displayName && (
+              <span className="error">{errors.displayName}</span>
+            )}
           </div>
 
           <div className="form-group">
@@ -95,7 +101,9 @@ function SignupFormPage() {
               required
               placeholder="Enter your password"
             />
-            {errors.password && <span className="error">{errors.password}</span>}
+            {errors.password && (
+              <span className="error">{errors.password}</span>
+            )}
           </div>
 
           <div className="form-group">
@@ -108,10 +116,14 @@ function SignupFormPage() {
               required
               placeholder="Confirm your password"
             />
-            {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+            {errors.confirmPassword && (
+              <span className="error">{errors.confirmPassword}</span>
+            )}
           </div>
 
-          <button type="submit" className="signup-button">Sign Up</button>
+          <button type="submit" className="signup-button">
+            Sign Up
+          </button>
         </form>
       </div>
     </div>

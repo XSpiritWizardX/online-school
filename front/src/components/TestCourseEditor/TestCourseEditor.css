@@ -4,7 +4,8 @@
   height: 100vh;
   color: #e5e5e5;
   background: #0d1117;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +61,9 @@
   min-width: fit-content;
 }
 
-.save-btn, .preview-btn, .publish-btn {
+.save-btn,
+.preview-btn,
+.publish-btn {
   padding: 8px 16px;
   border: 1px solid #30363d;
   border-radius: 4px;
@@ -118,8 +121,14 @@
 }
 
 @keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 .progress-bar {
@@ -218,7 +227,8 @@
   transform: rotate(90deg);
 }
 
-.module-title, .lesson-title {
+.module-title,
+.lesson-title {
   flex: 1;
 }
 
@@ -484,7 +494,7 @@
   border-radius: 4px;
   resize: vertical;
   min-height: 120px;
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
   font-size: 14px;
   line-height: 1.45;
   box-sizing: border-box;
@@ -616,11 +626,15 @@
   flex: 1;
 }
 
-.lesson-settings, .quiz-settings, .assignment-settings {
+.lesson-settings,
+.quiz-settings,
+.assignment-settings {
   max-width: 800px;
 }
 
-.lesson-settings h3, .quiz-settings h3, .assignment-settings h3 {
+.lesson-settings h3,
+.quiz-settings h3,
+.assignment-settings h3 {
   margin: 0 0 20px 0;
   color: #e5e5e5;
   font-size: 18px;
@@ -637,7 +651,8 @@
   font-weight: 600;
 }
 
-.notes-textarea, .resources-textarea {
+.notes-textarea,
+.resources-textarea {
   width: 100%;
   background: #21262d;
   border: 1px solid #30363d;
@@ -651,12 +666,14 @@
   max-width: 100%;
 }
 
-.notes-textarea:focus, .resources-textarea:focus {
+.notes-textarea:focus,
+.resources-textarea:focus {
   outline: none;
   border-color: #ffffff;
 }
 
-.add-question-btn, .create-assignment-btn {
+.add-question-btn,
+.create-assignment-btn {
   background: #ffffff;
   color: #000;
   border: none;
@@ -666,7 +683,8 @@
   font-weight: 600;
 }
 
-.add-question-btn:hover, .create-assignment-btn:hover {
+.add-question-btn:hover,
+.create-assignment-btn:hover {
   background: #e5e5e5;
 }
 
@@ -756,23 +774,23 @@
   .course-layout {
     flex-direction: column;
   }
-  
+
   .course-sidebar {
     width: 100%;
     height: 200px;
   }
-  
+
   .section-tabs {
     flex-direction: column;
     gap: 10px;
     padding: 10px 20px;
   }
-  
+
   .action-buttons {
     width: 100%;
     justify-content: center;
   }
-  
+
   .action-buttons .save-btn,
   .action-buttons .preview-btn,
   .action-buttons .publish-btn {

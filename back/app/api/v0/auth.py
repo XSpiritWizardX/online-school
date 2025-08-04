@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Blueprint, jsonify, request
 
 from app.db import db
@@ -68,9 +69,27 @@ def signup():
 
     extant_user = User.query.filter_by(email=email).first()
     if extant_user:
-        return jsonify({"message": "email already registered"}), 409
+        return (
+            jsonify({"message": "email already registered"}),
+            409,
+        )
 
-    user = User(email=email)
+    date_of_birth = data.get("date_of_birth")
+
+    if date_of_birth:
+        try:
+            date_of_birth = datetime.strptime(
+                date_of_birth, "%Y-%m-%d"
+            ).date()
+        except ValueError:
+            return (
+                jsonify({"message": "invalid date format"}),
+                400,
+            )
+
+    data["date_of_birth"] = date_of_birth
+
+    user = User(**data)
     user.set_password(password)
 
     try:
@@ -89,9 +108,15 @@ def signup():
             ),
             201,
         )
-    except Exception:
+    except Exception as e:
         db.session.rollback()
-        return jsonify({"message": "error creating user"}), 500
+
+        import traceback
+
+        print(f"Error in signup: {e}")
+        print(traceback.format_exc())
+
+        return jsonify({"message": "db error creating user"}), 500
 
 @bp.route("/signup", methods=["PUT"])
 @jwt_required

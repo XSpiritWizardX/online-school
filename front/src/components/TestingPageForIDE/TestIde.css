@@ -30,7 +30,7 @@
   align-items: flex-start;
   width: 100%;
   max-width: 1500px; /* Set a max width for centering */
-  margin: 0;    /* Center the content */
+  margin: 0; /* Center the content */
   margin-right: 10%;
   gap: 2rem;
   padding-top: 2rem;

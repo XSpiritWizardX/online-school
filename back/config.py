@@ -24,7 +24,6 @@ def load_front_config(mode):
     for env_file in env_files:
         env_path = backend_dir / env_file
         if env_path.exists():
-            print(f"loading {env_file}")
             config.update(dotenv_values(env_path))
 
     return config
