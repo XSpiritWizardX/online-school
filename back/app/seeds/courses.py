@@ -32,7 +32,13 @@ def seed_courses():
 
 def unseed_courses():
     """remove test courses"""
-    for course_seed in course_seeds:
-        # add unique owner id to ensure correct deletion
-        Course.query.filter_by(title=course_seed["title"]).delete()
+    users = User.query.filter(User.email.in_(user_emails)).all()
+    if not users:
+        return
+
+    for index, course_seed in enumerate(course_seeds):
+        owner_id = users[index % len(users)].id
+        Course.query.filter_by(
+            title=course_seed["title"], owner_id=owner_id
+        ).delete()
     db.session.commit()
