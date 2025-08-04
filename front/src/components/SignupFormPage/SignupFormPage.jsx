@@ -9,7 +9,7 @@ function SignupFormPage() {
   const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -36,7 +36,7 @@ function SignupFormPage() {
     const serverResponse = await dispatch(
       thunkSignup({
         email,
-        username,
+        display_name: displayName,
         password,
       }),
     );
@@ -73,14 +73,14 @@ function SignupFormPage() {
           </div>
 
           <div className="form-group">
-            <label>Username</label>
+            <label>Display Name</label>
             <input
               className="signup-input"
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
               required
-              placeholder="Enter your username"
+              placeholder="Enter your display name"
             />
             {errors.username && <span className="error">{errors.username}</span>}
           </div>
