@@ -63,7 +63,7 @@ export default defineConfig(({ mode }) => {
       open: true,
 
       watch: {
-        usePolling:true,
+        usePolling: true,
       },
 
       port,

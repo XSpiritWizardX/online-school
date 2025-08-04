@@ -17,7 +17,10 @@ export default function CodeEditor() {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target)
+      ) {
         setShowLanguageMenu(false);
       }
     }
@@ -30,7 +33,6 @@ export default function CodeEditor() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showLanguageMenu]);
-
 
   const languages = [
     {
@@ -236,20 +238,22 @@ export default function CodeEditor() {
   const runHTML = () => {
     try {
       // Open a new window/tab
-      const newWindow = window.open('', '_blank');
-      
+      const newWindow = window.open("", "_blank");
+
       if (newWindow) {
         // Write the HTML content to the new window
         newWindow.document.open();
         newWindow.document.write(code);
         newWindow.document.close();
-        
+
         // Clear the iframe and show a message
         const iframe = iframeRef.current;
         if (iframe) {
           iframe.src = "about:blank";
           setTimeout(() => {
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+            const iframeDoc =
+              iframe.contentDocument ||
+              iframe.contentWindow?.document;
             if (iframeDoc) {
               iframeDoc.open();
               iframeDoc.write(`
@@ -282,12 +286,16 @@ export default function CodeEditor() {
         }
       } else {
         // Handle popup blocking
-        setOutput("Error: Unable to open new tab. Please allow popups for this site.");
+        setOutput(
+          "Error: Unable to open new tab. Please allow popups for this site.",
+        );
         const iframe = iframeRef.current;
         if (iframe) {
           iframe.src = "about:blank";
           setTimeout(() => {
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+            const iframeDoc =
+              iframe.contentDocument ||
+              iframe.contentWindow?.document;
             if (iframeDoc) {
               iframeDoc.open();
               iframeDoc.write(`
@@ -751,7 +759,8 @@ This is a code preview with syntax highlighting.</div>
           <button
             className="run-button"
             onClick={() => setShowLanguageMenu(true)}
-          >Language
+          >
+            Language
           </button>
           <button className="run-button" onClick={runCode}>
             Help

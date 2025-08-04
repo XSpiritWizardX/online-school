@@ -39,7 +39,9 @@
   padding: 0;
   text-decoration: none;
   width: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif;
   cursor: default;
 }
 
@@ -50,7 +52,9 @@
   font-weight: 400;
   line-height: 1.5;
   transition: color 0.2s ease-in-out;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif;
 }
 
 .foot-links:hover {
@@ -66,7 +70,9 @@
   padding-top: 24px;
   border-top: 1px solid #21262d;
   width: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif;
 }
 
 /* Responsive Design */
@@ -74,21 +80,20 @@
   .foot-container {
     padding: 32px 0 24px;
   }
-  
+
   .foot {
     padding: 0 16px;
     flex-direction: column;
     gap: 32px;
     text-align: center;
   }
-  
+
   .resource-col {
     align-items: center;
   }
-  
+
   .copyright-text {
     margin-top: 24px;
     padding-top: 16px;
   }
 }
-

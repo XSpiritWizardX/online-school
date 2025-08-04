@@ -21,14 +21,14 @@ function Navigation() {
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isChatBotOpen) {
-      document.body.classList.add('modal-open');
+      document.body.classList.add("modal-open");
     } else {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove("modal-open");
     }
 
     // Cleanup on unmount
     return () => {
-      document.body.classList.remove('modal-open');
+      document.body.classList.remove("modal-open");
     };
   }, [isChatBotOpen]);
 
