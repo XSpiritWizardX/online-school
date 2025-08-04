@@ -55,6 +55,18 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "date_of_birth": self.date_of_birth,
+            "phone_number": self.phone_number,
+            "address": self.address,
+            "city": self.city,
+            "state": self.state,
+            "zipcode": self.zipcode,
+            "display_name": self.display_name,
+            "avatar_url": self.avatar_url,
+            "bio": self.bio,
+            "theme_id": self.theme_id,
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
         }
