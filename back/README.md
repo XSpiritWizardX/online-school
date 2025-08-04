@@ -38,6 +38,7 @@ uv run flask seed all
 ## update db schema, eg add new table
 
   - modify `app/models/model_name_singular.py`
+  - potentially modify `app/models/__init___.py` to add the new model
   - modify `app/seeds/model_name_plural.py`
   - potentially modify `app/seeds/__init___.py` to add the new model
     seeds
