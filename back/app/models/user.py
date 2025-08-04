@@ -45,6 +45,8 @@ class User(db.Model):
         onupdate=datetime.utcnow,
     )
 
+    courses = db.relationship("Course", back_populates="owner")
+
     @property
     def password(self):
         return self.password_hash
