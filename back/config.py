@@ -1,6 +1,7 @@
 from dotenv import dotenv_values
 from pathlib import Path
 import os
+import sys
 
 
 def load_front_config(mode):
@@ -23,7 +24,6 @@ def load_front_config(mode):
     for env_file in env_files:
         env_path = backend_dir / env_file
         if env_path.exists():
-            print(f"loading {env_file}")
             config.update(dotenv_values(env_path))
 
     return config
@@ -37,11 +37,33 @@ def get_front_port(mode):
     return front_config["PORT"]
 
 
-if "FLASK_ENV" not in os.environ:
-    print("unable to determine environment mode")
-    exit(1)
+def get_env(var):
+    if var in os.environ:
+        return os.environ[var]
+    env_files = [".env", ".flaskenv"]
+    for env_file in env_files:
+        env_path = Path(env_file)
+        if not env_path.exists():
+            continue
+        env = dotenv_values(env_path)
+        if var in env:
+            return env[var]
 
-mode = os.environ.get("FLASK_ENV")
+
+def get_flask_env():
+    return get_env("FLASK_ENV")
+
+
+def get_database():
+    return get_env("SQLALCHEMY_DATABASE_URI")
+
+
+mode = get_flask_env()
+if not mode:
+    print(__file__, file=sys.stderr)
+    print("unable to determine mode", file=sys.stderr)
+    print('set FLASK_ENV="development" in .env', file=sys.stderr)
+    exit(1)
 front_port = get_front_port(mode)
 
 

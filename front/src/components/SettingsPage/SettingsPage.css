@@ -1,0 +1,103 @@
+.settings-page-container {
+  background: #0d1117;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.45);
+  padding: 5rem;
+  margin-top: 3.5%;
+}
+
+.settings-page-top {
+  display: flex;
+  align-items: center;
+  gap: 12rem;
+  margin-bottom: 2rem;
+}
+
+.avatar-section {
+  flex-shrink: 0;
+}
+
+.user-avatar-large {
+  width: 14rem;
+  height: 14rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #444;
+  background: #222;
+}
+
+.settings-header {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+.settings-page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #f0f6fc;
+}
+.edit-btn, .save-btn, .cancel-btn {
+   background-color: #30363d;
+  border: 1px solid #484f58;
+  color: #f0f6fc;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  width: 20%;
+  font-family: inherit;
+}
+
+.edit-btn:hover, .save-btn:hover, .cancel-btn:hover {
+  background-color: #484f58;
+  border-color: #6e7681;
+  color: #ffffff;
+}
+
+.settings-page-content h2 {
+  margin-bottom: 1rem;
+}
+
+.settings-form label {
+  display: block;
+  margin-bottom: 1rem;
+  color: #f0f6fc;
+}
+
+.settings-form input,
+.settings-form textarea,
+.settings-form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border-radius: 5px;
+   background: #21262d;
+  border: 1px solid #484f58;;
+  color: #f0f6fc;
+  font-size: 1rem;
+}
+
+.settings-form textarea {
+  resize: vertical;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.address-section {
+  display: flex;
+  gap: 6rem;
+}
+
+.name-section {
+  display: flex;
+  gap: 2rem;
+}

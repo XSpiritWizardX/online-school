@@ -7,7 +7,7 @@ export default function LandingPage() {
     <div className="landing-page">
       <div className="landing-page-container">
         <h1 className="landing-page-title">
-          WELCOME TO ONLINE SCHOOL — Learn. Teach. Create. Evolve.
+          ONLINE SCHOOL<br/> -Learn - Teach- <br/>-Create - Evolve-
         </h1>
 
         <p className="arc-para">
@@ -174,11 +174,15 @@ export default function LandingPage() {
           buttonText="Join Online School Now"
           modalComponent={<SignupFormModal />}
         />
-      </div>
-      <div to="/test-ide" className="test-ides">
-        <NavLink to="/test-ide" className="test-ide">
-          Test The IDE
-        </NavLink>
+
+        <div className="test-ides">
+          <NavLink to="/test-ide" className="test-ide">
+            Test Our IDE!
+          </NavLink>
+             <NavLink to="/test-video" className="test-ide">
+            Test Our Videos!
+          </NavLink>
+        </div>
       </div>
     </div>
   );

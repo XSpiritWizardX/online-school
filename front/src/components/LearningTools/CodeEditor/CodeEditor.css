@@ -1,13 +1,11 @@
 .ide-container {
-  position: absolute;
   display: flex;
-  /* justify-content: space-between; */
-  justify-content: end;
-  align-items: start;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start;
   width: 100%;
+  max-width: 1200px; /* Set a max width for centering */
   height: 100vh;
   border-radius: 15px;
-  display: flex;
   padding-left: 0px;
   margin-left: 0px;
 }
@@ -79,11 +77,11 @@
   height: 100%;
   gap: 10px;
   margin-top: 11%;
-  margin-left: auto;
+  margin-left: 10%;
   margin-right: 1%;
 }
 .run-button {
-  display: flex;
+  display: grid;
 
   background-color: #000000;
   color: #ffffff;
@@ -95,18 +93,32 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
-  margin-right: 1%;
+
+  align-items: center;
 }
+
+.run-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.run-button:hover:after {
+  width: 100%;
+}
+
 .output-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 1000px;
   background-color: #000000;
   color: #ffffff;
   border-radius: 15px;
-  height: 70%;
-  width: 26%;
+  height: 100%;
+  width: 100%;
+  max-width: 500px;
+  min-width: 250px;
   font-family: monospace;
+  margin-bottom: 1rem;
 }
 .output {
   width: 1000px;
@@ -116,6 +128,11 @@
   box-sizing: border-box;
   color: #ffffff;
 }
+
+.outputty {
+  margin-left: 20%;
+  margin-right: -20%;
+}
 .output-box pre {
   margin: 0;
   white-space: pre-wrap;
@@ -123,9 +140,22 @@
   color: #ffffff;
 }
 
+.output-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+  margin-left: 40%;
+}
+
 .output-iframe {
-  width: 100%;
-  height: 100%;
+  width: 170%;
+  height: 150%;
+  min-height: 200px;
+  max-height: 800px;
+  margin-left: 40%;
+  overflow-y: auto;
+  overflow-x: auto;
   background-color: #000000;
   color: #ffffff;
   font-family: monospace;
@@ -140,7 +170,7 @@
 
 .language-menu {
   position: absolute;
-  top: 60px;
+  top: 48%;
   right: 10%;
   background: #000000;
   border: 1px solid #555;
@@ -149,39 +179,47 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   z-index: 100;
   width: auto;
-
 }
 
 .language-menu h3 {
   color: #fff;
   margin: 0 0 15px 0;
-  font-size:20px;
+  font-size: 20px;
 }
 .language-option {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   border-radius: 12px;
+  border: 2px solid white;
+  margin-top: 5%;
   cursor: pointer;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #000000;
+  color: #ffffff;
   font-size: 16px;
   transition: background-color 0.2s ease;
 }
 
 .language-option:hover {
-  background-color: #333;
+  background-color: #ffffff;
+  color: #000000;
 }
 .close-menu {
-  background-color: #ff0000;
-  color: #ffffff;
+  background-color: #212529;
+  color: #fff;
   border: none;
   width: 100%;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
-  margin-top: 5%;
+  margin-top: 7%;
+  transition: all 0.3s ease;
+}
+
+.close-menu:hover {
+  background: #fff;
+  color: #212529;
 }

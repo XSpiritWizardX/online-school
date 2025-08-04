@@ -6,6 +6,7 @@ import { thunkAuthenticate } from "../redux/session";
 import Navigation from "../components/Navigation/Navigation";
 import FooterCard from "../components/Footer/Footer";
 import CookieBanner from "../components//Compliance/CookieBanner/CookieBanner";
+import SecondHeader from "../components/SecondHeader/SecondHeader";
 
 export default function Layout() {
   const dispatch = useDispatch();
@@ -13,12 +14,13 @@ export default function Layout() {
   useEffect(() => {
     dispatch(thunkAuthenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
   return (
     <>
       <CookieBanner />
       <ModalProvider>
         <Navigation />
+        <SecondHeader />
+
         {isLoaded && <Outlet />}
         <FooterCard />
         <Modal />

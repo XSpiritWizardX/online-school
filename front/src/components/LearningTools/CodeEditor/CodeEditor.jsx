@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import MonacoEditor from "@monaco-editor/react";
 import "./CodeEditor.css";
 
@@ -12,7 +12,27 @@ export default function CodeEditor() {
   const [currentLanguage, setCurrentLanguage] =
     useState("javascript");
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+  const menuRef = useRef(null);
   const iframeRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target)
+      ) {
+        setShowLanguageMenu(false);
+      }
+    }
+    if (showLanguageMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showLanguageMenu]);
 
   const languages = [
     {
@@ -216,26 +236,95 @@ export default function CodeEditor() {
   };
 
   const runHTML = () => {
-    const iframe = iframeRef.current;
-
     try {
-      iframe.src = "about:blank";
+      // Open a new window/tab
+      const newWindow = window.open("", "_blank");
 
-      setTimeout(() => {
-        const iframeDoc =
-          iframe.contentDocument || iframe.contentWindow?.document;
+      if (newWindow) {
+        // Write the HTML content to the new window
+        newWindow.document.open();
+        newWindow.document.write(code);
+        newWindow.document.close();
 
-        if (!iframeDoc) {
-          setOutput("Error: Cannot access iframe document");
-          return;
+        // Clear the iframe and show a message
+        const iframe = iframeRef.current;
+        if (iframe) {
+          iframe.src = "about:blank";
+          setTimeout(() => {
+            const iframeDoc =
+              iframe.contentDocument ||
+              iframe.contentWindow?.document;
+            if (iframeDoc) {
+              iframeDoc.open();
+              iframeDoc.write(`
+                <!DOCTYPE html>
+                <html>
+                  <head>
+                    <style>
+                      body {
+                        font-family: 'Courier New', monospace;
+                        background: #1e1e1e;
+                        color: #98c379;
+                        margin: 10px;
+                        padding: 0;
+                        font-size: 14px;
+                      }
+                      .success {
+                        color: #98c379;
+                        margin-bottom: 10px;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <div class="success">✅ HTML opened in new tab successfully!</div>
+                  </body>
+                </html>
+              `);
+              iframeDoc.close();
+            }
+          }, 10);
         }
-
-        iframeDoc.open();
-        iframeDoc.write(code);
-        iframeDoc.close();
-      }, 10);
+      } else {
+        // Handle popup blocking
+        setOutput(
+          "Error: Unable to open new tab. Please allow popups for this site.",
+        );
+        const iframe = iframeRef.current;
+        if (iframe) {
+          iframe.src = "about:blank";
+          setTimeout(() => {
+            const iframeDoc =
+              iframe.contentDocument ||
+              iframe.contentWindow?.document;
+            if (iframeDoc) {
+              iframeDoc.open();
+              iframeDoc.write(`
+                <!DOCTYPE html>
+                <html>
+                  <head>
+                    <style>
+                      body {
+                        font-family: 'Courier New', monospace;
+                        background: #1e1e1e;
+                        color: #f48771;
+                        margin: 10px;
+                        padding: 0;
+                        font-size: 14px;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <div>❌ Unable to open new tab. Please allow popups for this site.</div>
+                  </body>
+                </html>
+              `);
+              iframeDoc.close();
+            }
+          }, 10);
+        }
+      }
     } catch (error) {
-      setOutput(`Error executing HTML: ${error.message}`);
+      setOutput(`Error opening HTML in new tab: ${error.message}`);
     }
   };
 
@@ -449,6 +538,37 @@ This is a code preview with syntax highlighting.</div>
     setOutput("");
   };
 
+  // Function to load Pyodide instance
+  const loadPyodideInstance = async () => {
+    setPyodideLoading(true);
+    try {
+      if (!window.loadPyodide) {
+        const pyodideScript = document.createElement("script");
+        pyodideScript.src =
+          "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js";
+        pyodideScript.async = true;
+        await new Promise((resolve, reject) => {
+          pyodideScript.onload = resolve;
+          pyodideScript.onerror = reject;
+          document.body.appendChild(pyodideScript);
+        });
+      }
+      const pyodideInstance = await window.loadPyodide({
+        indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/",
+      });
+      setPyodide(pyodideInstance);
+      setPyodideLoading(false);
+      return pyodideInstance;
+    } catch (err) {
+      setPyodideLoading(false);
+      setOutput("Failed to load Python runtime: " + err.message);
+      showPythonErrorInIframe(
+        "Failed to load Python runtime: " + err.message,
+      );
+      return null;
+    }
+  };
+
   // --- PYTHON EXECUTION SUPPORT ---
   const runPython = async () => {
     const iframe = iframeRef.current;
@@ -458,7 +578,8 @@ This is a code preview with syntax highlighting.</div>
     if (iframe) {
       iframe.src = "about:blank";
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           iframeDoc.open();
           iframeDoc.write(`
@@ -487,31 +608,12 @@ This is a code preview with syntax highlighting.</div>
       }, 10);
     }
 
-    if (!pyodide) {
-      setPyodideLoading(true);
-      try {
-        const pyodideScript = document.createElement("script");
-        pyodideScript.src = "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js";
-        pyodideScript.async = true;
-
-        await new Promise((resolve, reject) => {
-          pyodideScript.onload = resolve;
-          pyodideScript.onerror = reject;
-          document.body.appendChild(pyodideScript);
-        });
-
-        const pyodideInstance = await window.loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/" });
-        setPyodide(pyodideInstance);
-        setPyodideLoading(false);
-        await executePython(pyodideInstance);
-      } catch (err) {
-        setPyodideLoading(false);
-        setOutput("Failed to load Python runtime: " + err.message);
-        showPythonErrorInIframe("Failed to load Python runtime: " + err.message);
-      }
-    } else {
-      await executePython(pyodide);
+    let pyodideInstance = pyodide;
+    if (!pyodideInstance) {
+      pyodideInstance = await loadPyodideInstance();
+      if (!pyodideInstance) return;
     }
+    await executePython(pyodideInstance);
   };
 
   // Helper to show error in iframe for Python
@@ -519,7 +621,8 @@ This is a code preview with syntax highlighting.</div>
     const iframe = iframeRef.current;
     if (iframe) {
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           iframeDoc.open();
           iframeDoc.write(`
@@ -556,10 +659,14 @@ This is a code preview with syntax highlighting.</div>
 
     // Capture stdout/stderr
     pyodideInstance.setStdout({
-      batched: (s) => { outputStr += s; }
+      batched: (s) => {
+        outputStr += s;
+      },
     });
     pyodideInstance.setStderr({
-      batched: (s) => { errorStr += s; }
+      batched: (s) => {
+        errorStr += s;
+      },
     });
 
     try {
@@ -571,7 +678,8 @@ This is a code preview with syntax highlighting.</div>
     // Show output in iframe
     if (iframe) {
       setTimeout(() => {
-        const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+        const iframeDoc =
+          iframe.contentDocument || iframe.contentWindow?.document;
         if (iframeDoc) {
           iframeDoc.open();
           iframeDoc.write(`
@@ -605,41 +713,37 @@ This is a code preview with syntax highlighting.</div>
 
   return (
     <div className="ide-container">
-      <div
-        className="top-part"
-      >
+      <div className="top-part">
+        <div className="rotating-border-wrapper">
+          <div className="rotating-border" />
 
-      <div className="rotating-border-wrapper">
-        <div className="rotating-border" />
-
-        <div className="editor-box">
-
-          <MonacoEditor
-            height="69cap"
-            width="69cap"
-            defaultLanguage={
-              currentLanguage === "csharp"
-                ? "csharp"
-                : currentLanguage
-            }
-            language={
-              currentLanguage === "csharp"
-                ? "csharp"
-                : currentLanguage
-            }
-            theme="vs-dark"
-            value={code}
-            onChange={(value) => setCode(value)}
-            options={{
-              fontSize: 14,
-              minimap: { enabled: true },
-              scrollBeyondLastLine: false,
-              wordWrap: "on",
-            }}
-          />
+          <div className="editor-box">
+            <MonacoEditor
+              height="69cap"
+              width="69cap"
+              defaultLanguage={
+                currentLanguage === "csharp"
+                  ? "csharp"
+                  : currentLanguage
+              }
+              language={
+                currentLanguage === "csharp"
+                  ? "csharp"
+                  : currentLanguage
+              }
+              theme="vs-dark"
+              value={code}
+              onChange={(value) => setCode(value)}
+              options={{
+                fontSize: 14,
+                minimap: { enabled: true },
+                scrollBeyondLastLine: false,
+                wordWrap: "on",
+              }}
+            />
+          </div>
         </div>
       </div>
-        </div>
 
       <div className="output-box">
         <div className="run-buttons">
@@ -654,9 +758,9 @@ This is a code preview with syntax highlighting.</div>
           </button>
           <button
             className="run-button"
-            onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+            onClick={() => setShowLanguageMenu(true)}
           >
-            Languages
+            Language
           </button>
           <button className="run-button" onClick={runCode}>
             Help
@@ -667,7 +771,7 @@ This is a code preview with syntax highlighting.</div>
         </div>
 
         {showLanguageMenu && (
-          <div className="language-menu">
+          <div className="language-menu" ref={menuRef}>
             <h3>Select Language:</h3>
             <div className="language-grid">
               {languages.map((language) => (
@@ -679,20 +783,17 @@ This is a code preview with syntax highlighting.</div>
                   {language.name}
                 </button>
               ))}
-            <button
-              className="close-menu"
-              onClick={() => setShowLanguageMenu(false)}
-            >
-              Close
-            </button>
+              <button
+                className="close-menu"
+                onClick={() => setShowLanguageMenu(false)}
+              >
+                Close
+              </button>
             </div>
           </div>
         )}
 
-        <div
-          className="outputty"
-
-        >
+        <div className="outputty">
           <h2 className="output-title">Output</h2>
           <iframe
             ref={iframeRef}
@@ -704,7 +805,6 @@ This is a code preview with syntax highlighting.</div>
             <div
               style={{
                 color: "#f48771",
-                padding: "10px",
                 fontFamily: "monospace",
               }}
             >

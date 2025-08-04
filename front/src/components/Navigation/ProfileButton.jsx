@@ -8,6 +8,7 @@ import SignupFormModal from "../SignupFormModal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 
 import "./ProfileButton.css";
+import { NavLink } from "react-router-dom";
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -52,8 +53,11 @@ function ProfileButton() {
         <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <div>{user.username}</div>
               <div>{user.email}</div>
+
+              <NavLink className='nav-link-pro' to={`/course-editor`}>Create a course</NavLink>
+              <NavLink className='nav-link-pro' to={`/settings/${user.id}`}>Settings</NavLink>
+
               <div>
                 <button onClick={logout}>Log Out</button>
               </div>

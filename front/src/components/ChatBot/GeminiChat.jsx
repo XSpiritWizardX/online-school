@@ -1,15 +1,24 @@
-import { useState } from 'react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { FiX, FiCopy, FiCheck, FiTrash2, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
-import './GeminiChat.css';
+import { useState } from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import {
+  FiX,
+  FiCopy,
+  FiCheck,
+  FiTrash2,
+  FiMaximize2,
+  FiMinimize2,
+} from "react-icons/fi";
+import "./GeminiChat.css";
 
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
-const model = genAI ? genAI.getGenerativeModel({ model: "gemini-2.0-flash" }) : null;
+const model = genAI
+  ? genAI.getGenerativeModel({ model: "gemini-2.0-flash" })
+  : null;
 
 export default function ChatBot({ onClose }) {
-  const [prompt, setPrompt] = useState('');
-  const [response, setResponse] = useState('');
+  const [prompt, setPrompt] = useState("");
+  const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -19,10 +28,12 @@ export default function ChatBot({ onClose }) {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setResponse('');
+    setResponse("");
 
     if (!model) {
-      setError("Gemini API not initialized. Please ensure VITE_GEMINI_API_KEY is set in your .env file.");
+      setError(
+        "Gemini API not initialized. Please ensure VITE_GEMINI_API_KEY is set in your .env file.",
+      );
       setLoading(false);
       return;
     }
@@ -39,7 +50,9 @@ export default function ChatBot({ onClose }) {
       setResponse(text);
     } catch (err) {
       console.error("Error calling Gemini API:", err);
-      setError(`Failed to get a response from Gemini: ${err.message}`);
+      setError(
+        `Failed to get a response from Gemini: ${err.message}`,
+      );
     } finally {
       setLoading(false);
     }
@@ -52,13 +65,13 @@ export default function ChatBot({ onClose }) {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
       } catch (err) {
-        console.error('Failed to copy text: ', err);
+        console.error("Failed to copy text: ", err);
       }
     }
   };
 
   const handleClear = () => {
-    setResponse('');
+    setResponse("");
     setError(null);
     setCopied(false);
     setExpanded(false);
@@ -69,7 +82,7 @@ export default function ChatBot({ onClose }) {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit(e);
     }
@@ -81,7 +94,9 @@ export default function ChatBot({ onClose }) {
       <div className="fullscreen-overlay">
         <div className="fullscreen-container">
           <div className="fullscreen-header">
-            <h2 className="fullscreen-title">Online School Assistant - Response</h2>
+            <h2 className="fullscreen-title">
+              Online School Assistant - Response
+            </h2>
             <div className="fullscreen-buttons">
               <button
                 onClick={handleCopy}
@@ -89,7 +104,7 @@ export default function ChatBot({ onClose }) {
                 title={copied ? "Copied!" : "Copy response"}
               >
                 {copied ? <FiCheck /> : <FiCopy />}
-                {copied ? 'Copied!' : 'Copy'}
+                {copied ? "Copied!" : "Copy"}
               </button>
 
               <button
@@ -111,9 +126,12 @@ export default function ChatBot({ onClose }) {
               </button>
 
               {onClose && (
-                <button onClick={onClose} className="close-button" title="Close">
+                <button
+                  onClick={onClose}
+                  className="close-button"
+                  title="Close"
+                >
                   <FiX />
-
                 </button>
               )}
             </div>
@@ -133,21 +151,23 @@ export default function ChatBot({ onClose }) {
     <div className="container">
       <div className="header">
         {onClose && (
-          <button onClick={onClose} className="close-button" title="Close">
+          <button
+            onClick={onClose}
+            className="close-button"
+            title="Close"
+          >
             <FiX />
           </button>
         )}
         <h1 className="title-ai-chat"> Online School Assistant</h1>
       </div>
 
-      <p className="warning">
-        Use only for development.
-      </p>
+      <p className="warning">Use only for development.</p>
 
       <div className="response-section">
-        <div className='responsei'>
+        <div className="responsei">
           {response && (
-            <div className='response-header-section'>
+            <div className="response-header-section">
               <h3 className="reply-title">Response Area:</h3>
               <div className="response-buttons">
                 <button
@@ -156,7 +176,7 @@ export default function ChatBot({ onClose }) {
                   title={copied ? "Copied!" : "Copy response"}
                 >
                   {copied ? <FiCheck /> : <FiCopy />}
-                  {copied ? 'Copied!' : 'Copy'}
+                  {copied ? "Copied!" : "Copy"}
                 </button>
 
                 <button
@@ -201,7 +221,7 @@ export default function ChatBot({ onClose }) {
           </div>
         )}
 
-        <br/>
+        <br />
 
         <form onSubmit={handleSubmit}>
           <textarea
@@ -213,8 +233,12 @@ export default function ChatBot({ onClose }) {
             placeholder="Ask Me Anything..."
             disabled={loading}
           />
-          <button type="submit" className="ask-button" disabled={loading || !prompt.trim()}>
-            {loading ? 'Thinking...' : 'Ask'}
+          <button
+            type="submit"
+            className="ask-button"
+            disabled={loading || !prompt.trim()}
+          >
+            {loading ? "Thinking..." : "Ask"}
           </button>
         </form>
       </div>

@@ -7,10 +7,14 @@ import TermsOfService from "../components/Compliance/TermsOfService/TermsOfServi
 import PrivacyPolicy from "../components//Compliance/PrivacyPolicy/PrivacyPolicy";
 import CookiesPolicy from "../components//Compliance/CookiePolicy/CookiePolicy";
 import TestIde from "../components/TestingPageForIDE/TestIde";
-import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor"
+import TestCourseEditor from "../components/TestCourseEditor/TestCourseEditor";
 import ChatBot from "../components/ChatBot/GeminiChat";
 import Layout from "./Layout";
+import CourseInterface from "../components/CourseInterface/CourseInterface";
+import SettingsPage from "../components/SettingsPage/SettingsPage";
 
+
+import TestPage from "../components/TestPages/VideoTest/VideoTest";
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -20,11 +24,11 @@ export const router = createBrowserRouter([
         element: <LandingPage />,
       },
       {
-        path: "login",
+        path: "/login",
         element: <LoginFormPage />,
       },
       {
-        path: "signup",
+        path: "/signup",
         element: <SignupFormPage />,
       },
       {
@@ -54,6 +58,18 @@ export const router = createBrowserRouter([
       {
         path: "/coming-soon",
         element: <BlankPage />,
+      },
+      {
+        path: "/test-course",
+        element: <CourseInterface />,
+      },
+      {
+        path: "/settings/:userId",
+        element: <SettingsPage />,
+      },
+      {
+        path: "/test-video",
+        element: <TestPage />,
       },
       {
         path: "*",

@@ -1,0 +1,141 @@
+/* Prevent body scroll */
+body.modal-open {
+  overflow: hidden;
+}
+
+.signup-page-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0d1117;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 20px 80px 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.signup-page-inner {
+  padding: 40px;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(1, 4, 9, 0.85);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif;
+  max-height: 100%;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.signup-header h1 {
+  color: #f0f6fc;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  line-height: 1.25;
+}
+
+.signup-header p {
+  color: #8b949e;
+  font-size: 16px;
+  margin: 0;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: #f0f6fc;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.signup-input {
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #f0f6fc;
+  font-size: 16px;
+  padding: 12px 16px;
+  line-height: 20px;
+  transition:
+    border-color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+}
+
+.signup-input::placeholder {
+  color: #8b949e;
+}
+
+.signup-input:focus {
+  outline: none;
+  border-color: #1f6feb;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.12);
+}
+
+.signup-input:hover {
+  border-color: #8b949e;
+}
+
+.signup-button {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+  margin-top: 8px;
+}
+
+.signup-button:hover {
+  background-color: #f6f8fa;
+  border-color: #c7d2da;
+}
+
+.signup-button:active {
+  background-color: #eaeef2;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  background-color: #3c1e1e;
+  border: 1px solid #f85149;
+  border-radius: 6px;
+  color: #f85149;
+  font-size: 14px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+}
+
+.error {
+  color: #f85149;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}

@@ -1,6 +1,10 @@
-import jwt
 from datetime import datetime, timedelta
-from flask import current_app
+from functools import wraps
+
+import jwt
+from flask import current_app, jsonify, request
+
+from app.models import get_user
 
 
 def generate_jwt_token(user_id, expires_in=3600):
@@ -35,3 +39,36 @@ def extract_token_from_header(auth_header):
     if auth_header and auth_header.startswith("Bearer "):
         return auth_header.split(" ")[1]
     return None
+
+
+def jwt_required(f):
+    """Decorator to require JWT authentication"""
+
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        token = None
+
+        # Get token from Authorization header
+        auth_header = request.headers.get("Authorization")
+        if auth_header:
+            token = extract_token_from_header(auth_header)
+
+        if not token:
+            return jsonify({"message": "Token is missing"}), 401
+
+        user_id = decode_jwt_token(token)
+        if user_id is None:
+            return (
+                jsonify({"message": "Token is invalid or expired"}),
+                401,
+            )
+
+        # Verify user exists
+        user = get_user(user_id)
+        if not user:
+            return jsonify({"message": "User not found"}), 401
+
+        # Pass user to the route
+        return f(user, *args, **kwargs)
+
+    return decorated

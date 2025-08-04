@@ -8,7 +8,7 @@ function LoginFormPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
@@ -19,7 +19,7 @@ function LoginFormPage() {
 
     const serverResponse = await dispatch(
       thunkLogin({
-        username,
+        email,
         password,
       }),
     );
@@ -38,15 +38,15 @@ function LoginFormPage() {
         errors.map((message) => <p key={message}>{message}</p>)}
       <form onSubmit={handleSubmit}>
         <label>
-          Username
+          Email
           <input
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        {errors.email && <p>{errors.email}</p>}
         <label>
           Password
           <input
