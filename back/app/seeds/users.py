@@ -4,6 +4,8 @@ from app.models.user import User
 user_seeds = [
     {"email": "admin@example.io", "password": "password"},
     {"email": "normie@example.com", "password": "password"},
+    {"email": "teacher@example.com", "password": "password"},
+    {"email": "student@example.com", "password": "password"},
 ]
 user_emails = [user_seed["email"] for user_seed in user_seeds]
 

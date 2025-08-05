@@ -2,9 +2,11 @@ import { useState } from "react";
 import { thunkLogin } from "../../redux/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 
 function LoginFormModal() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   const [email, setEmail] = useState("");
@@ -27,7 +29,50 @@ function LoginFormModal() {
       closeModal();
     }
   };
+  const loginDemo = (e) => {
+    e.preventDefault();
+    dispatch(thunkLogin({
+        email: 'admin@example.io',
+        password: 'password'
+    }))
+    .then(() => closeModal())
+    .then(() => {
+      // add delay before navigation
+      setTimeout(() => {
+        navigate('/');
+      }, 100);
+    });
+  };
 
+  const loginDemo2 = (e) => {
+    e.preventDefault();
+    dispatch(thunkLogin({
+        email: 'student@example.com',
+        password: 'password'
+    }))
+    .then(() => closeModal())
+    .then(() => {
+      // add delay before navigation
+      setTimeout(() => {
+        navigate('/');
+      }, 100);
+    });
+  };
+
+  const loginDemo3 = (e) => {
+    e.preventDefault();
+    dispatch(thunkLogin({
+        email: 'teacher@example.com',
+        password: 'password'
+    }))
+    .then(() => closeModal())
+    .then(() => {
+      // add delay before navigation
+      setTimeout(() => {
+        navigate('/');
+      }, 100);
+    });
+  };
   return (
     <div className="login-form-container-outer">
       <div className="login-form-container-inner">
@@ -75,6 +120,25 @@ function LoginFormModal() {
           <button type="submit" className="login-button">
             Sign In
           </button>
+            <button
+        className='demo-log-in'
+        onClick={loginDemo}
+        >
+          Demo Admin
+        </button>
+            <button
+        className='demo-log-in'
+        onClick={loginDemo2}
+        >
+          Demo Student
+        </button>
+
+        <button
+        className='demo-log-in'
+        onClick={loginDemo3}
+        >
+          Demo Teacher
+        </button>
         </form>
       </div>
     </div>

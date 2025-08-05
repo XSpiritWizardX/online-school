@@ -104,12 +104,12 @@
 }
 
 .login-button:hover {
-  background-color: #f6f8fa;
-  border-color: #c7d2da;
+  background-color: #8b8e91;
+  border-color: #63717a;
 }
 
 .login-button:active {
-  background-color: #eaeef2;
+  background-color: #56728f;
   box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -128,4 +128,26 @@
   font-size: 12px;
   margin-top: 4px;
   display: block;
+}
+
+.demo-log-in {
+  padding: 12px 20px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+.demo-log-in:hover {
+  background-color: #8b8e91;
+  border-color: #63717a;
+}
+
+.demo-log-in:active {
+  background-color: #56728f;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
 }
