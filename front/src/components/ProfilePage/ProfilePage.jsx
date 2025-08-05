@@ -29,6 +29,7 @@ function ProfilePage() {
         </div>
       </div>
       <div className="profile-page-content">
+        {/* map through achievements when a user collects one. */}
       <div className="trophies" >
         <p
         className="trophy"
@@ -54,7 +55,7 @@ function ProfilePage() {
       </div>
 
 
-
+        {/* map through course progressions */}
         <div
         className="progress-pro-box">
             <h1>Progress Box Example:::</h1>
@@ -78,6 +79,17 @@ function ProfilePage() {
 
         <div className="content-and-bio">
     <h2>BIO</h2>
+        <div
+        className="profile-video"
+        >
+            {/* example hard coded video for uuser profiles
+
+            */}
+
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vHdclsdkp28?si=oPKMdbt8j75PB3xO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+        </div>
         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
         </p>
         <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
