@@ -1,0 +1,64 @@
+.profile-page-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+  color: #e5e5e5;
+  background: #0d1117;
+}
+
+.profile-backtop-img{
+    width: 100vw;
+    height: 40vh;
+}
+
+.pro-img {
+    border-radius: 50%;
+    /* border: 2px solid white; */
+    border-style: solid;
+    border-width: 20px;
+    border: 2px solid white;
+    height: 200px;
+    margin-left: 1%;
+
+}
+.avatar-section {
+    display: flex;
+align-items: center;
+}
+
+.profile-header{
+    position: relative;
+    left: 30%;
+}
+
+.trophies{
+    margin-left: 0%;
+    margin-top: 1%;
+
+}
+.trophy{
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+.profile-page-content{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding-left: 2%;
+    padding-right: 5%;
+}
+.content-and-bio{
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.progress-pro-box{
+    border: 4px solid white;
+    color: white;
+    width: 100cap;
+    display: flex;
+    flex-direction: column;
+}

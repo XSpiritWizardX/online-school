@@ -1,0 +1,104 @@
+import { useSelector } from "react-redux";
+import "./ProfilePage.css";
+
+function ProfilePage() {
+  const user = useSelector((state) => state.session.user);
+
+
+
+
+
+
+
+
+
+
+  return (
+    <div className="profile-page-container">
+      <div className="profile-page-top">
+        <img src="https://res.cloudinary.com/dl6ls3rgu/image/upload/v1753828141/0287d3ba8b3330fca99f69e2001d3168_kgsgge.gif" className="profile-backtop-img"/>
+        <div className="avatar-section">
+          <img
+            src={user.avatar_url || "https://res.cloudinary.com/dl6ls3rgu/image/upload/v1749603633/fj2ECSAhOa96TO14MCLV--1--ra4jt-removebg-preview_iqvfvq.png"}
+            className="pro-img"
+          />
+        <div className="profile-header">
+          <h1>USER PROFILE</h1>
+
+        </div>
+        </div>
+      </div>
+      <div className="profile-page-content">
+      <div className="trophies" >
+        <p
+        className="trophy"
+        >This would be a trophy</p>
+        <p
+        className="trophy"
+        >This would be a trophy</p>
+        <p
+        className="trophy"
+        >This would be a trophy</p>
+        <p
+        className="trophy"
+        >This would be a trophy</p>
+        <p
+        className="trophy"
+        >This would be a trophy</p>
+        <p
+        className="trophy"
+        >This would be a trophy</p>
+        <p
+        className="trophy"
+        >This would be a trophy</p>
+      </div>
+
+
+
+        <div
+        className="progress-pro-box">
+            <h1>Progress Box Example:::</h1>
+            <h2> Courses Completed :: 22</h2>
+            <h2> lessons aced :: 59</h2>
+            <h2> Courses Completed :: 22</h2>
+            <h2> lessons aced :: 59</h2>
+            <h2> Courses Completed :: 22</h2>
+            <h2> lessons aced :: 59</h2>
+            <h2> Courses Completed :: 22</h2>
+            <h2> lessons aced :: 59</h2>
+            <h2> Courses Completed :: 22</h2>
+            <h2> lessons aced :: 59</h2>
+            <h2> Courses Completed :: 22</h2>
+            <h2> lessons aced :: 59</h2>
+
+        </div>
+
+
+
+
+        <div className="content-and-bio">
+    <h2>BIO</h2>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
+        </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
+        </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
+        </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
+        </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
+        </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
+        </p>
+        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quibusdam voluptatum aspernatur ex cum sequi sint ratione est veritatis perspiciatis. Dolorum optio beatae quia dolor est ex quae vero ducimus.
+        </p>
+        </div>
+
+
+
+      </div>
+    </div>
+  );
+}
+
+export default ProfilePage;

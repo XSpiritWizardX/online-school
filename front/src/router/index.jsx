@@ -12,7 +12,7 @@ import ChatBot from "../components/ChatBot/GeminiChat";
 import Layout from "./Layout";
 import CourseInterface from "../components/CourseInterface/CourseInterface";
 import SettingsPage from "../components/SettingsPage/SettingsPage";
-
+import ProfilePage from "../components/ProfilePage/ProfilePage";
 
 import TestPage from "../components/TestPages/VideoTest/VideoTest";
 export const router = createBrowserRouter([
@@ -66,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: "/settings/:userId",
         element: <SettingsPage />,
+      },
+      {
+        path: "/profile/:userId",
+        element: <ProfilePage />,
       },
       {
         path: "/test-video",
