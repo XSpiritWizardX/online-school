@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { CgMenuGridR } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import "./HomeDrop.css";
 function HomeDrop() {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-  const user = useSelector((store) => store.session.user);
   const toggleMenu = (e) => {
     // Keep from bubbling up to document and triggering closeMenu
     e.stopPropagation();
@@ -46,9 +44,6 @@ function HomeDrop() {
               <NavLink className="nav-link-menu-drop" to={`/degrees`}>Degrees</NavLink>
               <NavLink className='nav-link-menu-drop' to={`/certificates`}>Certificates</NavLink>
               <NavLink className='nav-link-menu-drop' to={`/k-12`}>K-12</NavLink>
-
-
-
 
 
             </>
