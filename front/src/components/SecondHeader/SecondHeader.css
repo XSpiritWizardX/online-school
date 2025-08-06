@@ -1,13 +1,13 @@
 .second-header {
-    max-height: 5rem;
+    max-height: 3rem;
     padding-top: 1%;
     margin-top: 3.5%;
     border-top: 6px solid #8b949e;
-    border-bottom: 2px solid #8b949e;
+    border-bottom: 4px solid #8b949e;
     background-color: #49505c;
     color: #a6bacf;
     /* top right bottom left */
-    padding: 0 16px 0 16px;
+    padding: 1% 1% 1% 1%;
     font-size: small;
     display: flex;
     justify-content: space-between;
@@ -20,24 +20,25 @@
 }
 
 .second-header-left {
+    width: 80%;
     display: flex;
     align-items: center;
     gap: 5rem;
-    border-bottom: 1px solid grey;
 }
 .second-header-right {
     display: flex;
     justify-content: end;
     align-items: center;
     gap: 2rem;
-    width: 50%;
+    width: 20%;
+    margin-right: 1%;
 }
 .second-header-hidden {
     display: none;
 }
 .progress-button {
    background-color: #30363d;
-  border: 1px solid #484f58;
+  border: 1px solid #8e9399;
   color: #f0f6fc;
   font-size: 14px;
   font-weight: 500;
@@ -45,6 +46,9 @@
   padding: 8px 12px;
   border-radius: 4px;
   transition: all 0.2s ease;
-  width: 30%;
+  width: 10%;
   font-family: inherit;
+}
+.second-head-info{
+    width: 14%;
 }

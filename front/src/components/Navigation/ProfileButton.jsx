@@ -56,7 +56,8 @@ function ProfileButton() {
               <div>{user.email}</div>
 
               <NavLink className='nav-link-pro' to={`/profile/${user.id}`}>Profile</NavLink>
-              <NavLink className='nav-link-pro' to={`/course-editor`}>Create a course</NavLink>
+              <NavLink className="nav-link-pro" to="/courses">My Courses</NavLink>
+              <NavLink className='nav-link-pro' to={`/course-editor`}>Create A Course</NavLink>
               <NavLink className='nav-link-pro' to={`/settings/${user.id}`}>Settings</NavLink>
 
               <div>

@@ -43,7 +43,7 @@ function NotificationButton() {
         <div className={"notification-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <div>Notifications</div>
+              <div className="not-title">Notifications</div>
             <div
             className="notif-example"
             >

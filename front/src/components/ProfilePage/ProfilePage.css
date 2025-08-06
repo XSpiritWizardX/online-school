@@ -9,18 +9,16 @@
 
 .profile-backtop-img{
     width: 100vw;
-    height: 40vh;
+    height: 50vh;
 }
 
 .pro-img {
     border-radius: 50%;
-    /* border: 2px solid white; */
-    border-style: solid;
-    border-width: 20px;
     border: 2px solid white;
     height: 200px;
     margin-left: 1%;
     margin-top: -13%;
+    padding: 10px;
 
 }
 .avatar-section {
@@ -32,7 +30,12 @@ align-items: center;
     position: relative;
     left: 30%;
 }
-
+.spanner{
+    border-bottom: 12px double white;
+    height: 1px;
+    width: 98vw;
+    margin-bottom: 2%;
+}
 .trophies{
     margin-left: 0%;
     margin-top: 1%;

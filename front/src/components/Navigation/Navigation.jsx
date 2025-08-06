@@ -37,26 +37,31 @@ function Navigation() {
     <>
       <div className="navigation">
         <div className="home-links-container">
+          <div
+          className="menu-home-link-contain"
+          >
+
           <HomeDrop className="menu-icon" />
 
-          <NavLink className={"home-link"} to="/">
+          <NavLink className="home-link" to="/">
             Online School Name
           </NavLink>
-        </div>
+          </div>
 
-        <div className="search-container">
-          <div className="search-bar">
-            <FiSearch className="search-icon" />
-            <SearchBar />
-            <span className="search-shortcut">⌘K</span>
+
+          <div className="search-container">
+            <div className="search-bar">
+              <FiSearch className="search-icon" />
+              <SearchBar />
+              <span className="search-shortcut">⌘K</span>
+            </div>
           </div>
         </div>
 
+
         <div className="nav-links-container">
           <div className="nav-links">
-            <NavLink className={"dashboard-link"} to="/courses">
-              My Courses
-            </NavLink>
+
 
             <button
               className={"ai-assistant-link"}

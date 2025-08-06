@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import "./SecondHeader.css";
 import NotificationButton from "./NotificationButton/NotificationButton";
 import MessagesButton from "./MessagesButton/MessagesButton";
+import LanguageButton from "./LanguageButton/LanguageButton";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
 function SecondHeader() {
   const user = useSelector((state) => state.session.user);
 
@@ -17,19 +19,23 @@ function SecondHeader() {
         <div
             className="second-header-left"
         >
-            <h2>Course Name</h2>
-            <h2>Current Lesson 1.3</h2>
-        </div>
-
-        <div className="second-header-right">
-          <h2>Welcome to the Second Header</h2>
-          <p> {user.email} is logged in</p>
+            <h2
+            className="second-head-info"
+            >Current Example Course Name</h2>
+            <h2
+            className="second-head-info"
+            >Current Example Course Lesson 1.3</h2>
           <button
           className="progress-button"
 
           >
             view progress
           </button>
+        </div>
+
+        <div className="second-header-right">
+          <ShoppingCart/>
+          <LanguageButton/>
           <MessagesButton/>
           <NotificationButton/>
         </div>

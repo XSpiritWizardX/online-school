@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import {  useSelector } from "react-redux";
-import { TiMessages } from "react-icons/ti";
+import { TbWorld } from "react-icons/tb";
 
 
-import "./MessagesButton.css";
-function MessagesButton() {
+import "./LanguageButton.css";
+function LanguageButton() {
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
@@ -36,7 +36,7 @@ function MessagesButton() {
   return (
     <>
       <button className="messages-button" onClick={toggleMenu}>
-<TiMessages />
+<TbWorld />
       </button>
 
       {showMenu && (
@@ -44,36 +44,36 @@ function MessagesButton() {
           {user ? (
             <>
               <div
-              className="message-title"
-              >Messages</div>
+              className="lang-title"
+              >Languages</div>
 
             <div
             className="notif-example"
             >
-           <p>message example</p>
+           <p>English</p>
             </div>
             <div
             className="notif-example"
             >
-           <p>message example</p>
+           <p>Mandarin Chinese</p>
             </div>
             <div
             className="notif-example"
             >
-           <p>message example</p>
+           <p>Hindi</p>
             </div>
             <div
             className="notif-example"
             >
-           <p>message example</p>
+           <p>Spanish</p>
             </div>
             <div
             className="notif-example"
             >
-           <p>message example</p>
+           <p>Modern Standard Arabic</p>
             </div>
             <button
-            className="see-more-messages">See More Messages</button>
+            className="see-more-messages">See More Languages</button>
 
 
             </>
@@ -88,4 +88,4 @@ function MessagesButton() {
   );
 }
 
-export default MessagesButton;
+export default LanguageButton;

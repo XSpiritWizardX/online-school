@@ -1,4 +1,4 @@
-.notification-button {
+.shopping-cart-button {
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -12,13 +12,13 @@
   position: relative;
 }
 
-.notification-button:hover {
+.shopping-cart-button:hover {
   background-color: #30363d;
   border-color: #6e7681;
   color: #ffffff;
 }
 
-.notification-dropdown {
+.shopping-cart-dropdown {
   background: #21262d;
   border: 1px solid #484f58;
   border-radius: 6px;
@@ -26,7 +26,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 200px;
+  width: 15%;
+  height: 500px;
   position: absolute;
   top: 100%;
   margin-top: 8px;
@@ -34,14 +35,15 @@
   margin-right: 10px;
   z-index: 1001;
   padding: 8px;
-  padding-top: 1%;
+  padding-top: 14%;
   gap: 6px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   font-family:
   -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-y: scroll;
 }
 
-.notification-dropdown-items {
+.shopping-cart-dropdown-items {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +54,9 @@
   background-color: transparent;
 }
 
-.notification-dropdown button {
+
+
+.shopping-cart-dropdown button {
   background-color: #30363d;
   border: 1px solid #484f58;
   color: #f0f6fc;
@@ -66,19 +70,63 @@
   font-family: inherit;
 }
 
-.notification-dropdown button:hover {
+.shopping-cart-dropdown button:hover {
   background-color: #484f58;
   border-color: #6e7681;
   color: #ffffff;
 }
 
 
+
 .notif-example{
     border: 1px solid white;
-    height: 40px;
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1%;
+    padding-bottom: 4%;
+    padding-top: 2%;
+    padding-left: 3%;
+    border-radius: 5px;
+
 }
-.not-title{
-  color: white;
+.cart-item{
+    display: flex;
+    justify-content: space-between;
+    width: 98%;
+}
+.cart-item-title{
+    color: #ffffff;
+    font-size: 20px;
+    width: 100%;
+}
+.cart-price{
+color: rgb(9, 156, 107);
+font-size: 18px;
+width: 100%;
+}
+.remove-cart-item{
+border: 1px solid white;
+justify-content: center;
+align-items: center;
+height: 26px;
+width: min-content;
+padding-left: 2%;
+padding-right: 2%;
+background-color: red;
+color: rgb(255, 255, 255);
+font-size: larger;
+}
+.remove-cart-item:hover{
+  border-color:#8b949e;
+  color: #ffffff;
+  background-color: #21262d;
+}
+.shop-title{
+    color: white;
     font-size: 24px;
     padding-top: 5%;
 }

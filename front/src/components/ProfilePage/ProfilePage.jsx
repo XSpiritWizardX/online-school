@@ -28,6 +28,8 @@ function ProfilePage() {
         </div>
         </div>
       </div>
+      <span
+      className="spanner"></span>
       <div className="profile-page-content">
         {/* map through achievements when a user collects one. */}
       <div className="trophies" >
