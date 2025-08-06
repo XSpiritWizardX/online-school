@@ -35,15 +35,15 @@ function MessagesButton() {
 
   return (
     <>
-      <button className="profile-button" onClick={toggleMenu}>
+      <button className="messages-button" onClick={toggleMenu}>
 <TiMessages />
       </button>
 
       {showMenu && (
-        <div className={"profile-dropdown"} ref={ulRef}>
+        <div className={"messages-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <div>{user.email}</div>
+              <div>Messages</div>
 
             <div
             className="notif-example"
@@ -70,35 +70,13 @@ function MessagesButton() {
             >
            <p>message example</p>
             </div>
-            <div
-            className="notif-example"
-            >
-           <p>message example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>message example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>message example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>message example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>message example</p>
-            </div>
+            <button
+            className="see-more-messages">See More Messages</button>
+
 
             </>
           ) : (
-            <div className="profile-dropdown-items">
+            <div className="messages-dropdown-items">
                 <h1>please log in</h1>
             </div>
           )}

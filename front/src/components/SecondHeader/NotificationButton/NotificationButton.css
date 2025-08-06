@@ -1,9 +1,9 @@
-.profile-button {
+.notification-button {
   display: flex;
   align-items: center;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #484f58;
+  border: 1px solid #7a8fac;
   color: #f0f6fc;
   font-size: 20px;
   padding: 8px;
@@ -12,34 +12,36 @@
   position: relative;
 }
 
-.profile-button:hover {
+.notification-button:hover {
   background-color: #30363d;
   border-color: #6e7681;
   color: #ffffff;
 }
 
-.profile-dropdown {
+.notification-dropdown {
   background: #21262d;
   border: 1px solid #484f58;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   min-width: 200px;
+  position: absolute;
   top: 100%;
   margin-top: 8px;
   right: 0;
   margin-right: 10px;
   z-index: 1001;
   padding: 8px;
+  padding-top: 1%;
   gap: 6px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.profile-dropdown-items {
+.notification-dropdown-items {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,26 +52,26 @@
   background-color: transparent;
 }
 
-.profile-dropdown > div:first-child,
-.profile-dropdown > div:nth-child(2) {
+.notification-dropdown > div:first-child,
+.notification-dropdown > div:nth-child(2) {
   padding: 8px 12px;
   color: #f0f6fc;
   font-size: 14px;
   margin-bottom: 4px;
 }
 
-.profile-dropdown > div:first-child {
+.notification-dropdown > div:first-child {
   font-weight: 600;
   color: #ffffff;
 }
 
-.profile-dropdown > div:nth-child(2) {
+.notification-dropdown > div:nth-child(2) {
   color: #8b949e;
   font-size: 13px;
   margin-bottom: 8px;
 }
 
-.profile-dropdown button {
+.notification-dropdown button {
   background-color: #30363d;
   border: 1px solid #484f58;
   color: #f0f6fc;
@@ -83,21 +85,14 @@
   font-family: inherit;
 }
 
-.profile-dropdown button:hover {
+.notification-dropdown button:hover {
   background-color: #484f58;
   border-color: #6e7681;
   color: #ffffff;
 }
 
-.nav-link-pro {
-  color: #007EB8;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
 
 .notif-example{
     border: 1px solid white;
+    height: 40px;
 }

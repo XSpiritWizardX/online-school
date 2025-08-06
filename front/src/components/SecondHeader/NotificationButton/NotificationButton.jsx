@@ -35,70 +35,47 @@ function NotificationButton() {
 
   return (
     <>
-      <button className="profile-button" onClick={toggleMenu}>
+      <button className="notification-button" onClick={toggleMenu}>
 <IoIosNotificationsOutline />
       </button>
 
       {showMenu && (
-        <div className={"profile-dropdown"} ref={ulRef}>
+        <div className={"notification-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <div>{user.email}</div>
+              <div>Notifications</div>
+            <div
+            className="notif-example"
+            >
+           <p>Notification example</p>
+            </div>
+            <div
+            className="notif-example"
+            >
+           <p>Notification example</p>
+            </div>
+            <div
+            className="notif-example"
+            >
+           <p>Notification example</p>
+            </div>
+            <div
+            className="notif-example"
+            >
+           <p>Notification example</p>
+            </div>
+            <div
+            className="notif-example"
+            >
+           <p>Notification example</p>
+            </div>
+               <button
+            className="see-more-messages">See More Notifications</button>
 
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
-            <div
-            className="notif-example"
-            >
-           <p>Notification example</p>
-            </div>
 
             </>
           ) : (
-            <div className="profile-dropdown-items">
+            <div className="notification-dropdown-items">
                 <h1>please log in</h1>
             </div>
           )}
