@@ -73,7 +73,7 @@ function ProfilePage() {
         className="progress-pro-box">
             <Garden/>
             <h1
-            className="progress-item"
+            className="progress-item-main"
             >Student Progress:</h1>
             <br/>
             <h2

@@ -32,7 +32,7 @@ const getColorClass = (attended) => attended ? 'attended' : 'not-attended';
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-// --- Add some test attendance dates ---
+// --- test attendance dates ---
 const TEST_ATTENDANCE = [
   getDateKey(new Date()), // today
   getDateKey(new Date(Date.now() - 86400000)), // yesterday
@@ -70,7 +70,7 @@ export default function Garden({ attendanceDates = TEST_ATTENDANCE, onMarkAttend
       className='attend-title'
       >Attendance Record:</h2>
       <div className="garden-header">
-        <label htmlFor="year">Select Year:</label>
+        <label className='year-input' htmlFor="year">Select Year:</label>
         <select
           id="year"
           className="year-select"
@@ -87,9 +87,9 @@ export default function Garden({ attendanceDates = TEST_ATTENDANCE, onMarkAttend
       </div>
       <div className="garden-body">
         <div className="garden-days">
-          {daysOfWeek.map((day, idx) => (
-            <div key={idx} className="day-label">
-              {idx % 2 === 0 ? day : ''}
+          {daysOfWeek.map((day) => (
+            <div key={day} className="day-label">
+              {day }
             </div>
           ))}
         </div>

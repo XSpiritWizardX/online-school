@@ -71,6 +71,11 @@ align-items: center;
     padding-bottom: 1%;
 
 }
+.progress-item-main{
+    border-top: 2px solid gray;
+    width: 96%;
+    align-self: center;
+}
 .progress-item{
     padding-left: 2%;
 }
