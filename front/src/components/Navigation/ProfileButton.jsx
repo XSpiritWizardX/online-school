@@ -45,9 +45,20 @@ function ProfileButton() {
 
   return (
     <>
+      {user ? (
+
+      <button className="profile-button" onClick={toggleMenu}>
+        <img
+        className="profile-drop-pic"
+        src="https://res.cloudinary.com/dl6ls3rgu/image/upload/v1749603633/fj2ECSAhOa96TO14MCLV--1--ra4jt-removebg-preview_iqvfvq.png" />
+      </button>
+
+      ):(
+
       <button className="profile-button" onClick={toggleMenu}>
         <FaUserCircle />
       </button>
+      )}
 
       {showMenu && (
         <div className={"profile-dropdown"} ref={ulRef}>

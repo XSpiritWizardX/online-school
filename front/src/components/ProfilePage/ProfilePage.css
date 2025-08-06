@@ -64,11 +64,16 @@ align-items: center;
     width: 100cap;
     display: flex;
     flex-direction: column;
-}
+    padding-bottom: 1%;
 
+}
+.progress-item{
+    padding-left: 5%;
+}
 .profile-video{
         border: 4px outset white;
         box-shadow: 0 0 30px;
+        margin-bottom: 5%;
 }
 
 

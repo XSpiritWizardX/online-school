@@ -1,0 +1,89 @@
+/* Garden.css */
+
+.garden-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5%;
+  font-family: sans-serif;
+}
+
+.garden-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.year-select {
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.garden-body {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
+.garden-days {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-right: 8px;
+  font-size: 12px;
+  color: #555;
+  min-width: 60px;
+  text-align: right;
+}
+
+.day-label {
+  height: 16px;
+  line-height: 16px;
+  text-align: right;
+  font-size: 18px;
+  color: #b3c3ca;
+  padding-right: 4px;
+}
+
+.garden-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+}
+
+.week-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.day-cell {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  background-color: #ebedf0;
+  border: 1px solid #d0d7de;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.day-cell.attended {
+  background-color: #39d353;
+  border-color: #282928;
+}
+
+.day-cell.not-attended {
+  background-color: #656668;
+  border-color: #4e6174;
+}
+
+.day-cell.empty {
+  background: transparent;
+  border: none;
+}
+.mark-button {
+    background-color: #39d353;
+    padding: .2%;
+}
