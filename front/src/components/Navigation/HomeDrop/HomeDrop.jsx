@@ -33,7 +33,7 @@ function HomeDrop() {
 
   return (
     <>
-      <button className="profile-button" onClick={toggleMenu}>
+      <button className="menu-button" onClick={toggleMenu}>
 <CgMenuGridR />
       </button>
 

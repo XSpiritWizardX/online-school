@@ -76,7 +76,7 @@ content: "";
 }
 .course-card{
     position: relative;
-  border-radius: 15px;
+  border-radius: 20px;
   padding-bottom: 2%;
   background-color: #191b1d;
     border: 6px solid rgb(109, 114, 124);
@@ -88,7 +88,7 @@ content: "";
 .course-card:hover{
 
     background-color: #62636d;
-    border: 2px solid rgb(255, 255, 255);
+    border: 6px solid rgb(255, 255, 255);
 }
 .course-card-img{
     width: 100%;
@@ -113,14 +113,18 @@ content: "";
 }
 
 .upon-complete-button{
-    background-color: #000000;
+    background-color: #585a5e;
+    border-radius: 10px;
     color:#ffffff;
     margin-left: 2%;
     padding: 1%;
     margin-bottom: 4%;
     cursor: pointer;
 }
+.upon-complete-button:hover{
+      background-color: #222324;
 
+}
 .price-rating-container {
     display: flex;
     justify-content: space-between;
@@ -130,10 +134,10 @@ content: "";
 }
 
 .course-price{
-    color: #ffffff;
+    color: #0ba525;
     margin-left: 1%;
 }
 .course-rating{
-    color: #ffffff;
+    color: #c2bf12;
     margin-right: 1%;
 }

@@ -34,10 +34,11 @@ function SecondHeader() {
         </div>
 
         <div className="second-header-right">
-          <ShoppingCart/>
-          <LanguageButton/>
+          <div>Resources</div>
           <MessagesButton/>
           <NotificationButton/>
+          <ShoppingCart/>
+          <LanguageButton/>
         </div>
         </div>
 

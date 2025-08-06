@@ -3,9 +3,9 @@
   align-items: center;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #484f58;
+  border: none;
   color: #f0f6fc;
-  font-size: 20px;
+  font-size: 40px;
   padding: 8px;
   border-radius: 50%;
   transition: all 0.2s ease;
