@@ -86,3 +86,12 @@
     color: #f0f6fc;
     background-color: #696f75;
 }
+.nav-link-menu-drop{
+  border: 1px solid white;
+  color: white;
+}
+.nav-link-menu-drop:hover{
+  background-color: #484f58;
+  border: 2px solid white;
+  color: #070707;
+}

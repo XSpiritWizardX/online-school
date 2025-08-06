@@ -1,6 +1,6 @@
-import "./CurrentCourses.css";
+import "./MyCourses.css";
 
-function CurrentCourses() {
+function MyCourses() {
 
 
 
@@ -34,87 +34,7 @@ function CurrentCourses() {
                 -- price  -- rating
             */}
 
-            <div
-            className="course-card-outside"
-            >
-                <div
-                className="course-card"
-                >
-                    <img src="https://res.cloudinary.com/dl6ls3rgu/image/upload/v1754453937/giphy_1_evdph0.gif"
-                    className="course-card-img"
-                    />
-                    <h3
-                    className="course-title"
-                    >
-                       Advanced Javascript Part IV
-                    </h3>
-                    <p
-                    className="course-desc"
-                    >
-                        Description for the course . It could even be more than a sentence you know ? Even if it overflows, just let it overflow then i can fix it with css
-                    </p>
-                    <button
-                    className="upon-complete-button"
-                    >
-                        upon completion
-                        </button>
-                    <div
-                    className="price-rating-container"
-                    >
-                        <p
-                        className="course-price"
-                        >
-                            $100.00
-                        </p>
-                        <p
-                        className="course-rating"
-                        >
-                            rating: 3.5 stars
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div
-            className="course-card-outside"
-            >
-                <div
-                className="course-card"
-                >
-                    <img src="https://res.cloudinary.com/dl6ls3rgu/image/upload/v1753825880/source_mve9ni.gif"
-                    className="course-card-img"
-                    />
-                    <h3
-                    className="course-title"
-                    >
-                       Music Thoery & Practice I
-                    </h3>
-                    <p
-                    className="course-desc"
-                    >
-                        Description for the course . It could even be more than a sentence you know ? Even if it overflows, just let it overflow then i can fix it with css
-                    </p>
-                    <button
-                    className="upon-complete-button"
-                    >
-                        upon completion
-                        </button>
-                    <div
-                    className="price-rating-container"
-                    >
-                        <p
-                        className="course-price"
-                        >
-                            $100.00
-                        </p>
-                        <p
-                        className="course-rating"
-                        >
-                            rating: 3.5 stars
-                        </p>
-                    </div>
-                </div>
-            </div>
-
+         
             <div
             className="course-card-outside"
             >
@@ -315,7 +235,7 @@ function CurrentCourses() {
                     </div>
                 </div>
             </div>
-         
+
 
 
 
@@ -326,4 +246,4 @@ function CurrentCourses() {
   );
 }
 
-export default CurrentCourses;
+export default MyCourses;

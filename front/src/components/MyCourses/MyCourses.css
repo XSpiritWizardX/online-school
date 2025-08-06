@@ -1,0 +1,151 @@
+
+.c-courses-page-container{
+    margin-top: 5%;
+    padding-top: 5%;
+  background-color: #0d1117;
+       display: flex;
+     flex-direction: column;
+    justify-content: center;
+}
+
+.c-courses-header {
+    color: white;
+    justify-self: center;
+    align-self: center;
+
+}
+.course-list-header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+}
+.course-list-header-title{
+    color: white;
+}
+.courses-container{
+    width: 100%;
+
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    margin-left: 3%;
+    margin-right: 1%;
+    margin-bottom: 5%;
+    gap: 2%;
+}
+@keyframes spin-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.course-card-outside{
+    position: relative;
+    padding: .75rem;
+    border: 1px solid white;
+    border-radius: 25px;
+    overflow: hidden;
+    z-index: 0;
+    width: 20%;
+    margin: 1rem;
+}
+.course-card-outside::before{
+content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #000000,
+    #ffffff,
+    #000000,
+    #000000
+  );
+  animation: spin-border 3s linear infinite;
+  z-index: -1;
+}
+.course-card{
+    position: relative;
+  border-radius: 20px;
+  padding-bottom: 2%;
+  background-color: #191b1d;
+    border: 6px solid rgb(109, 114, 124);
+  z-index: 1;
+  width: 100%;
+  cursor: pointer;
+}
+
+.course-card:hover{
+
+    background-color: #62636d;
+    border: 6px solid rgb(255, 255, 255);
+}
+.course-card-img{
+    width: 100%;
+    height: 20cap;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+
+.course-title{
+    color: #ffffff;
+    justify-self: center;
+    font-size: 38px;
+}
+
+.course-desc{
+    color: white;
+    width: 96%;
+    justify-self: center;
+    text-wrap: wrap;
+    padding-bottom: 4%;
+}
+
+.upon-complete-button{
+    background-color: #585a5e;
+    border-radius: 10px;
+    color:#ffffff;
+    margin-left: 2%;
+    padding: 1%;
+    margin-bottom: 4%;
+    cursor: pointer;
+}
+.upon-complete-button:hover{
+      background-color: #222324;
+
+}
+.price-rating-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+}
+
+.course-price{
+    color: #0ba525;
+    margin-left: 1%;
+}
+.course-rating{
+    color: #c2bf12;
+    margin-right: 1%;
+}

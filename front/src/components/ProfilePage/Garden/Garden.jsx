@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Garden.css';
 
 const getDateKey = (date) => date.toISOString().split('T')[0];

@@ -6,9 +6,9 @@ import { thunkLogout } from "../../redux/session";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import { NavLink } from "react-router-dom";
 
 import "./ProfileButton.css";
-import { NavLink } from "react-router-dom";
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -67,7 +67,8 @@ function ProfileButton() {
               <div>{user.email}</div>
 
               <NavLink className='nav-link-pro' to={`/profile/${user.id}`}>Profile</NavLink>
-              <NavLink className="nav-link-pro" to="/courses">My Courses</NavLink>
+              <NavLink className="nav-link-pro" to={`/courses/${user.id}/enrolled`}>Enrolled Courses</NavLink>
+              <NavLink className="nav-link-pro" to={`/courses/${user.id}`}>Created Courses</NavLink>
               <NavLink className='nav-link-pro' to={`/course-editor`}>Create A Course</NavLink>
               <NavLink className='nav-link-pro' to={`/settings/${user.id}`}>Settings</NavLink>
 

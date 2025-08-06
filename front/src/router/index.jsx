@@ -14,6 +14,8 @@ import CourseInterface from "../components/CourseInterface/CourseInterface";
 import SettingsPage from "../components/SettingsPage/SettingsPage";
 import ProfilePage from "../components/ProfilePage/ProfilePage";
 import CurrentCourses from "../components/CurrentCourses/Currentcourses";
+import CourseList from "../components/CourseList/CourseList";
+import MyCourses from "../components/MyCourses/MyCourses";
 import TestPage from "../components/TestPages/VideoTest/VideoTest";
 export const router = createBrowserRouter([
   {
@@ -65,6 +67,14 @@ export const router = createBrowserRouter([
       },
       {
         path: "/courses",
+        element: <CourseList />,
+      },
+      {
+        path: "/courses/:userId",
+        element: <MyCourses />,
+      },
+      {
+        path: "/courses/:userId/enrolled",
         element: <CurrentCourses />,
       },
       {

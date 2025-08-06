@@ -29,7 +29,6 @@ function MessagesButton() {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const closeMenu = () => setShowMenu(false);
 
 
 
