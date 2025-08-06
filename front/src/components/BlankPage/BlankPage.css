@@ -1,4 +1,19 @@
 .coming-soon-container {
-  margin-top: 10%;
+padding-top: 10%;
+color: white;
+background-color: #0d1117;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.blank-button{
+  background-color: grey;
   color: white;
+  padding: .5%;
+  margin: 5%;
+cursor: pointer;
+}
+.blank-button:hover{
+  background-color: azure;
+  color: black;
 }

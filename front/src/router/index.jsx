@@ -90,6 +90,18 @@ export const router = createBrowserRouter([
         element: <TestPage />,
       },
       {
+        path: "/degrees",
+        element: <BlankPage />,
+      },
+      {
+        path: "/certificates",
+        element: <BlankPage />,
+      },
+      {
+        path: "/k-12",
+        element: <BlankPage />,
+      },
+      {
         path: "*",
         element: <h2>Page Not Found</h2>,
       },

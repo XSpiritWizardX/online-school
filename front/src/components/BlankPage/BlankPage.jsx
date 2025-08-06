@@ -5,7 +5,9 @@ function BlankPage() {
     <div className="coming-soon-container">
       <h1>Feature Coming Soon</h1>
       <NavLink to="/">
-        <button>Back To Home</button>
+        <button
+        className="blank-button"
+        >Back To Home</button>
       </NavLink>
     </div>
   );

@@ -43,9 +43,9 @@ function HomeDrop() {
 
             <>
               <NavLink className='nav-link-menu-drop' to={`/courses`}>Explore Courses</NavLink>
-              <NavLink className="nav-link-menu-drop" to={`/courses/${user.id}/enrolled`}>Degrees</NavLink>
-              <NavLink className='nav-link-menu-drop' to={`/course-editor`}>Certificates</NavLink>
-              <NavLink className='nav-link-menu-drop' to={`/settings/${user.id}`}>K-12</NavLink>
+              <NavLink className="nav-link-menu-drop" to={`/degrees`}>Degrees</NavLink>
+              <NavLink className='nav-link-menu-drop' to={`/certificates`}>Certificates</NavLink>
+              <NavLink className='nav-link-menu-drop' to={`/k-12`}>K-12</NavLink>
 
 
 
