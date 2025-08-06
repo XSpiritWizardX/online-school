@@ -7,7 +7,11 @@
   padding: 5%;
   font-family: sans-serif;
 }
-
+.attend-title{
+  font-size: 34px;
+  align-self: center;
+  margin-bottom: 2%;
+}
 .garden-header {
   display: flex;
   align-items: center;

@@ -66,6 +66,9 @@ export default function Garden({ attendanceDates = TEST_ATTENDANCE, onMarkAttend
 
   return (
     <div className="garden-wrapper">
+      <h2
+      className='attend-title'
+      >Attendance Record:</h2>
       <div className="garden-header">
         <label htmlFor="year">Select Year:</label>
         <select
