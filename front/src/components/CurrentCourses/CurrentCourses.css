@@ -1,0 +1,145 @@
+.profile-page-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+  color: #e5e5e5;
+  background: #0d1117;
+}
+
+.profile-backtop-img{
+    width: 100vw;
+    height: 40vh;
+}
+
+.pro-img {
+    border-radius: 50%;
+    /* border: 2px solid white; */
+    border-style: solid;
+    border-width: 20px;
+    border: 2px solid white;
+    height: 200px;
+    margin-left: 1%;
+    margin-top: -13%;
+
+}
+.avatar-section {
+    display: flex;
+align-items: center;
+}
+
+.profile-header{
+    position: relative;
+    left: 30%;
+}
+
+.trophies{
+    margin-left: 0%;
+    margin-top: 1%;
+}
+.trophy{
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+.profile-page-content{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    padding-left: 2%;
+    padding-right: 5%;
+}
+.content-and-bio{
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.progress-pro-box{
+    border: 4px solid white;
+    color: white;
+    width: 100cap;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-video{
+        border: 4px outset white;
+        box-shadow: 0 0 30px;
+}
+
+
+
+.profile-page-seperator{
+        margin-top: 2%;
+    height: 2px;
+        width: 96vw;
+        background-color: rgb(161, 178, 194);
+}
+
+.profile-info-section{
+    width: 100%;
+    height: auto;
+}
+.profile-info-header{
+    display: flex;
+    gap: 1%;
+}
+.pro-info{
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-top: .5%;
+    padding: 4px 40px;
+}
+.pro-info:hover{
+    background-color: rgb(46, 56, 53);
+}
+
+
+.info-body{
+    margin-top: 1%;
+}
+.c-courses-page-container{
+    margin-top: 5%;
+    padding-top: 5%;
+    background-color: rgb(48, 57, 66);
+     display: flex;
+     flex-direction: column;
+    justify-content: center;
+}
+
+.c-courses-header {
+    color: white;
+    justify-self: center;
+    align-self: center;
+
+}
+
+.courses-container{
+    width: 100%;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin-left: 3%;
+    margin-right: 1%;
+    margin-bottom: 5%;
+    gap: 2%;
+}
+.course-card{
+    width: 30%;
+    height: 20%;
+    background-color: #0d1117;
+    border: 2px solid white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.course-card:hover{
+
+    background-color: #0d1117;
+    border: 2px solid rgb(169, 192, 235);
+    box-shadow: 0 0 20px white;
+}

@@ -54,7 +54,7 @@ function Navigation() {
 
         <div className="nav-links-container">
           <div className="nav-links">
-            <NavLink className={"dashboard-link"} to="/course-editor">
+            <NavLink className={"dashboard-link"} to="/courses">
               My Courses
             </NavLink>
 

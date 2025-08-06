@@ -13,7 +13,7 @@ import Layout from "./Layout";
 import CourseInterface from "../components/CourseInterface/CourseInterface";
 import SettingsPage from "../components/SettingsPage/SettingsPage";
 import ProfilePage from "../components/ProfilePage/ProfilePage";
-
+import CurrentCourses from "../components/CurrentCourses/Currentcourses";
 import TestPage from "../components/TestPages/VideoTest/VideoTest";
 export const router = createBrowserRouter([
   {
@@ -62,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: "/test-course",
         element: <CourseInterface />,
+      },
+      {
+        path: "/courses",
+        element: <CurrentCourses />,
       },
       {
         path: "/settings/:userId",
