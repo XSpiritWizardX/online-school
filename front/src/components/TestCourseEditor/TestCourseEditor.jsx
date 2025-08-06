@@ -673,7 +673,7 @@ export default function TestCourseEditor() {
           {/* Action Buttons */}
           <div className="action-buttons">
             {!isPreviewMode && (
-              <button className="save-btn">Save Course</button>
+              <button className="save-btn">Save</button>
             )}
             <button className="preview-btn" onClick={togglePreview}>
               {isPreviewMode ? "✕ Exit Preview" : "Preview"}

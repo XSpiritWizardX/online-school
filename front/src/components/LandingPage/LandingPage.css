@@ -57,7 +57,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text; */
   -webkit-text-stroke: 4px rgb(190, 190, 190);
-  text-shadow: 2px 10px 6px #31b4f17c;
+  text-shadow: 10px 10px 6px #31b4f17c;
   margin-bottom: 1cap;
 }
 

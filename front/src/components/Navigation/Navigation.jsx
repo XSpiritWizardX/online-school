@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import SearchBar from "../SearchBar/SearchBar";
 import ChatBot from "../ChatBot/GeminiChat";
-import { FiAlignJustify, FiSearch } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
+import HomeDrop from "./HomeDrop/HomeDrop";
 import "./Navigation.css";
 
 function Navigation() {
@@ -36,7 +37,7 @@ function Navigation() {
     <>
       <div className="navigation">
         <div className="home-links-container">
-          <FiAlignJustify className="menu-icon" />
+          <HomeDrop className="menu-icon" />
 
           <NavLink className={"home-link"} to="/">
             Online School Name

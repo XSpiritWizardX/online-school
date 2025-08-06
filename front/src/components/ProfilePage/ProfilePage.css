@@ -20,6 +20,7 @@
     border: 2px solid white;
     height: 200px;
     margin-left: 1%;
+    margin-top: -13%;
 
 }
 .avatar-section {
@@ -35,7 +36,6 @@ align-items: center;
 .trophies{
     margin-left: 0%;
     margin-top: 1%;
-
 }
 .trophy{
     padding-top: 8%;
@@ -66,4 +66,37 @@ align-items: center;
 .profile-video{
         border: 4px outset white;
         box-shadow: 0 0 30px;
+}
+
+
+
+.profile-page-seperator{
+        margin-top: 2%;
+    height: 2px;
+        width: 96vw;
+        background-color: rgb(161, 178, 194);
+}
+
+.profile-info-section{
+    width: 100%;
+    height: auto;
+}
+.profile-info-header{
+    display: flex;
+    gap: 1%;
+}
+.pro-info{
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-top: .5%;
+    padding: 4px 40px;
+}
+.pro-info:hover{
+    background-color: rgb(46, 56, 53);
+}
+
+
+.info-body{
+    margin-top: 1%;
 }

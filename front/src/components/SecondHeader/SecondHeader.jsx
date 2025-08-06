@@ -1,8 +1,8 @@
 
 import { useSelector } from "react-redux";
 import "./SecondHeader.css";
-
-
+import NotificationButton from "./NotificationButton/NotificationButton";
+import MessagesButton from "./MessagesButton/MessagesButton";
 function SecondHeader() {
   const user = useSelector((state) => state.session.user);
 
@@ -26,10 +26,12 @@ function SecondHeader() {
           <p> {user.email} is logged in</p>
           <button
           className="progress-button"
-          
+
           >
             view progress
           </button>
+          <MessagesButton/>
+          <NotificationButton/>
         </div>
         </div>
 
