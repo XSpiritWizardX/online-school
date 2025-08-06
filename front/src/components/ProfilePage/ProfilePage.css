@@ -17,7 +17,8 @@
     border: 2px solid white;
     height: 200px;
     margin-left: 1%;
-    margin-top: -13%;
+    margin-top: -15%;
+    margin-bottom: 1%;
     padding: 10px;
 
 }
@@ -27,8 +28,11 @@ align-items: center;
 }
 
 .profile-header{
+    display: flex;
+    align-items: start;
     position: relative;
-    left: 30%;
+    width: 100%;
+    padding: 4px;
 }
 .spanner{
     border-bottom: 12px double white;
@@ -68,7 +72,7 @@ align-items: center;
 
 }
 .progress-item{
-    padding-left: 5%;
+    padding-left: 2%;
 }
 .profile-video{
         border: 4px outset white;

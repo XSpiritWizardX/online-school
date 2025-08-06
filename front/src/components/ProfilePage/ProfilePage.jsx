@@ -17,14 +17,24 @@ function ProfilePage() {
     <div className="profile-page-container">
       <div className="profile-page-top">
         <img src="https://res.cloudinary.com/dl6ls3rgu/image/upload/v1753828141/0287d3ba8b3330fca99f69e2001d3168_kgsgge.gif" className="profile-backtop-img"/>
-        <div className="avatar-section">
           <img
             src={user?.avatar_url || "https://res.cloudinary.com/dl6ls3rgu/image/upload/v1749603633/fj2ECSAhOa96TO14MCLV--1--ra4jt-removebg-preview_iqvfvq.png"}
             className="pro-img"
           />
+        <div className="avatar-section">
         <div className="profile-header">
-          <h1>USER PROFILE</h1>
-
+            <h2
+            className="progress-item"
+            >Followers: 19.4K</h2>
+            <h2
+            className="progress-item"
+            >Subscribers: 893</h2>
+            <h2
+            className="progress-item"
+            >Student Rating: 4.5 stars</h2>
+            <h2
+            className="progress-item"
+            >Creator Rating: 2.5 stars</h2>
         </div>
         </div>
       </div>
@@ -64,7 +74,7 @@ function ProfilePage() {
             <Garden/>
             <h1
             className="progress-item"
-            >Progress:</h1>
+            >Student Progress:</h1>
             <br/>
             <h2
             className="progress-item"
@@ -102,12 +112,6 @@ function ProfilePage() {
             <h2
             className="progress-item"
             >Most Active Subject: Mathematics</h2>
-            <h2
-            className="progress-item"
-            >Followers: 19.4K</h2>
-            <h2
-            className="progress-item"
-            >Rating: 4.5 stars</h2>
             <h2
             className="progress-item"
             >Forum Reputation Points: 1,200</h2>
@@ -180,7 +184,10 @@ function ProfilePage() {
                   >videos</p>
                   <p
                   className="pro-info"
-                  >rating</p>
+                  >ratings</p>
+                  <p
+                  className="pro-info"
+                  >created courses</p>
                 </div>
 
 
