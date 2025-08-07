@@ -6,7 +6,7 @@ import { thunkAuthenticate } from "../redux/session";
 import Navigation from "../components/Navigation/Navigation";
 import FooterCard from "../components/Footer/Footer";
 import CookieBanner from "../components//Compliance/CookieBanner/CookieBanner";
-import SecondHeader from "../components/SecondHeader/SecondHeader";
+import SecondHeader from "../components/Navigation/SecondHeader/SecondHeader";
 
 export default function Layout() {
   const dispatch = useDispatch();

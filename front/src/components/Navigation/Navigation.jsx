@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
 import ChatBot from "../ChatBot/GeminiChat";
 import { FiSearch } from "react-icons/fi";
 import HomeDrop from "./HomeDrop/HomeDrop";

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "./TestCourseEditor.css";
-import CourseInterface from "../CourseInterface/CourseInterface";
+import CourseInterface from "../../CourseInterface/CourseInterface";
 
 export default function TestCourseEditor() {
   const [currentLesson, setCurrentLesson] = useState(0);
