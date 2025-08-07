@@ -68,55 +68,6 @@ function ProfilePage() {
       </div>
 
 
-        {/* map through course progressions */}
-        <div
-        className="progress-pro-box">
-            <Garden/>
-            <h1
-            className="progress-item-main"
-            >Student Progress:</h1>
-            <br/>
-            <h2
-            className="progress-item"
-            > Courses Completed : 22</h2>
-            <h2
-            className="progress-item"
-            > Projects Completed : 2</h2>
-            <h2
-            className="progress-item"
-            > Tests Completed : 5</h2>
-            <h2
-            className="progress-item"
-            > Quizzes Completed : 10</h2>
-            <h2
-            className="progress-item"
-            >Assignments Submitted: 35</h2>
-            <h2
-            className="progress-item"
-            >Total Time Online: 29hours, 49 minutes, 04 seconds</h2>
-            <h2
-            className="progress-item"
-            >Login Streak: 9 days</h2>
-            <h2
-            className="progress-item"
-            >Longest Streak: 14 days</h2>
-            <h2
-            className="progress-item"
-            >Weekly Activity Level: High</h2>
-            <h2
-            className="progress-item"
-            >Current Grade Level: 11th Grade</h2>
-            <h2
-            className="progress-item"
-            >Current GPA: 4.00</h2>
-            <h2
-            className="progress-item"
-            >Most Active Subject: Mathematics</h2>
-            <h2
-            className="progress-item"
-            >Forum Reputation Points: 1,200</h2>
-        </div>
-
 
 
 
@@ -130,7 +81,7 @@ function ProfilePage() {
             */}
 
 
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/vHdclsdkp28?si=oPKMdbt8j75PB3xO" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vHdclsdkp28?si=oPKMdbt8j75PB3xO" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
         </div>
         {/* Where actual {user.bio} starts */}

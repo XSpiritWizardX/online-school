@@ -17,6 +17,7 @@ import CurrentCourses from "../components/Course/CurrentCourses/Currentcourses";
 import CourseList from "../components/Course/CourseList/CourseList";
 import MyCourses from "../components/Course/MyCourses/MyCourses";
 import TestPage from "../components/TestPages/VideoTest/VideoTest";
+import Dashboard from "../components/Dashboard/Dashboard";
 export const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignupFormPage />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
       {
         path: "/test-ide",
