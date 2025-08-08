@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import "./ProfilePage.css";
-import Garden from "./Garden/Garden";
 function ProfilePage() {
   const user = useSelector((state) => state.session.user);
 

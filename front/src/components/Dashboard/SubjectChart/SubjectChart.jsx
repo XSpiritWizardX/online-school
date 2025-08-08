@@ -15,7 +15,7 @@ const data = [
   { subject: "Art", score: 91 },
   { subject: "Music", score: 88 },
   { subject: "Social Studies", score: 80 },
-  { subject: "Health", score: 70 },
+  { subject: "Health", score: 80 },
   { subject: "Computer Science", score: 95 },
   { subject: "Language Arts", score: 76 }
 ];
@@ -27,13 +27,13 @@ export const SubjectChart = () => {
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis angle={30} domain={[0, 100]} />
+          <PolarRadiusAxis angle={75} domain={[0, 100]} />
           <Radar
             name="Score"
             dataKey="score"
-            stroke="#8884d8"
-            fill="#8884d8"
-            fillOpacity={0.6}
+            stroke="#fffb00ff"
+            fill="#0d972bff"
+            fillOpacity={0.4}
           />
         </RadarChart>
       </ResponsiveContainer>

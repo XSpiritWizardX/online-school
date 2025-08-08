@@ -1,5 +1,5 @@
 import { SubjectChart } from "./SubjectChart/SubjectChart";
-import Garden from "../ProfilePage/Garden/Garden";
+import Garden from "./Garden/Garden";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
 const Dashboard = () => {
@@ -29,8 +29,20 @@ const Dashboard = () => {
       <main className="dashboard-main">
 
         <section className="chart-section">
-          <h2>Your Subject Mastery</h2>
+          <h2>Your Subject Mastery:</h2>
           <SubjectChart />
+              <section className="current-grades-section">
+            <h2>Current Grades:</h2>
+            <ul>
+              {grades.map((action, index) => (
+                  <li  key={index}
+                  className="listed-grade"
+                  >
+                    {action}
+                  </li>
+              ))}
+            </ul>
+          </section>
         </section>
 
 
@@ -38,10 +50,20 @@ const Dashboard = () => {
                <div
                className="progress-pro-box">
                    <Garden/>
+
+                  <div
+                  className="pro-box-lower-half"
+                  >
+                    <div
+                    className="student-prog"
+                    >
+
                    <h1
                    className="progress-item-main"
                    >Student Progress:</h1>
-                   <br/>
+                   <h2
+                   className="progress-item"
+                   >Current GPA: 4.00</h2>
                    <h2
                    className="progress-item"
                    > Courses Completed : 22</h2>
@@ -59,7 +81,7 @@ const Dashboard = () => {
                    >Assignments Submitted: 35</h2>
                    <h2
                    className="progress-item"
-                   >Total Time Online: 29hours, 49 minutes, 04 seconds</h2>
+                   >Total Time Online: 29hr 49 min 04s</h2>
                    <h2
                    className="progress-item"
                    >Login Streak: 9 days</h2>
@@ -74,32 +96,37 @@ const Dashboard = () => {
                    >Current Grade Level: 11th Grade</h2>
                    <h2
                    className="progress-item"
-                   >Current GPA: 4.00</h2>
-                   <h2
-                   className="progress-item"
                    >Most Active Subject: Mathematics</h2>
                    <h2
                    className="progress-item"
                    >Forum Reputation Points: 1,200</h2>
+                  </div>
+
+                  <section className="suggestions-section">
+                     <h1
+                   className="progress-item-main"
+                   >Next Steps:</h1>
+                    <ul>
+                      {suggestedActions.map((action, index) => (
+                          <li key={index}
+                          className="listed-step"
+                          >
+                            {action}
+                          </li>
+                      ))}
+                    </ul>
+                  </section>
+
+
+
+                </div>
+
+
+
+
                </div>
 
 
-        <section className="suggestions-section">
-          <h2>Suggested Next Steps</h2>
-          <ul>
-            {suggestedActions.map((action, index) => (
-                <li key={index}>{action}</li>
-            ))}
-          </ul>
-        </section>
-            <section className="current-grades-section">
-          <h2>Current Grades</h2>
-          <ul>
-            {grades.map((action, index) => (
-                <li key={index}>{action}</li>
-            ))}
-          </ul>
-        </section>
       </main>
     </div>
   );
