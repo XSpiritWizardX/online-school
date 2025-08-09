@@ -4,7 +4,7 @@
   align-items: center;
   padding: 5%;
   color: #e5e5e5;
-  background: #0d1117;
+  background-color: #141b25;
 }
 
 .profile-backtop-img{
@@ -33,6 +33,8 @@ align-items: center;
     position: relative;
     width: 100%;
     padding: 4px;
+    margin-left: 1%;
+    gap: 4%;
 }
 .spanner{
     border-bottom: 12px double white;

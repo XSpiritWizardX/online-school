@@ -16,6 +16,7 @@ import ProfilePage from "../components/ProfilePage/ProfilePage";
 import CurrentCourses from "../components/Course/CurrentCourses/Currentcourses";
 import CourseList from "../components/Course/CourseList/CourseList";
 import MyCourses from "../components/Course/MyCourses/MyCourses";
+import CourseShow from "../components/Course/CourseShow/CourseShow";
 import TestPage from "../components/TestPages/VideoTest/VideoTest";
 import Dashboard from "../components/Dashboard/Dashboard";
 export const router = createBrowserRouter([
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <CourseList />,
+      },
+      {
+        path: "/courses/course/:courseId",
+        element: <CourseShow />,
       },
       {
         path: "/courses/:userId",
