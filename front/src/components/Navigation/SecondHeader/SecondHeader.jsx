@@ -5,6 +5,7 @@ import NotificationButton from "./NotificationButton/NotificationButton";
 import MessagesButton from "./MessagesButton/MessagesButton";
 import LanguageButton from "./LanguageButton/LanguageButton";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import CourseProgress from "./CourseProgress/CourseProgress";
 function SecondHeader() {
   const user = useSelector((state) => state.session.user);
 
@@ -19,18 +20,17 @@ function SecondHeader() {
         <div
             className="second-header-left"
         >
-            <h2
+            {/* <h2
             className="second-head-info"
             >Current Example Course Name</h2>
             <h2
             className="second-head-info"
-            >Current Example Course Lesson 1.3</h2>
-          <button
-          className="progress-button"
+            >Current Example Course Lesson 1.3</h2> */}
 
-          >
-            view progress
-          </button>
+            <CourseProgress
+              courseName="ai workflows 101" progress={85}
+            />
+
         </div>
 
         <div className="second-header-right">

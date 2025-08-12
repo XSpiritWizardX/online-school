@@ -20,10 +20,10 @@
 }
 
 .second-header-left {
-    width: 80%;
+    width: 60%;
     display: flex;
     align-items: center;
-    gap: 5rem;
+    gap: 2rem;
 }
 .second-header-right {
     display: flex;
@@ -36,19 +36,9 @@
 .second-header-hidden {
     display: none;
 }
-.progress-button {
-   background-color: #30363d;
-  border: 1px solid #8e9399;
-  color: #f0f6fc;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  width: 10%;
-  font-family: inherit;
-}
+
 .second-head-info{
     width: 14%;
+    color:  #919191;
+
 }

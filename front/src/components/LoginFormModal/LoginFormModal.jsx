@@ -26,7 +26,7 @@ function LoginFormModal() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      closeModal();
+      closeModal()
     }
   };
   const loginDemo = (e) => {
@@ -39,7 +39,7 @@ function LoginFormModal() {
     .then(() => {
       // add delay before navigation
       setTimeout(() => {
-        navigate('/');
+        navigate('/dashboard');
       }, 100);
     });
   };
@@ -54,7 +54,7 @@ function LoginFormModal() {
     .then(() => {
       // add delay before navigation
       setTimeout(() => {
-        navigate('/');
+        navigate('/dashboard');
       }, 100);
     });
   };
@@ -69,7 +69,7 @@ function LoginFormModal() {
     .then(() => {
       // add delay before navigation
       setTimeout(() => {
-        navigate('/');
+        navigate('/dashboard');
       }, 100);
     });
   };

@@ -1,0 +1,85 @@
+.course-progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 65rem;
+}
+
+/* Left side: course info */
+.course-info {
+  display: flex;
+  gap: 3rem;
+  min-width: 20rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-title {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #b1b1b1;
+}
+
+.lesson-title {
+    font-size: 1.5rem;
+    color: #b1b1b1;
+}
+
+/* Right side: percentage + bar */
+.course-progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.progress-percentage {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #2aaefa;
+  min-width: 3ch;
+  text-align: right;
+}
+
+.progress-container {
+  flex: 1;
+  background-color: #919191;
+  border-radius: 8px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  background-color: #2aaefa;
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1.2s ease-out;
+  position: relative;
+}
+
+/* Magical particle effect */
+.magic-particle {
+  position: absolute;
+  bottom: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: rise 1.5s ease-out infinite;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-30px) scale(0.5);
+    opacity: 0;
+  }
+}
