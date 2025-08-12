@@ -2,26 +2,25 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  width: 65rem;
+  width: 100%;
 }
 
 /* Left side: course info */
 .course-info {
   display: flex;
   gap: 3rem;
-  min-width: 20rem;
   justify-content: center;
   align-items: center;
 }
 
-.course-title {
-  font-weight: bold;
-  font-size: 1.8rem;
-  color: #b1b1b1;
+.course-title-prog{
+
+    font-size: 1.2rem;
+    color: #b1b1b1;
 }
 
 .lesson-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #b1b1b1;
 }
 
@@ -29,7 +28,7 @@
 .course-progress {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   flex: 1;
 }
 

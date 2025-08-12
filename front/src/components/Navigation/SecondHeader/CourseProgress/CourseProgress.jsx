@@ -13,13 +13,10 @@ export default function CourseProgress({ courseName, lessonName, lessonNumber, p
     <div className="course-progress-wrapper">
       {/* Left column: course info */}
       <div className="course-info">
-        <div className="course-title">{courseName}</div>
+        <div className="course-title-prog">{courseName}</div>
         <div className="lesson-title">
-         Example lesson 1.3
+          {lessonName} {lessonNumber}
         </div>
-        {/* <div className="lesson-title">
-          {lessonName} {lessonNumber && `Lesson ${lessonNumber}`}
-        </div> */}
       </div>
 
       {/* Right column: progress */}
@@ -31,7 +28,7 @@ export default function CourseProgress({ courseName, lessonName, lessonNumber, p
             className="progress-fill"
             style={{ width: `${animatedProgress}%` }}
           >
-            {[...Array(8)].map((_, i) => (
+            {[...Array(30)].map((_, i) => (
               <span
                 key={i}
                 className="magic-particle"

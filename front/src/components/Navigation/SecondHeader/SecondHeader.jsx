@@ -28,7 +28,10 @@ function SecondHeader() {
             >Current Example Course Lesson 1.3</h2> */}
 
             <CourseProgress
-              courseName="ai workflows 101" progress={85}
+              courseName="AI Workflows 101"
+              lessonName="Neural Networks Basics"
+              lessonNumber="1.3"
+              progress={85}
             />
 
         </div>
