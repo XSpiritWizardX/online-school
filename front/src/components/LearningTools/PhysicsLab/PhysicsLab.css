@@ -1,0 +1,72 @@
+
+.physics-lab {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #1e1e1e;
+  color: white;
+  overflow: hidden;
+}
+
+.lab-controls {
+  width: 300px;
+  background: #2b2b2b;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto; /* Enable scrolling for long control panels */
+}
+
+.lab-controls h2 {
+  margin-bottom: 1rem;
+}
+
+.lab-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.lab-controls input[type="range"] {
+  width: 100%;
+}
+
+.lab-canvas {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lab-charts {
+    width: 400px;
+    background: #2b2b2b;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+}
+
+.lab-charts h3 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+/* Add responsive adjustments if necessary */
+@media (max-width: 900px) {
+  .physics-lab {
+    flex-direction: column; /* Stack controls and canvas */
+  }
+
+  .lab-controls, .lab-charts {
+    width: 100%; /* Take full width on smaller screens */
+    overflow-y: scroll;
+    height: auto;
+  }
+
+  .lab-canvas {
+    height: 400px; /* Adjust canvas height */
+  }
+}
