@@ -311,3 +311,71 @@ Connection: close
   ]
 }
 #+end_example
+
+*** create course owned by current user
+
+**** successfully create new course
+
+#+begin_src verb
+  POST http://localhost:5000/api/v0/courses/
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTU1NTE5NTEsImlhdCI6MTc1NTU0ODM1MX0.tylqZm-xqSdcEO8WWVFzssBwsg6sHkc_kRKzbRid8pI
+  Content-Type: application/json
+
+  {
+    "title": "amazing course title",
+    "description": "this is definitely a description"
+  }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 201 CREATED
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 21:01:09 GMT
+Content-Type: application/json
+Content-Length: 271
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "course": {
+    "created_at": "2025-08-18T21:01:09",
+    "description": "this is definitely a description",
+    "id": 3,
+    "owner_id": 1,
+    "title": "amazing course title",
+    "updated_at": "2025-08-18T21:01:09"
+  },
+  "message": "course created successfully"
+}
+#+end_example
+
+**** fail to create course due to duplicate title
+
+note: this title already exists for this user
+
+#+begin_src verb
+  POST http://localhost:5000/api/v0/courses/
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTU1NTE5NTEsImlhdCI6MTc1NTU0ODM1MX0.tylqZm-xqSdcEO8WWVFzssBwsg6sHkc_kRKzbRid8pI
+  Content-Type: application/json
+
+  {
+    "title": "amazing course title",
+    "description": "this is definitely a description"
+  }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 409 CONFLICT
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 21:09:20 GMT
+Content-Type: application/json
+Content-Length: 51
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "duplicate course title for user"
+}
+#+end_example
