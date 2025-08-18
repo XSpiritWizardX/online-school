@@ -68,14 +68,14 @@ Connection: close
 #+begin_example
 HTTP/1.1 200 OK
 Server: Werkzeug/3.1.3 Python/3.13.5
-Date: Mon, 18 Aug 2025 20:37:32 GMT
+Date: Mon, 18 Aug 2025 21:24:29 GMT
 Content-Type: application/json
 Content-Length: 588
 Access-Control-Allow-Origin: http://localhost:3000
 Connection: close
 
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTU1NTMwNTIsImlhdCI6MTc1NTU0OTQ1Mn0.JaZJDJFDibaZw270358qPaBXpuw326G7xTRF4rESQ5Y",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTU1NTU4NjksImlhdCI6MTc1NTU1MjI2OX0.o8tUS4DrKHd_bAWcUYhvqbGf4vkov3006lcQEAYCA_g",
   "user": {
     "address": null,
     "avatar_url": null,
@@ -414,5 +414,28 @@ Connection: close
     "title": "amazing course title",
     "updated_at": "2025-08-18T21:01:09"
   }
+}
+#+end_example
+
+
+*** delete course by id for current user
+
+#+begin_src verb
+  DELETE http://localhost:5000/api/v0/courses/3/
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTU1NTU4NjksImlhdCI6MTc1NTU1MjI2OX0.o8tUS4DrKHd_bAWcUYhvqbGf4vkov3006lcQEAYCA_g
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 21:24:54 GMT
+Content-Type: application/json
+Content-Length: 47
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "course deleted successfully"
 }
 #+end_example
