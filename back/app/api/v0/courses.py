@@ -1,4 +1,6 @@
 from flask import Blueprint, jsonify, request
+from sqlalchemy.exc import IntegrityError
+import traceback
 
 from app.db import db
 from app.models import Course
@@ -17,4 +19,58 @@ def get_courses(current_user):
             {"courses": [course.to_dict() for course in courses]}
         ),
         200,
+    )
+
+
+@bp.route("/", methods=["POST"])
+@jwt_required
+def create_course(current_user):
+    """create a new course"""
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"message": "need json body"}), 400
+
+    title = data.get("title")
+    if not title:
+        return jsonify({"message": "title required"}), 400
+
+    course = Course(
+        owner_id=current_user.id,
+        title=title,
+        description=data.get("description"),
+    )
+
+    try:
+        db.session.add(course)
+        db.session.commit()
+    except IntegrityError as e:
+        db.session.rollback()
+        if (
+            "UNIQUE constraint failed: courses.owner_id, courses.title"
+            in str(e)
+        ):
+            return (
+                jsonify(
+                    {"message": "duplicate course title for user"}
+                ),
+                409,
+            )
+        else:
+            print(f"IntegrityError in {__file__}")
+            traceback.print_exc()
+    except Exception as e:
+        db.session.rollback()
+        print(f"Unexpected error in {__file__}:")
+        traceback.print_exc(e)
+        return jsonify({"message": "error creating course"}), 500
+
+    return (
+        jsonify(
+            {
+                "message": "course created successfully",
+                "course": course.to_dict(),
+            }
+        ),
+        201,
     )
