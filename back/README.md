@@ -32,6 +32,7 @@ uv run flask run
 ## get started with db
 ```bash
 uv run flask db upgrade
+uv run flask seed undo
 uv run flask seed all
 ```
 
@@ -48,5 +49,6 @@ to create a migration and run it, after making the above changes,
 ```bash
 uv run flask db migrate -m "modify model_name in cool way"
 uv run flask db upgrade
+uv run flask seed undo
 uv run flask seed all
 ```
