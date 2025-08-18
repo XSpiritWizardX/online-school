@@ -1,0 +1,313 @@
+* api
+
+** login, POST http://localhost:5000/api/v0/auth/login
+
+*** hitting the endpoint with no body
+
+#+begin_src verb
+  POST http://localhost:5000/api/v0/auth/login
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 415 UNSUPPORTED MEDIA TYPE
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:36:44 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 215
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+<!doctype html>
+<html lang=en>
+<title>415 Unsupported Media Type</title>
+<h1>Unsupported Media Type</h1>
+<p>Did not attempt to load JSON data because the request Content-Type was not &#39;application/json&#39;.</p>
+#+end_example
+
+*** attempting to log in with invalid credentials
+
+#+begin_src verb
+  POST http://localhost:5000/api/v0/auth/login
+  Content-Type: application/json
+
+  {
+    "email": "bob@example.com",
+    "password": "password"
+  }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 401 UNAUTHORIZED
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:36:54 GMT
+Content-Type: application/json
+Content-Length: 39
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "invalid credentials"
+}
+#+end_example
+
+*** logging in with valid credentials
+
+#+begin_src verb
+  POST http://localhost:5000/api/v0/auth/login
+  Content-Type: application/json
+
+  {
+    "email": "admin@example.io",
+    "password": "password"
+  }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:37:32 GMT
+Content-Type: application/json
+Content-Length: 588
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTU1NTMwNTIsImlhdCI6MTc1NTU0OTQ1Mn0.JaZJDJFDibaZw270358qPaBXpuw326G7xTRF4rESQ5Y",
+  "user": {
+    "address": null,
+    "avatar_url": null,
+    "bio": null,
+    "city": null,
+    "created_at": "2025-08-18T20:12:12.342010",
+    "date_of_birth": null,
+    "display_name": null,
+    "email": "admin@example.io",
+    "first_name": null,
+    "id": 1,
+    "last_name": null,
+    "phone_number": null,
+    "state": null,
+    "theme_id": null,
+    "updated_at": "2025-08-18T20:12:12.342014",
+    "zipcode": null
+  }
+}
+#+end_example
+
+** logout, DELETE http://localhost:5000/api/v0/auth/logout
+
+*** unsuccessful logout without jwt
+
+#+begin_src verb
+  DELETE http://localhost:5000/api/v0/auth/logout
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 401 UNAUTHORIZED
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:39:03 GMT
+Content-Type: application/json
+Content-Length: 36
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "Token is missing"
+}
+#+end_example
+
+*** successful, logout with jwt
+
+#+begin_src verb
+  DELETE http://localhost:5000/api/v0/auth/logout
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTU1NTMwNTIsImlhdCI6MTc1NTU0OTQ1Mn0.JaZJDJFDibaZw270358qPaBXpuw326G7xTRF4rESQ5Y
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:39:55 GMT
+Content-Type: application/json
+Content-Length: 59
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "logged out successfully",
+  "user": null
+}
+#+end_example
+
+** signup, POST http://localhost:5000/api/v0/auth/signup
+
+*** successful signup
+
+#+begin_src verb
+  POST http://localhost:5000/api/v0/auth/signup
+  Content-Type: application/json
+
+  {
+    "email": "a@example.com",
+    "password": "password"
+  }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 201 CREATED
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:40:12 GMT
+Content-Type: application/json
+Content-Length: 627
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "user created successfully",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE3NTU1NTMyMTIsImlhdCI6MTc1NTU0OTYxMn0.z1W7aAn5R-awRJRUIofXGPusKqCyymQlD-54hhJlv-0",
+  "user": {
+    "address": null,
+    "avatar_url": null,
+    "bio": null,
+    "city": null,
+    "created_at": "2025-08-18T20:40:12.567191",
+    "date_of_birth": null,
+    "display_name": null,
+    "email": "a@example.com",
+    "first_name": null,
+    "id": 3,
+    "last_name": null,
+    "phone_number": null,
+    "state": null,
+    "theme_id": null,
+    "updated_at": "2025-08-18T20:40:12.567194",
+    "zipcode": null
+  }
+}
+#+end_example
+
+** verify, GET http://localhost:5000/api/v0/auth/verify
+
+*** unsuccessful verification, no jwt
+
+#+begin_src verb
+  GET http://localhost:5000/api/v0/auth/verify
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 401 UNAUTHORIZED
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:40:33 GMT
+Content-Type: application/json
+Content-Length: 36
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "Token is missing"
+}
+#+end_example
+
+*** unsuccessful verification, jwt included, but invalid/expired
+
+#+begin_src verb
+  GET http://localhost:5000/api/v0/auth/verify
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTM2NzA0MzEsImlhdCI6MTc1MzY2NjgzMX0.1B9I9m-IOmZNCLU5PT4YLymqpIuaIprF3Ou9d_qT_NU
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 401 UNAUTHORIZED
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:40:50 GMT
+Content-Type: application/json
+Content-Length: 47
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "Token is invalid or expired"
+}
+#+end_example
+
+*** successful verification, valid and current jwt included
+
+#+begin_src verb
+  GET http://localhost:5000/api/v0/auth/verify
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE3NTU1NTMyMTIsImlhdCI6MTc1NTU0OTYxMn0.z1W7aAn5R-awRJRUIofXGPusKqCyymQlD-54hhJlv-0
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:42:04 GMT
+Content-Type: application/json
+Content-Length: 624
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "message": "verification confirmed",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE3NTU1NTMzMjQsImlhdCI6MTc1NTU0OTcyNH0.fCzLOdajbFu0lNZdfGVy8dHklqY0yDH_uuCXDb1NQWI",
+  "user": {
+    "address": null,
+    "avatar_url": null,
+    "bio": null,
+    "city": null,
+    "created_at": "2025-08-18T20:40:12.567191",
+    "date_of_birth": null,
+    "display_name": null,
+    "email": "a@example.com",
+    "first_name": null,
+    "id": 3,
+    "last_name": null,
+    "phone_number": null,
+    "state": null,
+    "theme_id": null,
+    "updated_at": "2025-08-18T20:40:12.567194",
+    "zipcode": null
+  }
+}
+#+end_example
+
+** course
+
+*** get courses for current user
+
+first, log in, then
+
+#+begin_src verb
+  GET http://localhost:5000/api/v0/courses/
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3NTU1NTE5NTEsImlhdCI6MTc1NTU0ODM1MX0.tylqZm-xqSdcEO8WWVFzssBwsg6sHkc_kRKzbRid8pI
+#+end_src
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 200 OK
+Server: Werkzeug/3.1.3 Python/3.13.5
+Date: Mon, 18 Aug 2025 20:25:39 GMT
+Content-Type: application/json
+Content-Length: 261
+Access-Control-Allow-Origin: http://localhost:3000
+Connection: close
+
+{
+  "courses": [
+    {
+      "created_at": "2025-08-18T20:12:12",
+      "description": "Learn the basics of Python programming.",
+      "id": 1,
+      "owner_id": 1,
+      "title": "Introduction to Python",
+      "updated_at": "2025-08-18T20:12:12"
+    }
+  ]
+}
+#+end_example
