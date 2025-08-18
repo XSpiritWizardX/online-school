@@ -88,3 +88,27 @@ def get_course(current_user, course_id):
     if not course:
         return jsonify({"message": "course not found"}), 404
     return jsonify({"course": course.to_dict()}), 200
+
+
+@bp.route("/<int:course_id>/", methods=["DELETE"])
+@jwt_required
+def delete_course(current_user, course_id):
+    """delete course by id"""
+    course = Course.query.filter_by(
+        id=course_id,
+        owner_id=current_user.id,
+    ).first()
+
+    if not course:
+        return jsonify({"message": "course not found"}), 404
+
+    try:
+        db.session.delete(course)
+        db.session.commit()
+
+    except Exception as e:
+        print(f"unexpected error in {__file__}:")
+        traceback.print_exc(e)
+        return jsonify({"message": "error deleting course"}), 500
+
+    return jsonify({"message": "course deleted successfully"})
