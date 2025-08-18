@@ -10,10 +10,9 @@ bp = Blueprint("courses", __name__)
 
 
 @bp.route("/", methods=["GET"])
-@jwt_required
-def get_courses(current_user):
+def get_courses():
     """get all courses for the current user"""
-    courses = Course.query.filter_by(owner_id=current_user.id).all()
+    courses = Course.query.all()
     return (
         jsonify(
             {"courses": [course.to_dict() for course in courses]}
@@ -77,12 +76,10 @@ def create_course(current_user):
 
 
 @bp.route("/<int:course_id>/", methods=["GET"])
-@jwt_required
-def get_course(current_user, course_id):
+def get_course(course_id):
     """get a specific course"""
     course = Course.query.filter_by(
         id=course_id,
-        owner_id=current_user.id,
     ).first()
 
     if not course:
