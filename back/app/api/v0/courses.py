@@ -74,3 +74,17 @@ def create_course(current_user):
         ),
         201,
     )
+
+
+@bp.route("/<int:course_id>/", methods=["GET"])
+@jwt_required
+def get_course(current_user, course_id):
+    """get a specific course"""
+    course = Course.query.filter_by(
+        id=course_id,
+        owner_id=current_user.id,
+    ).first()
+
+    if not course:
+        return jsonify({"message": "course not found"}), 404
+    return jsonify({"course": course.to_dict()}), 200
