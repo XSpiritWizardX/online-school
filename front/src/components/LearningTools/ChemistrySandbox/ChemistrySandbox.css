@@ -1,0 +1,247 @@
+/* ChemistrySandbox.css */
+
+/* Root layout */
+.sandbox-root {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  margin: 1%;
+  padding: 0;
+  background-color: #0d1117;
+  color: #fff;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #1b1b1b;
+  color: #fff;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.controls .btn {
+  margin-left: 10px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.controls .btn.react {
+  background-color: #4caf50;
+  color: white;
+}
+
+.controls .btn.react:hover {
+  background-color: #45a049;
+}
+
+.controls .btn.reset {
+  background-color: #f44336;
+  color: white;
+}
+
+.controls .btn.reset:hover {
+  background-color: #d32f2f;
+}
+
+/* Table */
+.table-wrap {
+  margin: 20px;
+  overflow-x: auto;
+}
+
+.periodic-grid {
+  display: grid;
+  grid-template-columns: repeat(18, 80px);
+  grid-auto-rows: 80px;
+  gap: 6px;
+}
+
+/* Element card */
+.element-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  border: 2px solid #999; /* default border */
+  cursor: pointer;
+  position: relative;
+  font-size: 1.95rem;
+  height: 5rem;
+  width: 5rem;
+  background-color: #1e1e1e; /* dark background */
+  color: #fff;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.element-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Atomic number top-left */
+.element-card .atomic {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  font-size: 0.6rem;
+  color: #ccc;
+}
+
+/* Symbol and name */
+.element-card .sym {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.element-card .nm {
+  font-size: 0.55rem;
+  text-align: center;
+}
+
+/* Categories: BORDER + SYMBOL color only */
+.element-card.nonmetal {
+  border-color: #b93b9a;
+  color: #ffffff;
+}
+
+.element-card.noble {
+  border-color: #9500af;
+  color: #ffffff;
+}
+
+.element-card.alkali {
+  border-color: #f34444;
+  color: #ffffff;
+}
+
+.element-card.alkaline {
+  border-color: #c07300;
+  color: #ffffff;
+}
+.element-card.alkaline-earth {
+  border-color: #ad294a;
+  color: #ffffff;
+}
+
+.element-card.metalloid {
+border-color: #0bebc5fd;
+  color: #ffffff;
+}
+
+.element-card.halogen {
+  border-color: #f15323;
+  color: #ffffff;
+}
+
+.element-card.transition {
+  border-color: #bd9d0e;
+  color: #ffffff;
+}
+
+.element-card.post-transition {
+      border-color: #00ff0d;
+      color: #ffffff;
+    }
+
+.element-card.lanthanide {
+    border-color: #388e3c;
+  color: #ffffff;
+}
+
+.element-card.actinide {
+  border-color: #29b6f6;
+  color: #ffffff;
+}
+
+/* Placeholder */
+.element-card.placeholder {
+  background-color: #153d36;
+  cursor: default;
+  border-style: dashed;
+  color: #18c2c2;
+}
+
+/* Panel */
+.panel {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  gap: 20px;
+}
+
+.logs {
+  flex: 1;
+  background-color: #1b1b1b;
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 180px;
+  height:300px;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  width: 20rem;
+}
+.sandbox{
+    flex: 1;
+    background-color: #1b1b1b;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    min-height: 180px;
+    height:300px;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    width: 20rem;
+
+}
+.sandbox h2, .logs h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #555;
+  padding-bottom: 4px;
+}
+
+/* Chips for sandbox atoms */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.chip {
+  background-color: #444;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+/* Muted text */
+.muted {
+  color: #888;
+  font-style: italic;
+}
+
+/* Reaction log */
+.logs ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.logs li {
+  margin-bottom: 4px;
+  font-size: 0.8rem;
+}

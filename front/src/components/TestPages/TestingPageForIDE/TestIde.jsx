@@ -5,15 +5,15 @@ import "./TestIde.css";
 // import AdvancedPaint from "../../LearningTools/ArtTools/AdvancedPaint/AdvancedPaint";
 // import GraphingCalculator from "../../LearningTools/GraphingCalc/GraphingCalculator";
 // import VideoConference from "../../VideoConference/VideoConference";
-import PhysicsLab from "../../LearningTools/PhysicsLab/PhysicsLab";
+// import PhysicsLab from "../../LearningTools/PhysicsLab/PhysicsLab";
+import ChemistrySandbox from "../../LearningTools/ChemistrySandbox/ChemistrySandbox";
 export default function TestIde() {
   return (
     <div className="testide-wrapper">
 
 
+    <ChemistrySandbox/>
 
-        <PhysicsLab/>
-  
     </div>
   );
 }
