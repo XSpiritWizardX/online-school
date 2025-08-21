@@ -91,10 +91,6 @@ export default function ChemistrySandbox() {
     <div className="sandbox-root">
       <header className="header">
         <h1>Periodic Table Sandbox</h1>
-        <div className="controls">
-          <button className="btn react" onClick={react}>React</button>
-          <button className="btn reset" onClick={reset}>Reset</button>
-        </div>
       </header>
 
       {/* MAIN GRID */}
@@ -158,6 +154,10 @@ export default function ChemistrySandbox() {
         </div>
       </section>
 
+        <div className="controls">
+          <button className="btn react" onClick={react}>React</button>
+          <button className="btn reset" onClick={reset}>Reset</button>
+        </div>
       {/* SANDBOX + LOGS */}
       <section className="panel">
         <div className="sandbox">
