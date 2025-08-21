@@ -1,4 +1,3 @@
-import ElectricLab from "../../LearningTools/ElectricLab/ElectricLab";
 import "./TestIde.css";
 // import CodeEditor from "../../LearningTools/CodeEditor/CodeEditor";
 // import PianoKeyboard from "../../LearningTools/MusicTools/PianoKeyboard/PianoKeyboard";
@@ -8,12 +7,14 @@ import "./TestIde.css";
 // import VideoConference from "../../VideoConference/VideoConference";
 // import PhysicsLab from "../../LearningTools/PhysicsLab/PhysicsLab";
 // import ChemistrySandbox from "../../LearningTools/ChemistrySandbox/ChemistrySandbox";
+// import ElectricLab from "../../LearningTools/ElectricLab/ElectricLab";
+import BiologyTool from "../../LearningTools/BiologyTool/BiologyTool";
 export default function TestIde() {
   return (
     <div className="testide-wrapper">
 
 
-    <ElectricLab/>
+    <BiologyTool/>
 
     </div>
   );

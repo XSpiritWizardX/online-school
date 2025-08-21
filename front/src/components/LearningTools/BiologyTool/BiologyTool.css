@@ -1,0 +1,191 @@
+/* src/components/LearningTools/BiologyTool/BiologyTool.css */
+
+:root{
+  --bg: #0f1720;
+  --panel: #0b1220;
+  --accent: #3a86ff;
+  --muted: #a7b5c9;
+  --card: #0f1720;
+  --glass: rgba(255,255,255,0.03);
+  --text: #e8eef8;
+}
+
+.biology-tool {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  padding: 18px;
+  background: linear-gradient(180deg, #071021 0%, #0f1720 100%);
+  min-height: 100vh;
+}
+
+/* Header */
+.bt-header h1 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  color: var(--text);
+}
+
+/* Controls row */
+.bt-controls-row {
+  display:flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.cell-selector {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.cell-btn {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.cell-btn.active {
+  background: linear-gradient(90deg, rgba(58,134,255,0.16), rgba(58,134,255,0.06));
+  border-color: rgba(58,134,255,0.6);
+  box-shadow: 0 4px 18px rgba(58,134,255,0.08);
+}
+
+/* Sim controls */
+.sim-controls {
+  display:flex;
+  gap:16px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.play-controls button {
+  margin-right:8px;
+  padding:8px 10px;
+  border-radius:8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  color:var(--text);
+  cursor:pointer;
+}
+.speed-control {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.speed-control input[type=range] {
+  width: 140px;
+}
+.speed-readout {
+  min-width:48px;
+}
+
+/* Main layout */
+.bt-main {
+  display:flex;
+  gap: 18px;
+  align-items:flex-start;
+  margin-top: 6px;
+}
+
+/* Cell pane (svg) */
+.cell-pane {
+  flex: 1 1 720px;
+  max-width: 900px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 6px 28px rgba(3,9,18,0.5);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.cell-svg {
+  width: 100%;
+  height: 640px;
+  display:block;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(10,12,18,0.7), rgba(5,7,10,0.9));
+}
+
+/* hotspots */
+.hotspot-dot {
+  fill: rgba(255,255,255,0.06);
+  stroke: rgba(255,255,255,0.25);
+  stroke-width: 1;
+  cursor: pointer;
+  transition: transform 150ms ease, r 150ms ease;
+}
+.hotspot-group:hover .hotspot-dot {
+  transform: scale(1.05);
+  r: 12;
+}
+.hotspot-label {
+  font-size: 12px;
+  fill: var(--muted);
+  pointer-events: none;
+  font-family: Inter, Arial, sans-serif;
+}
+.membrane-hotspot {
+  fill: transparent;
+  stroke: rgba(255,255,255,0.02);
+  cursor: pointer;
+}
+
+/* internal shapes labels */
+.nucleus-label {
+  font-size: 12px;
+  fill: #cfd8ff;
+  text-anchor: middle;
+  font-weight:600;
+}
+
+/* chromosome styling */
+.chromosome line {
+  stroke-linecap: round;
+}
+.chromosome circle {
+  stroke: #2a2a7f;
+  stroke-width: 0.5;
+}
+
+/* Info pane */
+.info-pane {
+  width: 320px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+  min-height: 360px;
+  box-shadow: 0 6px 20px rgba(2,6,12,0.5);
+}
+.info-pane h2 {
+  margin-top:0;
+}
+.cell-desc {
+  color: var(--muted);
+}
+.part-info h4 {
+  margin: 8px 0 4px;
+}
+.mitosis-legend ol {
+  margin: 8px 0 0 18px;
+  color: var(--muted);
+}
+
+/* footer */
+.bt-footer {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* responsive */
+@media (max-width: 980px) {
+  .bt-main { flex-direction: column; }
+  .cell-pane { order: 1; width: 100%; }
+  .info-pane { order: 2; width: 100%; }
+  .cell-svg { height: 520px; }
+}
