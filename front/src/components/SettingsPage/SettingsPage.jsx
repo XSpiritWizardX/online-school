@@ -32,14 +32,14 @@ function SettingsPage() {
     setEditing(false);
     setForm({
       email: user?.email || "",
-      firstName: user?.firstname || "",
-      lastName: user?.lastname || "",
+      first_name: user?.first_name || "",
+      last_name: user?.last_name || "",
       address: user?.address || "",
-      phone: user?.phone_number || "",
-      dateOfBirth: user?.date_of_birth || "",
-      avatarUrl: user?.avatar_url || "",
+      phone_number: user?.phone_number || "",
+      date_of_birth: user?.date_of_birth || "",
+      avatar_url: user?.avatar_url || "",
       bio: user?.bio || "",
-      theme: user?.theme || "default",
+      theme_id: user?.theme_id || "default",
       password: "",
       confirmPassword: "",
     });
@@ -48,7 +48,8 @@ function SettingsPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add validation as needed
-    dispatch(thunkUpdateUser(form));
+    const {confirmPassword, ...newForm} = form;
+    dispatch(thunkUpdateUser(newForm));
     setEditing(false);
   };
 
@@ -57,7 +58,7 @@ function SettingsPage() {
       <div className="settings-page-top">
         <div className="avatar-section">
           <img
-            src={form.avatarUrl || "https://res.cloudinary.com/dl6ls3rgu/image/upload/v1753821555/52Vd1ZNcqubd9rPJIuUR--0--6ctwk_kwbdne.jpg"}
+            src={form.avatar_url || "https://res.cloudinary.com/dl6ls3rgu/image/upload/v1753821555/52Vd1ZNcqubd9rPJIuUR--0--6ctwk_kwbdne.jpg"}
             alt="profile"
             className="user-avatar-large"
           />
@@ -91,8 +92,8 @@ function SettingsPage() {
             First Name:
             <input
               type="text"
-              name="firstName"
-              value={form.firstName}
+              name="first_name"
+              value={form.first_name}
               onChange={handleChange}
               disabled={!editing}
             />
@@ -101,8 +102,8 @@ function SettingsPage() {
             Last Name:
             <input
               type="text"
-              name="lastName"
-              value={form.lastName}
+              name="last_name"
+              value={form.last_name}
               onChange={handleChange}
               disabled={!editing}
             />
@@ -111,8 +112,8 @@ function SettingsPage() {
             Profile Picture URL:
             <input
               type="url"
-              name="avatarUrl"
-              value={form.avatarUrl}
+              name="avatar_url"
+              value={form.avatar_url}
               onChange={handleChange}
               disabled={!editing}
             />
@@ -120,14 +121,14 @@ function SettingsPage() {
           <label>
             Theme:
             <select
-              name="theme"
-              value={form.theme}
+              name="theme_id"
+              value={form.theme_id}
               onChange={handleChange}
               disabled={!editing}
             >
-              <option value="default">Default</option>
-              <option value="dark">Dark</option>
-              <option value="light">Light</option>
+              <option value="0">Default</option>
+              <option value="1">Dark</option>
+              <option value="2">Light</option>
               {/* Add more themes as needed */}
             </select>
           </label>
@@ -199,8 +200,8 @@ function SettingsPage() {
             Phone Number:
             <input
               type="tel"
-              name="phone"
-              value={form.phone}
+              name="phone_number"
+              value={form.phone_number}
               onChange={handleChange}
               disabled={!editing}
             />
@@ -209,8 +210,8 @@ function SettingsPage() {
             Date of Birth:
             <input
               type="date"
-              name="dateOfBirth"
-              value={form.dateOfBirth}
+              name="date_of_birth"
+              value={form.date_of_birth}
               onChange={handleChange}
               disabled={!editing}
             />
