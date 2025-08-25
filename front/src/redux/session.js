@@ -67,13 +67,12 @@ export const thunkSignup = (user) => async (dispatch) => {
   }
 };
 
-
 export const thunkUpdateUser = (userData) => async (dispatch) => {
   const token = localStorage.getItem("token");
   if (!token) return;
 
   const response = await fetch("/api/v0/users/self/", {
-    method: "P",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

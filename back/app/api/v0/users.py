@@ -32,11 +32,14 @@ def update_user(current_user):
         "address",
         "city",
         "state",
+        "country",
         "zipcode",
         "display_name",
         "avatar_url",
         "bio",
         "theme_id",
+        "date_of_birth",
+        "password",
     }
 
     incoming_fields = set(data.keys())

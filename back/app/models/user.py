@@ -29,6 +29,7 @@ class User(db.Model):
     address = db.Column(db.String)
     city = db.Column(db.String)
     state = db.Column(db.String)
+    country = db.Column(db.String)
     zipcode = db.Column(db.String)
     display_name = db.Column(db.String)
     avatar_url = db.Column(db.String)
