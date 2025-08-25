@@ -24,7 +24,7 @@ def update_user(current_user):
         return jsonify({"message": "need json body"}), 400
 
     # TODO dynamically get fields from User class
-    updatable_fields = [
+    updatable_fields = {
         "email",
         "first_name",
         "last_name",
@@ -37,7 +37,7 @@ def update_user(current_user):
         "avatar_url",
         "bio",
         "theme_id",
-    ]
+    }
 
     incoming_fields = set(data.keys())
     invalid_fields = incoming_fields - updatable_fields
