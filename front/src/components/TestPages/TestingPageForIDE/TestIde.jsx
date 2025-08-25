@@ -7,14 +7,14 @@ import "./TestIde.css";
 // import VideoConference from "../../VideoConference/VideoConference";
 // import PhysicsLab from "../../LearningTools/PhysicsLab/PhysicsLab";
 // import ChemistrySandbox from "../../LearningTools/ChemistrySandbox/ChemistrySandbox";
-// import ElectricLab from "../../LearningTools/ElectricLab/ElectricLab";
-import BiologyTool from "../../LearningTools/BiologyTool/BiologyTool";
+import ElectricLab from "../../LearningTools/ElectricLab/ElectricLab";
+// import BiologyTool from "../../LearningTools/BiologyTool/BiologyTool";
 export default function TestIde() {
   return (
     <div className="testide-wrapper">
-
-
-    <BiologyTool/>
+      {/* <ChemistrySandbox/> */}
+    <ElectricLab/>
+    {/* <BiologyTool/> */}
 
     </div>
   );
