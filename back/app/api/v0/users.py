@@ -89,6 +89,7 @@ def update_user(current_user):
         )
     except Exception as e:
         db.session.rollback()
-        print(f"error udating user in {__file__}:")
+        print(f"error updating user in {__file__}:")
+        print(e)
         traceback.print_exc()
         return jsonify({"message": "error updating user"}), 500
