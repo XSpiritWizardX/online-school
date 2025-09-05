@@ -11,8 +11,15 @@ class Course(db.Model):
         db.ForeignKey("users.id", name="fk_courses_owner_id"),
         nullable=False,
     )
-    title = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(100))
     description = db.Column(db.Text, nullable=True)
+    language = db.Column(db.Text)
+    level = db.Column(db.Text)
+    price = db.Column(db.Numeric)
+    is_published = db.Column(db.Boolean)
+    preview_video_url = db.Column(db.Text, nullable=True)
+    image_url = db.Column(db.Text, nullable=True)
+
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(
         db.DateTime,
@@ -39,6 +46,12 @@ class Course(db.Model):
             "owner_id": self.owner_id,
             "title": self.title,
             "description": self.description,
+            "language": self.language,
+            "level": self.level,
+            "price": self.price,
+            "is_published": self.is_published,
+            "preview_video_url": self.preview_video_url,
+            "image_url": self.image_url,
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat(),
         }

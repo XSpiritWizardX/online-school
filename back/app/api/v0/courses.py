@@ -30,15 +30,47 @@ def create_course(current_user):
     if not data:
         return jsonify({"message": "need json body"}), 400
 
-    title = data.get("title")
-    if not title:
-        return jsonify({"message": "title required"}), 400
+    required_fields = {
+        "title",
+        "language",
+        "level",
+        "price",
+        "is_published",
+    }
 
-    course = Course(
-        owner_id=current_user.id,
-        title=title,
-        description=data.get("description"),
+    allowed_fields = required_fields | {
+        "description",
+        "preview_video_url",
+        "image_url",
+    }
+
+    rejected_fields = sorted(
+        [key for key in data if key not in allowed_fields]
     )
+
+    missing_fields = sorted(
+        [key for key in required_fields if key not in data]
+    )
+
+    if rejected_fields or missing_fields:
+        request_fields = sorted(list(data.keys()))
+        return (
+            jsonify(
+                {
+                    "message": "rejected and/or missing fields",
+                    "missing_fields": missing_fields,
+                    "rejected_fields": rejected_fields,
+                    "required_fields": sorted(list(required_fields)),
+                    "allowed_fields": sorted(list(allowed_fields)),
+                    "request_fields": request_fields,
+                }
+            ),
+            400,
+        )
+
+    data["owner_id"] = current_user.id
+
+    course = Course(**data)
 
     try:
         db.session.add(course)
