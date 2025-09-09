@@ -7,10 +7,12 @@ import {
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 // import geminiReducer from './geminiSlice';
+import courseReducer from "./course";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   // gemini: geminiReducer,
+  course: courseReducer,
 });
 
 let enhancer;

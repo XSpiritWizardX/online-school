@@ -197,7 +197,7 @@ function courseReducer(state = initialState, action) {
 
     case GET_COURSES:
     case GET_ALL_COURSES:
-      return { ...state, courses: action.payload.courses };
+      return { ...state, courses: action.payload.courses || [] };
 
     case UPDATE_COURSE:
       return { ...state, currentCourse: action.payload };
