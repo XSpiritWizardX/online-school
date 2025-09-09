@@ -26,7 +26,7 @@ function CourseList() {
       <div className="course-grid">
         {courses.map((course) => (
           <div key={course.id} className="course-card">
-            <NavLink to={`/courses/${course.id}`} className="course-nav-link">
+            <NavLink to={`/courses/course/${course.id}`} className="course-nav-link">
               <h2 className="course-name">{course.title}</h2>
               {course.image_url && (
                 <img
