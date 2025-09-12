@@ -9,8 +9,7 @@ export default function CodeEditor() {
   const [pyodide, setPyodide] = useState(null);
   const [pyodideLoading, setPyodideLoading] = useState(false);
   const [output, setOutput] = useState("");
-  const [currentLanguage, setCurrentLanguage] =
-    useState("javascript");
+  const [currentLanguage, setCurrentLanguage] = useState("javascript");
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const menuRef = useRef(null);
   const iframeRef = useRef(null);
@@ -719,8 +718,9 @@ This is a code preview with syntax highlighting.</div>
 
           <div className="editor-box">
             <MonacoEditor
-              height="69cap"
-              width="69cap"
+            className="monaco"
+              height="45cap"
+              width="100cap"
               defaultLanguage={
                 currentLanguage === "csharp"
                   ? "csharp"
@@ -735,7 +735,7 @@ This is a code preview with syntax highlighting.</div>
               value={code}
               onChange={(value) => setCode(value)}
               options={{
-                fontSize: 14,
+                fontSize: 16,
                 minimap: { enabled: true },
                 scrollBeyondLastLine: false,
                 wordWrap: "on",
@@ -787,7 +787,7 @@ This is a code preview with syntax highlighting.</div>
                 className="close-menu"
                 onClick={() => setShowLanguageMenu(false)}
               >
-                Close
+                Hide
               </button>
             </div>
           </div>
