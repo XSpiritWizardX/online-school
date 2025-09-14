@@ -36,19 +36,18 @@ function Navigation() {
   return (
     <>
       <div className="navigation">
-        <div className="home-links-container">
-          <div
-          className="menu-home-link-contain"
-          >
-
-          <HomeDrop className="menu-icon" />
-
-          <NavLink className="home-link" to="/">
-            Online School Name
-          </NavLink>
+        <div className="nav-left">
+          <div className="brand-section">
+            <HomeDrop className="menu-icon" />
+            <div className="brand-text">
+              <NavLink className="brand-name" to="/">
+                Online School
+              </NavLink>
+            </div>
           </div>
+        </div>
 
-
+        <div className="nav-center">
           <div className="search-container">
             <div className="search-bar">
               <FiSearch className="search-icon" />
@@ -58,19 +57,15 @@ function Navigation() {
           </div>
         </div>
 
-
-        <div className="nav-links-container">
-          <div className="nav-links">
-
-
+        <div className="nav-right">
+          <div className="nav-actions">
             <button
-              className={"ai-assistant-link"}
+              className="ai-assistant-link"
               onClick={handleAIAssistantClick}
             >
               AI Assistant
             </button>
           </div>
-
           <ProfileButton />
         </div>
       </div>
