@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { CgMenuGridR } from "react-icons/cg";
+import { HiOutlineBars3 } from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
 
 import "./HomeDrop.css";
@@ -33,7 +33,7 @@ function HomeDrop() {
   return (
     <>
       <button className="menu-button" onClick={toggleMenu}>
-<CgMenuGridR />
+        <HiOutlineBars3 />
       </button>
 
       {showMenu && (
