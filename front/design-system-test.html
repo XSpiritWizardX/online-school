@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online School Design System Test</title>
+    <link rel="stylesheet" href="src/styles/design-system.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            font-family: var(--font-family-primary);
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border-primary);
+            border-radius: var(--radius-lg);
+        }
+        
+        .test-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: 20px;
+            color: var(--color-text-primary);
+        }
+        
+        .test-subtitle {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: 15px;
+            color: var(--color-text-secondary);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .color-swatch {
+            padding: 15px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+        }
+        
+        .typography-sample {
+            margin-bottom: 15px;
+        }
+        
+        .spacing-demo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .spacing-box {
+            background: var(--color-primary-500);
+            border-radius: var(--radius-sm);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">Online School Design System Test</h1>
+        
+        <!-- Colors Section -->
+        <div class="test-section">
+            <h2 class="test-subtitle">Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-swatch" style="background: var(--color-primary-500); color: white;">
+                    Primary 500
+                </div>
+                <div class="color-swatch" style="background: var(--color-secondary-500); color: white;">
+                    Secondary 500
+                </div>
+                <div class="color-swatch" style="background: var(--color-success); color: white;">
+                    Success
+                </div>
+                <div class="color-swatch" style="background: var(--color-warning); color: white;">
+                    Warning
+                </div>
+                <div class="color-swatch" style="background: var(--color-error); color: white;">
+                    Error
+                </div>
+                <div class="color-swatch" style="background: var(--color-bg-secondary); color: var(--color-text-primary); border: 1px solid var(--color-border-primary);">
+                    Secondary Background
+                </div>
+            </div>
+        </div>
+        
+        <!-- Typography Section -->
+        <div class="test-section">
+            <h2 class="test-subtitle">Typography</h2>
+            <div class="typography-sample">
+                <h1 style="font-size: var(--font-size-4xl); font-weight: var(--font-weight-bold); margin-bottom: 10px;">
+                    Heading 1
+                </h1>
+                <h2 style="font-size: var(--font-size-3xl); font-weight: var(--font-weight-semibold); margin-bottom: 10px;">
+                    Heading 2
+                </h2>
+                <h3 style="font-size: var(--font-size-2xl); font-weight: var(--font-weight-medium); margin-bottom: 10px;">
+                    Heading 3
+                </h3>
+                <p style="font-size: var(--font-size-base); line-height: var(--line-height-normal); margin-bottom: 10px;">
+                    This is a paragraph with normal text. It demonstrates the base font size and line height.
+                </p>
+                <p style="font-size: var(--font-size-sm); color: var(--color-text-tertiary);">
+                    This is smaller text with tertiary color.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Buttons Section -->
+        <div class="test-section">
+            <h2 class="test-subtitle">Buttons</h2>
+            <div class="button-group">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-ghost">Ghost Button</button>
+                <button class="btn btn-primary btn-sm">Small Button</button>
+                <button class="btn btn-primary btn-lg">Large Button</button>
+            </div>
+        </div>
+        
+        <!-- Spacing Section -->
+        <div class="test-section">
+            <h2 class="test-subtitle">Spacing Scale</h2>
+            <div class="spacing-demo">
+                <span>Space 1:</span>
+                <div class="spacing-box" style="width: var(--space-1); height: var(--space-1);"></div>
+            </div>
+            <div class="spacing-demo">
+                <span>Space 2:</span>
+                <div class="spacing-box" style="width: var(--space-2); height: var(--space-2);"></div>
+            </div>
+            <div class="spacing-demo">
+                <span>Space 4:</span>
+                <div class="spacing-box" style="width: var(--space-4); height: var(--space-4);"></div>
+            </div>
+            <div class="spacing-demo">
+                <span>Space 8:</span>
+                <div class="spacing-box" style="width: var(--space-8); height: var(--space-8);"></div>
+            </div>
+        </div>
+        
+        <!-- Navigation Test -->
+        <div class="test-section">
+            <h2 class="test-subtitle">Navigation Component</h2>
+            <div class="nav" style="position: relative; margin-bottom: 20px;">
+                <div class="nav-left">
+                    <div class="brand-section">
+                        <div class="brand-name">Online School</div>
+                    </div>
+                </div>
+                <div class="nav-center">
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" placeholder="Search courses..." />
+                            <span class="search-shortcut">⌘K</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div class="nav-actions">
+                        <button class="ai-assistant-link">AI Assistant</button>
+                    </div>
+                    <button class="profile-button">👤</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cards Section -->
+        <div class="test-section">
+            <h2 class="test-subtitle">Cards</h2>
+            <div class="card" style="max-width: 300px;">
+                <div class="card-header">
+                    <h3 style="margin: 0; font-size: var(--font-size-lg);">Card Title</h3>
+                </div>
+                <div class="card-body">
+                    <p style="margin: 0; color: var(--color-text-secondary);">
+                        This is a card component demonstrating the design system's card styles.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary btn-sm">Action</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shadows Section -->
+        <div class="test-section">
+            <h2 class="test-subtitle">Shadows</h2>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                <div style="padding: 20px; background: var(--color-bg-secondary); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                    Small Shadow
+                </div>
+                <div style="padding: 20px; background: var(--color-bg-secondary); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                    Medium Shadow
+                </div>
+                <div style="padding: 20px; background: var(--color-bg-secondary); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                    Large Shadow
+                </div>
+                <div style="padding: 20px; background: var(--color-bg-secondary); border-radius: var(--radius-lg); box-shadow: var(--shadow-glow);">
+                    Glow Shadow
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
