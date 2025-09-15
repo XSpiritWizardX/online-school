@@ -7,7 +7,13 @@ export default function LandingPage() {
     <div className="landing-page">
       <div className="landing-page-container">
         <h1 className="landing-page-title">
-          ONLINE SCHOOL<br/> -Learn - Teach- <br/>-Create - Evolve-
+          ONLINE SCHOOL
+          <div className="action-words">
+            <span className="action-word">Learn</span>
+            <span className="action-word">Teach</span>
+            <span className="action-word">Create</span>
+            <span className="action-word">Evolve</span>
+          </div>
         </h1>
 
         <p className="arc-para">

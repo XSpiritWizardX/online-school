@@ -1,6 +1,9 @@
+/* Import Design System */
+@import './styles/design-system.css';
+
 /* TODO: Add sitewide styles */
 html {
-  background-color: black;
+  background-color: var(--color-bg-primary);
   width: 100%;
   height: 100%;
   max-width: 100%;
