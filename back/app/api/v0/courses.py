@@ -9,15 +9,6 @@ from app.utils import jwt_required
 bp = Blueprint("courses", __name__)
 
 
-@bp.route("/", methods=["GET"])
-@jwt_required
-def get_user_courses():
-    """get all courses"""
-    courses = Course.query.all()
-    body = {"courses": [course.to_dict() for course in courses]}
-    return jsonify(body), 200
-
-
 @bp.route("/", methods=["POST"])
 @jwt_required
 def create_course(current_user):
@@ -81,11 +72,15 @@ def create_course(current_user):
         traceback.print_exc(e)
         return jsonify({"message": "error creating course"}), 500
 
-    body = {
-        "message": "course created successfully",
-        "course": course.to_dict(),
-    }
-    return jsonify(body), 201
+    return jsonify(course.to_dict()), 201
+
+
+@bp.route("/", methods=["GET"])
+def get_courses():
+    """get all courses"""
+    courses = Course.query.all()
+    body = {str(course.id): course.to_dict() for course in courses}
+    return jsonify(body), 200
 
 
 @bp.route("/<int:course_id>/", methods=["GET"])
@@ -97,7 +92,7 @@ def get_course(course_id):
 
     if not course:
         return jsonify({"message": "course not found"}), 404
-    return jsonify({"course": course.to_dict()}), 200
+    return jsonify(course.to_dict()), 200
 
 
 @bp.route("/<int:course_id>/", methods=["PATCH"])
@@ -158,11 +153,7 @@ def update_course(current_user, course_id):
         print(e)
         traceback.print_exc()
         return jsonify({"message": "error updating course"}), 500
-    body = {
-        "message": "course updated successfully",
-        "course": course.to_dict(),
-    }
-    return jsonify(body), 200
+    return jsonify(course.to_dict()), 200
 
 
 @bp.route("/<int:course_id>/", methods=["DELETE"])
@@ -186,4 +177,4 @@ def delete_course(current_user, course_id):
         traceback.print_exc(e)
         return jsonify({"message": "error deleting course"}), 500
 
-    return jsonify({"message": "course deleted successfully"})
+    return jsonify(course.id), 200

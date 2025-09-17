@@ -8,6 +8,9 @@ from app.utils import jwt_required
 bp = Blueprint("users", __name__)
 
 
+# CREATE is in auth.py#signup because that's what app academy taught
+
+
 @bp.route("/me/", methods=["GET"])
 @jwt_required
 def read_user(current_user):
