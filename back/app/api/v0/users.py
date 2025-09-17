@@ -8,13 +8,13 @@ from app.utils import jwt_required
 bp = Blueprint("users", __name__)
 
 
-@bp.route("/self/", methods=["GET"])
+@bp.route("/me/", methods=["GET"])
 @jwt_required
 def read_user(current_user):
     return jsonify(current_user.to_dict(), 200)
 
 
-@bp.route("/self/", methods=["PATCH"])
+@bp.route("/me/", methods=["PATCH"])
 @jwt_required
 def update_user(current_user):
     """update current user's information"""

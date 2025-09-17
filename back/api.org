@@ -543,12 +543,12 @@ Connection: close
 
 see signup, post to auth/signup
 
-*** read, GET http://localhost:5000/api/v0/users/self/
+*** read, GET http://localhost:5000/api/v0/users/me/
 
-**** read self, logged in, successful response
+**** read me, logged in, successful response
 
 #+begin_src verb
-  GET http://localhost:5000/api/v0/users/self/
+  GET http://localhost:5000/api/v0/users/me/
   Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE3NTU5MjMwNzcsImlhdCI6MTc1NTkxOTQ3N30.SOlKuLrMovzHLs-x_MGGju7UKn2n07HKtCNpseOyufo
 #+end_src
 
@@ -585,10 +585,10 @@ Connection: close
 ]
 #+end_example
 
-*** update, PATCH http://localhost:5000/api/v0/users/self/
+*** update, PATCH http://localhost:5000/api/v0/users/me/
 
 #+begin_src verb
-  PATCH http://localhost:5000/api/v0/users/self/
+  PATCH http://localhost:5000/api/v0/users/me/
   Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE3NTYxNjM5ODcsImlhdCI6MTc1NjE2MDM4N30.oEYdmAZEBHo-MpOUX394eLEznhbhvVwleB0yaHCG0_w
   Content-Type: application/json
 
