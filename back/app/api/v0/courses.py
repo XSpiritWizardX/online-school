@@ -9,22 +9,13 @@ from app.utils import jwt_required
 bp = Blueprint("courses", __name__)
 
 
-@bp.route("/all", methods=["GET"])
-def get_all_courses():
+@bp.route("/", methods=["GET"])
+@jwt_required
+def get_user_courses():
     """get all courses"""
     courses = Course.query.all()
     body = {"courses": [course.to_dict() for course in courses]}
     return jsonify(body), 200
-
-
-@bp.route("/", methods=["GET"])
-@jwt_required
-def get_user_courses():
-    """get all courses for the current user"""
-    courses = Course.query.all()
-    body = {"courses": [course.to_dict() for course in courses]}
-    return jsonify(body), 200
-
 
 
 @bp.route("/", methods=["POST"])
