@@ -20,7 +20,7 @@
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@monaco-editor/react": "^4.7.0",
-    "@reduxjs/toolkit": "^2.8.2",
+    "@reduxjs/toolkit": "^2.9.0",
     "desmos": "^1.5.4",
     "dotenv": "^17.2.0",
     "js-cookie": "^3.0.5",

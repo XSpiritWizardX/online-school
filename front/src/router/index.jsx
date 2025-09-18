@@ -6,7 +6,7 @@ import BlankPage from "../components/BlankPage/BlankPage";
 import TermsOfService from "../components/Compliance/TermsOfService/TermsOfService";
 import PrivacyPolicy from "../components//Compliance/PrivacyPolicy/PrivacyPolicy";
 import CookiesPolicy from "../components//Compliance/CookiePolicy/CookiePolicy";
-import TestIde from "../components/TestPages/TestingPageForIDE/TestIde"
+import TestIde from "../components/TestPages/TestingPageForIDE/TestIde";
 import TestCourseEditor from "../components/TestPages/TestCourseEditor/TestCourseEditor";
 import ChatBot from "../components/ChatBot/GeminiChat";
 import Layout from "./Layout";
@@ -14,7 +14,7 @@ import CourseInterface from "../components/CourseInterface/CourseInterface";
 import SettingsPage from "../components/SettingsPage/SettingsPage";
 import ProfilePage from "../components/ProfilePage/ProfilePage";
 import CurrentCourses from "../components/Course/CurrentCourses/Currentcourses";
-import CourseList from "../components/Course/CourseList/CourseList";
+import CourseList from "../components/Course/CourseList";
 import MyCourses from "../components/Course/MyCourses/MyCourses";
 import CourseShow from "../components/Course/CourseShow/CourseShow";
 import TestPage from "../components/TestPages/VideoTest/VideoTest";

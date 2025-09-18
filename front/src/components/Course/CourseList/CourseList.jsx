@@ -1,49 +1,60 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAllCourses } from "../../../redux/course";
 import { NavLink } from "react-router-dom";
+import {
+  fetchCourses,
+  selectCoursesOrdered,
+  selectCoursesStatus,
+  selectCoursesError,
+} from "../../../store/slices/coursesSlice";
 import "./CourseList.css";
 
-function CourseList() {
+const CourseList = () => {
   const dispatch = useDispatch();
-  const courses = useSelector((state) => state.course.courses || []);
-  const [isLoading, setIsLoading] = useState(true);
+  const courses = useSelector(selectCoursesOrdered);
+  const status = useSelector(selectCoursesStatus);
+  const error = useSelector(selectCoursesError);
 
   useEffect(() => {
-    setIsLoading(true);
-    dispatch(fetchAllCourses())
-      .then(() => setIsLoading(false))
-      .catch(() => setIsLoading(false));
-  }, [dispatch]);
+    if (status === "idle") {
+      dispatch(fetchCourses());
+    }
+  }, [status, dispatch]);
 
-  if (isLoading) {
-    return <div className="courses-container">Loading courses...</div>;
-  }
+  if (status === "loading") return <div>loading...</div>;
+  if (status === "failed") return <div>error: {error}</div>;
 
   return (
     <div className="course-list-container">
       <h1 className="course-list-title">Courses</h1>
-      <div className="course-grid">
-        {courses.map((course) => (
-          <div key={course.id} className="course-card">
-            <NavLink to={`/courses/course/${course.id}`} className="course-nav-link">
-              <h2 className="course-name">{course.title}</h2>
-              {course.image_url && (
-                <img
-                  className="course-image"
-                  src={course.image_url}
-                  alt={course.title}
-                />
-              )}
-              <p className="course-description">
-                {course.description || "No description available"}
-              </p>
-            </NavLink>
-          </div>
-        ))}
-      </div>
+      {Object.keys(courses).length === 0 ? (
+        <p>no courses</p>
+      ) : (
+        <div className="course-grid">
+          {courses.map((course) => (
+            <div key={course.id} className="course-card">
+              <NavLink
+                to={`/courses/course/${course.id}`}
+                className="course-nav-link"
+              >
+                <h2 className="course-name">{course.title}</h2>
+                {course.image_url && (
+                  <img
+                    className="course-image"
+                    src={course.image_url}
+                    alt={course.title}
+                  />
+                )}
+                <p className="course-description">
+                  {course.description || "No description available"}
+                </p>
+              </NavLink>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default CourseList;
